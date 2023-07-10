@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:guidini/utils/constants.dart';
 
 class KeepMe extends StatefulWidget {
-  const KeepMe({Key? key}) : super(key: key);
+  KeepMe({Key? key, required this.text}) : super(key: key);
+  String text;
   @override
   State<KeepMe> createState() => _KeepMeState();
 }
@@ -43,9 +44,9 @@ class _KeepMeState extends State<KeepMe> {
           width: 10.0,
         ),
         Text(
-          'Keep me signed in.',
+          widget.text,
           style: TextStyle(
-            fontSize: 12.0,
+            fontSize: 15,
             color: Colors.black,
             fontFamily: 'Lato',
             fontWeight: FontWeight.w600,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:guidini/Components/field.dart';
 import 'package:guidini/Screens/SignIn/keepMeWidget.dart';
+import 'package:guidini/Screens/SignUp/main.dart';
+import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/utils/constants.dart';
 
 class SignIn extends StatefulWidget {
@@ -18,7 +20,7 @@ class _SignInState extends State<SignIn> {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.asset(
                 'assets/images/greenLogo.png',
@@ -37,16 +39,140 @@ class _SignInState extends State<SignIn> {
               Field(
                 text: 'Email address',
                 pwd: false,
+                placeholder: 'abc@xyz.com',
               ),
               Field(
                 text: 'Password',
                 pwd: true,
+                placeholder: '********',
               ),
-              KeepMe(),
+              KeepMe(text: "Remember me."),
+              welcomeButton(text: 'Login', fct: () {}, bgColor: Colors.white, txtColor: kMainGreen,),
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Divider(
+                        color: kMainGreen,
+                        thickness: 1.5,
+                      ),
+                    ),
+                  ),
+                  const Text(
+                    'or sign up with',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: kMainGreen,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Divider(
+                        color: kMainGreen,
+                        thickness: 1.5,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: signUpWithCard(
+                      icon: Icons.g_mobiledata,
+                      title: 'Google',
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  Expanded(
+                    child: signUpWithCard(
+                      icon: Icons.facebook,
+                      title: 'Facebook',
+                    ),
+                  ),
+                ],
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignUp(),
+                    ),
+                  );
+                },
+                child: RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                    text: 'Don\'t have an account?',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                  TextSpan(
+                    text: ' Sign up here',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: kMainGreen,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ])),
+              )
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class signUpWithCard extends StatelessWidget {
+  signUpWithCard({
+    super.key,
+    required this.title,
+    required this.icon,
+  });
+  String title;
+  IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: Colors.black54,
+              width: 1,
+            ),
+          ),
+          child: Row(
+            children: [
+              Icon(
+                icon,
+                color: Colors.black87,
+                size: 50,
+              ),
+              Text(
+                title,
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontFamily: 'Lato',
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          )),
     );
   }
 }

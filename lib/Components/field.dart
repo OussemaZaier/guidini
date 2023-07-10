@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Field extends StatefulWidget {
-  Field({Key? key, required this.text, required this.pwd}) : super(key: key);
+  Field({Key? key, required this.text, required this.pwd, required this.placeholder}) : super(key: key);
   String text;
   bool pwd;
-
+  String placeholder;
   @override
   State<Field> createState() => _FieldState();
 }
@@ -34,7 +34,7 @@ class _FieldState extends State<Field> {
             ),
             filled: true,
             hintStyle: TextStyle(color: Colors.grey[800]),
-            hintText: "Type in your text",
+            hintText: widget.placeholder,
             fillColor: Colors.white70,
             suffixIcon: widget.pwd
                 ? _visible
