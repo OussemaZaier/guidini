@@ -24,13 +24,23 @@ class Welcome extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Image.asset(
-            'assets/images/whiteLogo.png',
-            height: MediaQuery.of(context).size.width / 2,
-            width: MediaQuery.of(context).size.width / 2,
+          Stack(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/whiteLogo.png',
+                height: MediaQuery.of(context).size.width / 2,
+                width: MediaQuery.of(context).size.width / 2,
+              ),
+              Image.asset(
+                'assets/images/whiteLogo.png',
+                height: MediaQuery.of(context).size.width / 2,
+                width: MediaQuery.of(context).size.width / 2,
+              ),
+            ],
           ),
           const Text(
-            'A sustainable',
+            'A sustainable app for responsible consumption',
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 30,
               color: Colors.white,
