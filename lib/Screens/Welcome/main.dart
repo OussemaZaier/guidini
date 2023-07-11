@@ -4,12 +4,14 @@ import 'package:guidini/Screens/SignUp/main.dart';
 import 'package:guidini/utils/constants.dart';
 
 class Welcome extends StatelessWidget {
-  Welcome({Key? key, required this.child, required this.title }) : super(key: key);
+  Welcome({Key? key, required this.child, required this.title})
+      : super(key: key);
   final Widget child;
-  String title ;
+  String title;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Container(
         width: double.infinity,
         height: double.infinity,
