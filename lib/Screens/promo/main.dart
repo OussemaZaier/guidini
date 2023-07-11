@@ -60,7 +60,7 @@ class promo extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomePage(),
+                              builder: (context) => Inventory_init_choice(),
                             ))
                       },
                   bgColor: Colors.white,
