@@ -63,3 +63,6 @@ clean_data(raw_data=raw_text)
 # functions that detects prices, quantities and product name in the list of lines
 def line_contains_price(lines):
     pass
+
+
+# new comment
