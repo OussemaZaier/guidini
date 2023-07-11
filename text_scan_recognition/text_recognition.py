@@ -61,5 +61,11 @@ clean_data(raw_data=raw_text)
 
 
 # functions that detects prices, quantities and product name in the list of lines
-def line_contains_price(lines):
+def line_contains_price(lines):  # creating a conflict
+    # this line did not exitst
+    # qfzvezdcz
+    # fqsvezrcqzef
     pass
+
+
+# new comment
