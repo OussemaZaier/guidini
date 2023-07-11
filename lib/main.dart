@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/SignIn/main.dart';
 import 'package:guidini/Screens/SignUp/main.dart';
 import 'package:guidini/Screens/Welcome/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/Screens/descriptionapp/main.dart';
+import 'package:guidini/Screens/navigation.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -47,7 +49,7 @@ class _MyAppState extends State<MyApp> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignUp(),
+                          builder: (context) => Navigation(),
                         ),
                       );
                     },
