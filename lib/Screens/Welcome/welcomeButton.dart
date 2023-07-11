@@ -37,15 +37,16 @@ class welcomeButton extends StatelessWidget {
               ),
             ),
             Visibility(
-                visible: icon != Null,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: Icon(
-                    icon,
-                    color: txtColor,
-                    size: 20.0,
-                  ),
-                ))
+              visible: icon != Null,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Icon(
+                  icon,
+                  color: txtColor,
+                  size: 20.0,
+                ),
+              ),
+            ),
           ],
         ),
       ),
