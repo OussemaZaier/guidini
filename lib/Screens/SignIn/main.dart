@@ -51,7 +51,7 @@ class _SignInState extends State<SignIn> {
                 KeepMe(text: "Remember me."),
                 kSizedBox1,
                 welcomeButton(
-                  text: 'Login',
+                  text: 'Continue',
                   fct: () {},
                   bgColor: kMainGreen,
                   txtColor: Colors.white,

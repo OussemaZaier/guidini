@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guidini/Components/field.dart';
 import 'package:guidini/Screens/SignIn/keepMeWidget.dart';
+import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/utils/constants.dart';
 
@@ -83,7 +84,15 @@ class _SignUpState extends State<SignUp> {
                 KeepMe(text: "Keep me signed in."),
                 welcomeButton(
                     text: 'Continue',
-                    fct: () {},
+                    fct: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Inventory_init(
+                              title: "Welcome \n Let's get started!"),
+                        ),
+                      );
+                    },
                     bgColor: kMainGreen,
                     txtColor: Colors.white,
                     icon: Icons.arrow_forward_ios),
