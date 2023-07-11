@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guidini/Components/field.dart';
 import 'package:guidini/Screens/SignIn/keepMeWidget.dart';
+import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/utils/constants.dart';
 
@@ -54,6 +55,7 @@ class _SignUpState extends State<SignUp> {
                       pwd: false,
                       placeholder: 'Ben foulen',
                     ),
+
                   ),
                 ],
               ),
