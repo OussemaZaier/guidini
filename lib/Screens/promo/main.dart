@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
-import 'package:guidini/Screens/promo/main.dart';
 import 'package:guidini/utils/constants.dart';
 
-class recette extends StatelessWidget {
-  recette({Key? key}) : super(key: key);
+class promo extends StatelessWidget {
+  promo({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +33,8 @@ class recette extends StatelessWidget {
               Image.asset(
                   height: MediaQuery.of(context).size.height / 2.5,
                   width: MediaQuery.of(context).size.width / 2.5,
-                  'assets/images/receipe.png'), // <-- SEE HERE
-              Text('Recipe',
+                  'assets/images/promo.png'), // <-- SEE HERE
+              Text('Promotion',
                   style: TextStyle(
                     fontSize: 30,
                     color: Colors.black,
@@ -44,7 +44,7 @@ class recette extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(20),
                 child: Text(
-                  'We recommend a recipe with available ingredients to prevent them from expiring.',
+                  'We recommend promotions based on your purchase history and inventory.',
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.black,
@@ -60,7 +60,7 @@ class recette extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => promo(),
+                              builder: (context) => HomePage(),
                             ))
                       },
                   bgColor: Colors.white,
