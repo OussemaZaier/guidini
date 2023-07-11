@@ -15,80 +15,87 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(
-                'assets/images/greenLogo.png',
-                height: MediaQuery.of(context).size.width / 2.5,
-                width: MediaQuery.of(context).size.width / 2,
-              ),
-              const Text(
-                'Register',
-                style: TextStyle(
-                  fontSize: 30,
-                  color: kMainGreen,
-                  fontFamily: 'Lato',
-                  fontWeight: FontWeight.bold,
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(
+                  'assets/images/greenLogo.png',
+                  height: MediaQuery.of(context).size.width / 2.5,
+                  width: MediaQuery.of(context).size.width / 2,
                 ),
-              ),
-              kSizedBox1,
-              Row(
-                children: [
-                  Expanded(
-                    child: Field(
-                      text: 'First name',
-                      pwd: false,
-                      placeholder: 'Foulen',
+                const Text(
+                  'Register',
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: kMainGreen,
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                kSizedBox1,
+                Row(
+                  children: [
+                    Expanded(
+                      child: Field(
+                        text: 'First name',
+                        pwd: false,
+                        placeholder: 'Foulen',
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.0,
-                  ),
-                  Expanded(
-                    child: Field(
-                      text: 'Last name',
-                      pwd: false,
-                      placeholder: 'Ben foulen',
+                    SizedBox(
+                      width: 10.0,
                     ),
-
-                  ),
-                ],
-              ),
-              Field(
-                text: 'Email',
-                pwd: false,
-                placeholder: 'abc@xyz.com',
-              ),
-              Field(
-                text: 'Password',
-                pwd: true,
-                placeholder: '********',
-              ),
-              Field(
-                text: 'Confirm password',
-                pwd: true,
-                placeholder: '********',
-              ),
-              welcomeButton(
-                  text: 'Scan your fidelty card',
-                  fct: () {},
-                  bgColor: Colors.grey.shade200,
-                  txtColor: Colors.black),
-              kSizedBox1,
-              KeepMe(text: "Keep me signed in."),
-              welcomeButton(
-                  text: 'Continue',
-                  fct: () {},
-                  bgColor: kMainGreen,
-                  txtColor: Colors.white,
-                  icon: Icons.arrow_forward_ios),
-              kSizedBox1,
-            ],
+                    Expanded(
+                      child: Field(
+                        text: 'Last name',
+                        pwd: false,
+                        placeholder: 'Ben foulen',
+                      ),
+                    ),
+                  ],
+                ),
+                Field(
+                  text: 'Email',
+                  pwd: false,
+                  placeholder: 'abc@xyz.com',
+                ),
+                Field(
+                  text: 'Password',
+                  pwd: true,
+                  placeholder: '********',
+                ),
+                Field(
+                  text: 'Confirm password',
+                  pwd: true,
+                  placeholder: '********',
+                ),
+                welcomeButton(
+                    text: 'Scan your fidelty card',
+                    fct: () {},
+                    bgColor: Colors.grey.shade200,
+                    txtColor: Colors.black),
+                kSizedBox1,
+                KeepMe(text: "Keep me signed in."),
+                welcomeButton(
+                    text: 'Continue',
+                    fct: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Inventory_init(title: ''),
+                          ));
+                    },
+                    bgColor: kMainGreen,
+                    txtColor: Colors.white,
+                    icon: Icons.arrow_forward_ios),
+                kSizedBox1,
+              ],
+            ),
           ),
         ),
       ),
