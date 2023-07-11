@@ -17,13 +17,13 @@ class Inventory_init_show extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: RadialGradient(
             colors: [
-              Color(0XFF0ba360),
-              Color(0xFF3CBA92),
+              Color(0xFF0BA360),
+              Color(0xFF3cba92),
             ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.bottomCenter,
+            center: Alignment(-1, -1),
+            radius: 3.0,
           ),
         ),
         child:
@@ -41,6 +41,31 @@ class Inventory_init_show extends StatelessWidget {
                     fontFamily: 'Lato',
                     fontWeight: FontWeight.bold,
                   )),
+              Row(
+                children: [
+                  Text('Product',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.normal,
+                      )),
+                  Text('Expiry date',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.normal,
+                      )),
+                  Text('Qty.',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.normal,
+                      )),
+                ],
+              ),
               welcomeButton(
                   text: "Add",
                   fct: () => {
