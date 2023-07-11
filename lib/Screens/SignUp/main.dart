@@ -24,7 +24,7 @@ class _SignUpState extends State<SignUp> {
               children: [
                 Image.asset(
                   'assets/images/greenLogo.png',
-                  height: MediaQuery.of(context).size.width / 2,
+                  height: MediaQuery.of(context).size.width / 2.5,
                   width: MediaQuery.of(context).size.width / 2,
                 ),
                 const Text(
@@ -36,7 +36,6 @@ class _SignUpState extends State<SignUp> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                kSizedBox1,
                 kSizedBox1,
                 Row(
                   children: [
@@ -59,19 +58,16 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ],
                 ),
-                kSizedBox1,
                 Field(
                   text: 'Email',
                   pwd: false,
                   placeholder: 'abc@xyz.com',
                 ),
-                kSizedBox1,
                 Field(
                   text: 'Password',
                   pwd: true,
                   placeholder: '********',
                 ),
-                kSizedBox1,
                 Field(
                   text: 'Confirm password',
                   pwd: true,
@@ -91,7 +87,6 @@ class _SignUpState extends State<SignUp> {
                     txtColor: Colors.white,
                     icon: Icons.arrow_forward_ios),
                 kSizedBox1,
-                kSizedBox1
               ],
             ),
           ),
