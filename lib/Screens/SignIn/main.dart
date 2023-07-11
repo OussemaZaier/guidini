@@ -15,133 +15,130 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        physics: const ClampingScrollPhysics(),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                Image.asset(
-                  'assets/images/greenLogo.png',
-                  height: MediaQuery.of(context).size.width / 2.5,
-                  width: MediaQuery.of(context).size.width / 2,
+    return SingleChildScrollView(
+      physics: const ClampingScrollPhysics(),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/greenLogo.png',
+                height: MediaQuery.of(context).size.width / 2.5,
+                width: MediaQuery.of(context).size.width / 2,
+              ),
+              const Text(
+                'Login',
+                style: TextStyle(
+                  fontSize: 30,
+                  color: kMainGreen,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.bold,
                 ),
-                const Text(
-                  'Login',
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: kMainGreen,
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.bold,
+              ),
+              Field(
+                text: 'Email address',
+                pwd: false,
+                placeholder: 'abc@xyz.com',
+              ),
+              Field(
+                text: 'Password',
+                pwd: true,
+                placeholder: '********',
+              ),
+              KeepMe(text: "Remember me."),
+              kSizedBox1,
+              welcomeButton(
+                text: 'Login',
+                fct: () {},
+                bgColor: kMainGreen,
+                txtColor: Colors.white,
+              ),
+              kSizedBox1,
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Divider(
+                        color: kMainGreen,
+                        thickness: 1.5,
+                      ),
+                    ),
                   ),
-                ),
-                Field(
-                  text: 'Email address',
-                  pwd: false,
-                  placeholder: 'abc@xyz.com',
-                ),
-                Field(
-                  text: 'Password',
-                  pwd: true,
-                  placeholder: '********',
-                ),
-                KeepMe(text: "Remember me."),
-                kSizedBox1,
-                welcomeButton(
-                  text: 'Login',
-                  fct: () {},
-                  bgColor: kMainGreen,
-                  txtColor: Colors.white,
-                ),
-                kSizedBox1,
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: Divider(
-                          color: kMainGreen,
-                          thickness: 1.5,
-                        ),
-                      ),
+                  const Text(
+                    'or sign up with',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: kMainGreen,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.bold,
                     ),
-                    const Text(
-                      'or sign up with',
-                      style: TextStyle(
-                        fontSize: 18,
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Divider(
                         color: kMainGreen,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.bold,
+                        thickness: 1.5,
                       ),
                     ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Divider(
-                          color: kMainGreen,
-                          thickness: 1.5,
-                        ),
-                      ),
+                  ),
+                ],
+              ),
+              kSizedBox1,
+              Row(
+                children: [
+                  Expanded(
+                    child: signUpWithCard(
+                      icon: Icons.g_mobiledata,
+                      title: 'Google',
                     ),
-                  ],
-                ),
-                kSizedBox1,
-                Row(
-                  children: [
-                    Expanded(
-                      child: signUpWithCard(
-                        icon: Icons.g_mobiledata,
-                        title: 'Google',
-                      ),
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  Expanded(
+                    child: signUpWithCard(
+                      icon: Icons.facebook,
+                      title: 'Facebook',
                     ),
-                    SizedBox(
-                      width: 10.0,
+                  ),
+                ],
+              ),
+              kSizedBox1,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignUp(),
                     ),
-                    Expanded(
-                      child: signUpWithCard(
-                        icon: Icons.facebook,
-                        title: 'Facebook',
-                      ),
+                  );
+                },
+                child: RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                    text: 'Don\'t have an account?',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.normal,
                     ),
-                  ],
-                ),
-                kSizedBox1,
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SignUp(),
-                      ),
-                    );
-                  },
-                  child: RichText(
-                      text: TextSpan(children: [
-                    TextSpan(
-                      text: 'Don\'t have an account?',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.normal,
-                      ),
+                  ),
+                  TextSpan(
+                    text: ' Sign up here',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: kMainGreen,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.normal,
                     ),
-                    TextSpan(
-                      text: ' Sign up here',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: kMainGreen,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ])),
-                )
-              ],
-            ),
+                  ),
+                ])),
+              )
+            ],
           ),
         ),
       ),

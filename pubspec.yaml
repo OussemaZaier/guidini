@@ -36,6 +36,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  flutter_snake_navigationbar: ^0.6.1
 
 dev_dependencies:
   flutter_test:
