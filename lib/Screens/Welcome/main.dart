@@ -7,7 +7,7 @@ class Welcome extends StatelessWidget {
   Welcome({Key? key, required this.child, required this.title})
       : super(key: key);
   final Widget child;
-  String title;
+  String title = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

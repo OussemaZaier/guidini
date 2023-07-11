@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guidini/Screens/SignIn/main.dart';
 import 'package:guidini/Screens/SignUp/main.dart';
+import 'package:guidini/Screens/Inventory_init_show/main.dart';
 import 'package:guidini/Screens/Welcome/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/utils/constants.dart';
@@ -19,7 +20,7 @@ class Inventory_init_choice extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SignIn(),
+                        builder: (context) => SignUp(),
                       ) // @TODO: CHANGEME TO CAMERA
                       )
                 },
@@ -29,7 +30,13 @@ class Inventory_init_choice extends StatelessWidget {
               ),
               welcomeButton(
                   text: "Enter manually",
-                  fct: () => {},
+                  fct: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Inventory_init_show(),
+                            ))
+                      },
                   bgColor: Colors.white,
                   txtColor: kMainGreen,
                   icon: Icons.keyboard)
@@ -51,7 +58,7 @@ class Inventory_init_choice extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        SignIn(), // @TODO: CHANGEME TO HOMEPAGE
+                        Inventory_init_show(), // @TODO: CHANGEME TO HOMEPAGE
                   ));
             },
           )

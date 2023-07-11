@@ -4,6 +4,7 @@ import 'package:guidini/Screens/SignUp/main.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Welcome/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
+import 'package:guidini/Screens/descriptionapp/main.dart';
 import 'package:guidini/utils/constants.dart';
 
 class Inventory_init extends StatelessWidget {
@@ -18,13 +19,13 @@ class Inventory_init extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => Inventory_init_choice(),
+                builder: (context) => descriptionapp(),
               ),
             ),
           },
           bgColor: Colors.white,
           txtColor: kMainGreen,
         ),
-        title: 'Welcome \n Let\'s get started!');
+        title: 'Welcome, \n Let\'s get started!');
   }
 }

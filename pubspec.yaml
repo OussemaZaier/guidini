@@ -36,6 +36,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  intro_slider: ^4.2.0
 
 dev_dependencies:
   flutter_test:
@@ -89,6 +90,9 @@ flutter:
           weight: 400
         - asset: assets/fonts/Lato-Thin.ttf
           weight: 200
+  
+
+ 
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
