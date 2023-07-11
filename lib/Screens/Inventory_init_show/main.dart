@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
+import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
 import 'package:guidini/Screens/SignIn/main.dart';
 import 'package:guidini/Screens/SignUp/main.dart';
+import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/Welcome/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/Screens/recette/main.dart';
@@ -36,60 +38,74 @@ class Inventory_init_show extends StatelessWidget {
                   'assets/images/whiteLogo.png'),
               Text('Inventory',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 35,
                     color: Colors.white,
                     fontFamily: 'Lato',
                     fontWeight: FontWeight.bold,
                   )),
-              Row(
-                children: [
-                  Text('Product',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.normal,
-                      )),
-                  Text('Expiry date',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.normal,
-                      )),
-                  Text('Qty.',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.normal,
-                      )),
-                ],
+              kSizedBox1,
+              productCard(
+                  text1: '  Product',
+                  text2: 'Expiry',
+                  text3: 'Qty',
+                  fct: () => {},
+                  bgColor: Color.fromARGB(1, 1, 1, 1),
+                  txtColor: Colors.white),
+              Divider(
+                thickness: 4,
+                height: 5,
+                color: Colors.white60,
+                indent: 30,
+                endIndent: 30,
               ),
-              welcomeButton(
-                  text: "Add",
-                  fct: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => recette(),
-                            ))
-                      },
+              productCard(
+                  icon: Icons.abc,
+                  text1: 'Produit1',
+                  text2: '12/12/12',
+                  text3: '3',
+                  fct: () => {},
                   bgColor: Colors.white,
-                  txtColor: Colors.black,
-                  icon: Icons.add),
-              welcomeButton(
-                  text: "Finish",
-                  fct: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => recette(),
-                            ))
-                      },
+                  txtColor: Colors.black),
+              productCard(
+                  icon: Icons.abc,
+                  text1: 'Produitxyzzz',
+                  text2: '9/1/23',
+                  text3: '7',
+                  fct: () => {},
                   bgColor: Colors.white,
-                  txtColor: Colors.black,
-                  icon: Icons.arrow_forward_ios_rounded)
+                  txtColor: Colors.black),
+              kSizedBox1,
+              kSizedBox1,
+              Container(
+                width: MediaQuery.of(context).size.width / 2,
+                child: welcomeButton(
+                    text: "Add",
+                    fct: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => recette(),
+                              ))
+                        },
+                    bgColor: Colors.white,
+                    txtColor: Colors.black,
+                    icon: Icons.add),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width / 2,
+                child: welcomeButton(
+                    text: "Finish",
+                    fct: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
+                              ))
+                        },
+                    bgColor: Colors.white,
+                    txtColor: Colors.black,
+                    icon: Icons.arrow_forward_ios_rounded),
+              )
             ],
           ),
           kSizedBox1,
