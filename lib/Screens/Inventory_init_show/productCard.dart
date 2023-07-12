@@ -62,7 +62,7 @@ class productCard extends StatelessWidget {
                 )),
             Container(width: 8),
             Container(
-              width: 110,
+              width: 100,
               child: Text(
                 text2,
                 style: TextStyle(
@@ -74,7 +74,6 @@ class productCard extends StatelessWidget {
             ),
             Container(width: 8),
             Container(
-              width: MediaQuery.of(context).size.width / 10,
               child: Text(
                 text3,
                 style: TextStyle(
