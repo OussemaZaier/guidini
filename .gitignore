@@ -49,3 +49,6 @@ app.*.map.json
 
 # dependecy for the text recognition
 /text_scan_recognition/lib
+
+text_scan_recognition/venv
+text_scan_recognition/venv/*
