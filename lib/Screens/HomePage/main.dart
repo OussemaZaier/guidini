@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
                               width: 3, color: Color.fromARGB(30, 0, 0, 0)),
                           borderRadius: BorderRadius.circular(50.0),
                         ),
-                        hintText: 'Search Tech Talk',
+                        hintText: 'Search',
                       ),
                     ),
                   ),

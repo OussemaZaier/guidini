@@ -23,7 +23,16 @@ class welcomeButton extends StatelessWidget {
         height: 50,
         margin: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
         decoration: BoxDecoration(
-            color: bgColor, borderRadius: BorderRadius.circular(10)),
+          color: bgColor,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromARGB(70, 0, 0, 0),
+              blurRadius: 6,
+              offset: Offset(0, 0), // Shadow position
+            ),
+          ],
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
