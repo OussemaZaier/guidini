@@ -5,6 +5,8 @@ import 'package:guidini/Screens/SignUp/main.dart';
 import 'package:guidini/Screens/Welcome/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/Screens/recette/main.dart';
+import 'package:guidini/Screens/title.dart';
+
 import 'package:guidini/utils/constants.dart';
 import 'package:intro_slider/intro_slider.dart';
 
@@ -26,19 +28,33 @@ class Profile extends StatelessWidget {
             end: Alignment.bottomCenter,
           ),
         ),
-        child:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+        child: Column(children: [
           Column(
             children: [
-              Image.asset(
-                  height: MediaQuery.of(context).size.height / 4,
-                  width: MediaQuery.of(context).size.width / 4,
-                  'assets/images/blackLogo.png'),
-              Image.asset(
-                  height: MediaQuery.of(context).size.height / 2.3,
-                  width: MediaQuery.of(context).size.width / 2.3,
-                  'assets/images/cart.png'), // <-- SEE HERE
-              Text('PROFILE',
+              // Container(
+              //   height: 150,
+              //   color: Colors.green,
+              //   width: MediaQuery.of(context).size.width,
+              //   child: Column(
+              //       mainAxisAlignment: MainAxisAlignment.end,
+              //       crossAxisAlignment: CrossAxisAlignment.start,
+              //       children: [
+              //         Text('hi',
+              //             style: TextStyle(
+              //               fontSize: 30,
+              //               color: Colors.black,
+              //               fontFamily: 'Lato',
+              //               fontWeight: FontWeight.bold,
+              //             )),
+              //       ]),
+              // ),
+              title(
+                bgColor1: const Color.fromARGB(255, 201, 16, 16),
+                bgColor2: Color.fromARGB(255, 100, 100, 100),
+                text: 'hiiii',
+                txtColor: Colors.white,
+              ),
+              Text('PROFILEE',
                   style: TextStyle(
                     fontSize: 30,
                     color: Colors.black,
