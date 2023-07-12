@@ -6,6 +6,7 @@ import 'package:guidini/Screens/SignUp/main.dart';
 import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/Welcome/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
+import 'package:guidini/Screens/navigation.dart';
 import 'package:guidini/Screens/recette/main.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:intro_slider/intro_slider.dart';
@@ -99,7 +100,7 @@ class Inventory_init_show extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HomePage(),
+                                builder: (context) => Navigation(),
                               ))
                         },
                     bgColor: Colors.white,
