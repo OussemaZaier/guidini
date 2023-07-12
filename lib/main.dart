@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:guidini/Screens/HomePage/main.dart';
-import 'package:guidini/Screens/SignIn/main.dart';
-import 'package:guidini/Screens/SignUp/main.dart';
-import 'package:guidini/Screens/Welcome/main.dart';
+import 'package:guidini/Screens/SignIn/signinScreen.dart';
+import 'package:guidini/Screens/SignUp/signupScreen.dart';
+import 'package:guidini/Screens/Welcome/welcomeScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
-import 'package:guidini/Screens/descriptionapp/main.dart';
-import 'package:guidini/Screens/navigation.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

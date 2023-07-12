@@ -1,10 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:guidini/Screens/HomePage/main.dart';
-import 'package:guidini/Screens/SignIn/main.dart';
-import 'package:guidini/Screens/SignUp/main.dart';
+import 'package:guidini/Screens/SignIn/signinScreen.dart';
+import 'package:guidini/Screens/SignUp/signupScreen.dart';
 import 'package:guidini/utils/constants.dart';
 
 class Navigation extends StatefulWidget {
@@ -19,16 +17,14 @@ class _NavigationState extends State<Navigation> {
   late PageController _pageController;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    _pageController = new PageController(
+    _pageController = PageController(
       initialPage: 2,
     );
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _pageController.dispose();
     super.dispose();
   }
@@ -37,7 +33,7 @@ class _NavigationState extends State<Navigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: SnakeNavigationBar.color(
-        padding: EdgeInsets.all(5.0),
+        padding: const EdgeInsets.all(5.0),
         behaviour: SnakeBarBehaviour.floating,
         snakeShape: SnakeShape.circle,
         shape: RoundedRectangleBorder(
@@ -84,6 +80,5 @@ class _NavigationState extends State<Navigation> {
         ),
       ),
     );
-    // ));
   }
 }
