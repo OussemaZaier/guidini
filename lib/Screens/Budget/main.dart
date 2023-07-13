@@ -1,0 +1,178 @@
+import 'package:flutter/material.dart';
+import 'package:guidini/Components/field.dart';
+import 'package:guidini/Screens/Newcart/main.dart';
+import 'package:guidini/Screens/SignIn/keepMeWidget.dart';
+import 'package:guidini/Screens/Inventory_init/main.dart';
+import 'package:guidini/Screens/Welcome/welcomeButton.dart';
+import 'package:guidini/Screens/title.dart';
+import 'package:guidini/utils/constants.dart';
+
+class Budget extends StatefulWidget {
+  const Budget({Key? key}) : super(key: key);
+
+  @override
+  State<Budget> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<Budget> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Center(
+          
+          child: Padding(
+            
+            padding: const EdgeInsets.all(5.5),
+            child: Column(
+              
+              
+              
+              
+              children: [
+                title(text: 'Budget', txtColor:Colors.black, bgColor1: Colors.white, bgColor2: Colors.green),
+                
+               
+                kSizedBox1,
+                kSizedBox1,
+              
+                SizedBox(height: 5.0), // Utilise SizedBox ici au lieu de kSizedBox1
+                Row(
+                  children: [
+
+                    Expanded(
+                      child: Field(
+                        text: 'Enter Your Budget',
+                        pwd: false,
+                        placeholder: '100.00                                                  TND '
+                      ),
+                    ),
+
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    SizedBox(height: 15.0), // Utilise SizedBox ici au lieu de kSizedBox1
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  welcomeButton(
+                  text: "25DT",
+                  fct: () => {},
+                  
+
+                       
+                  bgColor: Colors.white,
+                  txtColor: Colors.black),
+                  welcomeButton(
+                  text: "50DT",
+                  fct: () => {},
+                       
+                  bgColor: Colors.white,
+                  txtColor: Colors.black),
+                  welcomeButton(
+                  text: "100DT",
+                  fct: () => {},
+                       
+                  bgColor: Colors.white,
+                  txtColor: Colors.black,
+                  )
+
+                  ]
+            
+          ),
+
+                
+                welcomeButton(
+                  text: 'Get Your Cart',
+                  fct: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Newcart(),
+                      ),
+                    );
+                  },
+                  bgColor: kMainGreen,
+                  txtColor: Colors.white,
+                  icon: Icons.arrow_forward_ios,
+                ),
+                SizedBox(height: 40.0),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Already Shopped?',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontFamily: 'Lato',
+                    ),)),
+                    welcomeButton(
+                  text: 'Scan your Receipt',
+                  fct: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Inventory_init(title: ''),//on va ouvrir camera
+                      ),
+                    );
+                  },
+                  bgColor: Colors.grey,
+                  txtColor: Colors.white,
+                  icon: Icons.arrow_forward_ios,
+                ),
+
+                // Utilise SizedBox ici au lieu de kSizedBox1
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class signUpWithCard extends StatelessWidget {
+  signUpWithCard({
+    Key? key, // Ajoutez Key? ici pour corriger l'erreur
+    required this.title,
+    required this.icon,
+  });
+
+  String title;
+  IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: Colors.black54,
+            width: 1,
+          ),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: Colors.black87,
+              size: 50,
+            ),
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.black54,
+                fontFamily: 'Lato',
+                fontSize: 18,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+

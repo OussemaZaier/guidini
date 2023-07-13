@@ -5,56 +5,41 @@ import 'package:guidini/Screens/SignIn/main.dart';
 import 'package:guidini/Screens/SignUp/main.dart';
 import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/Welcome/main.dart';
-import 'package:guidini/Screens/Welcome/welcomeButton.dart';
+import 'package:guidini/Screens/Inventory_init_show/welcomeButton.dart';
+import 'package:guidini/Screens/budget/main.dart';
 import 'package:guidini/Screens/recette/main.dart';
 import 'package:guidini/Screens/navigation.dart';
+import 'package:guidini/Screens/title.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:intro_slider/intro_slider.dart';
 
-class Inventory_init_show extends StatelessWidget {
-  Inventory_init_show({Key? key}) : super(key: key);
+class Newcart extends StatelessWidget {
+  Newcart({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: RadialGradient(
-            colors: [
-              Color(0xFF0BA360),
-              Color(0xFF3cba92),
-            ],
-            center: Alignment(-1, -1),
-            radius: 3.0,
-          ),
-        ),
+        
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
           Column(
             children: [
-              Image.asset(
-                  height: MediaQuery.of(context).size.height / 4,
-                  width: MediaQuery.of(context).size.width / 4,
-                  'assets/images/whiteLogo.png'),
-              Text('Inventory',
-                  style: TextStyle(
-                    fontSize: 35,
-                    color: Colors.white,
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.bold,
-                  )),
+              
+               title(text: 'New Cart', txtColor:Colors.black, bgColor1: Colors.white, bgColor2: Colors.green),
               kSizedBox1,
               productCard(
                   text1: '  Product',
-                  text2: 'Expiry',
+                  text2: 'Price ',
+                  
                   text3: 'Qty',
                   text4: '',
                   fct: () => {},
                   bgColor: Color.fromARGB(1, 1, 1, 1),
-                  txtColor: Colors.white,
-                  shadow: false,
-                  add_remove: false,),
+                  txtColor: Colors.black,
+                  add_remove: false,
+                  shadow: false,),
               Divider(
                 thickness: 4,
                 height: 5,
@@ -65,27 +50,64 @@ class Inventory_init_show extends StatelessWidget {
               productCard(
                   icon: Icons.abc,
                   text1: 'Produit1',
-                  text2: '12/12/12',
+                  text2: '2.500 ',
+                  
                   text3: '3',
                   text4: '',
                   fct: () => {},
                   bgColor: Colors.white,
                   txtColor: Colors.black,
                   add_remove: true,
-                  shadow:true),
+                  shadow: true,),
               productCard(
                   icon: Icons.abc,
                   text1: 'Produitxyzzz',
-                  text2: '9/1/23',
+                  text2: '7.500 ',
+                  
                   text3: '7',
-                  text4: '',
+                  text4:'2.500',
                   fct: () => {},
                   bgColor: Colors.white,
                   txtColor: Colors.black,
                   add_remove: true,
-                  shadow:true),
-              
+                  shadow: true,),
               kSizedBox1,
+              kSizedBox1,
+              Row(
+  children: [
+    Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        '        Total',
+        style: TextStyle(
+          fontSize: 18,
+          color: Colors.black,
+          fontFamily: 'Lato',
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+    Expanded(
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(
+          '                                                    10DT',
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.green,
+            fontFamily: 'Lato',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ),
+    kSizedBox1,
+    kSizedBox1,
+  ],
+),
+kSizedBox1,
+kSizedBox1,
+
               Container(
                 width: MediaQuery.of(context).size.width / 2,
                 child: welcomeButton(
@@ -94,14 +116,21 @@ class Inventory_init_show extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => recette(),
+                                builder: (context) => Budget(),
                               ))
                         },
                     bgColor: Colors.white,
-                    txtColor: Colors.black,
-                    icon: Icons.add),
+                    txtColor: Colors.green,
+                    icon: Icons.add,
+                    
+                    ),
+                    
+                    
+                    
+
               ),
-              Container(
+              kSizedBox1,
+               Container(
                 width: MediaQuery.of(context).size.width / 2,
                 child: welcomeButton(
                     text: "Finish",
@@ -109,18 +138,22 @@ class Inventory_init_show extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Navigation(),
+                                builder: (context) => Budget(),
                               ))
                         },
                     bgColor: Colors.white,
-                    txtColor: Colors.black,
-                    icon: Icons.arrow_forward_ios_rounded),
-              )
+                    txtColor: Colors.green,
+                    icon: Icons.check,
+                    
+                    ),)
             ],
           ),
           kSizedBox1,
         ]),
+        
       ),
+      
     );
   }
 }
+

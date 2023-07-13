@@ -5,6 +5,7 @@ import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/SignIn/main.dart';
 import 'package:guidini/Screens/SignUp/main.dart';
+import 'package:guidini/Screens/Consommation/main.dart';
 import 'package:guidini/utils/constants.dart';
 
 class Navigation extends StatefulWidget {
@@ -74,8 +75,8 @@ class _NavigationState extends State<Navigation> {
               _currentIndex = index;
             });
           },
-          children: const [
-            SignIn(),
+          children:  [
+            Consommation(),
             SignUp(),
             HomePage(),
             SignUp(),

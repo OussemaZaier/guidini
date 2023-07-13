@@ -14,18 +14,24 @@ class productCard extends StatelessWidget {
     required this.text1,
     required this.text2,
     required this.text3,
+    required this.text4,
     required this.fct,
     this.icon,
     required this.bgColor,
     required this.txtColor,
+    required this.shadow,
+    required this.add_remove,
   }) : super(key: key);
   String text1;
   String text2;
   String text3;
+  String text4;
   IconData? icon;
   VoidCallback fct;
   Color bgColor;
   Color txtColor;
+  bool shadow;
+  bool add_remove;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -34,12 +40,23 @@ class productCard extends StatelessWidget {
         height: 50,
         margin: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
         decoration: BoxDecoration(
-            color: bgColor, borderRadius: BorderRadius.circular(10)),
+          color: bgColor,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: shadow
+                  ? Color.fromARGB(70, 0, 0, 0)
+                  : Color.fromARGB(0, 0, 0, 0),
+              blurRadius: 6,
+              offset: Offset(0, 0), // Shadow position
+            ),
+          ],
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-                width: 200,
+                width: 190,
                 child: Row(
                   children: [
                     if (icon != null)
@@ -53,7 +70,7 @@ class productCard extends StatelessWidget {
                     Text(
                       text1,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 17,
                         color: txtColor,
                         fontFamily: 'Lato',
                       ),
@@ -62,27 +79,54 @@ class productCard extends StatelessWidget {
                 )),
             Container(width: 8),
             Container(
-              width: 100,
+              width: 80,
               child: Text(
                 text2,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 17,
                   color: txtColor,
                   fontFamily: 'Lato',
                 ),
               ),
             ),
-            Container(width: 8),
             Container(
-              child: Text(
+                child: Row(children: [
+              if (add_remove == true)
+                Padding(
+                  padding: const EdgeInsets.only(left: 2, right: 2),
+                  child: InkWell(
+                    onTap: () => {},
+                    child: Icon(
+                      Icons.remove,
+                      color: txtColor,
+                      size: 20,
+                    ),
+                  ),
+                )
+              else
+                SizedBox(
+                  width: 20,
+                ),
+              Text(
                 text3,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 17,
                   color: txtColor,
                   fontFamily: 'Lato',
                 ),
               ),
-            ),
+              if (add_remove == true)
+                Padding(
+                  padding: const EdgeInsets.only(left: 2, right: 2),
+                  child: Icon(
+                    Icons.add,
+                    color: txtColor,
+                    size: 20,
+                  ),
+                )
+              else
+                SizedBox(),
+            ])),
           ],
         ),
       ),
