@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:guidini/Screens/SignIn/main.dart';
-import 'package:guidini/Screens/SignUp/main.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Inventory_init_show/main.dart';
-
-import 'package:guidini/Screens/Welcome/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
-import 'package:guidini/Screens/descriptionapp/main.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
 
 class Inventory_add extends StatelessWidget {
-  Inventory_add({Key? key, required this.title}) : super(key: key);
-  String title;
+  Inventory_add({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,11 +93,7 @@ class Inventory_add extends StatelessWidget {
                 child: welcomeButton(
                   text: "Add",
                   fct: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Inventory_init_show(),
-                        ))
+                    Navigator.pop(context),
                   },
                   bgColor: Colors.white,
                   txtColor: Colors.black,

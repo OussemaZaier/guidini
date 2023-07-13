@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guidini/utils/constants.dart';
 
 class welcomeButton extends StatelessWidget {
   welcomeButton({
@@ -20,18 +21,9 @@ class welcomeButton extends StatelessWidget {
       onTap: fct,
       child: Container(
         height: 50,
-        margin: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+        margin: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
         decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Color.fromARGB(70, 0, 0, 0),
-              blurRadius: 6,
-              offset: Offset(0, 0), // Shadow position
-            ),
-          ],
-        ),
+            color: bgColor, borderRadius: BorderRadius.circular(10)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -44,16 +36,17 @@ class welcomeButton extends StatelessWidget {
                 fontFamily: 'Lato',
               ),
             ),
-            (icon != null)
-                ? Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Icon(
-                      icon,
-                      color: txtColor,
-                      size: 20.0,
-                    ),
-                  )
-                : const SizedBox()
+            if (icon != null)
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Icon(
+                  icon,
+                  color: txtColor,
+                  size: 20.0,
+                ),
+              )
+            else
+              SizedBox(),
           ],
         ),
       ),

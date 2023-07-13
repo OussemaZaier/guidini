@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:guidini/Screens/Inventory_add/main.dart';
+import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
-import 'package:guidini/Screens/SignIn/main.dart';
-import 'package:guidini/Screens/SignUp/main.dart';
-import 'package:guidini/Screens/Inventory_add/main.dart';
-
+import 'package:guidini/Screens/SignIn/signinScreen.dart';
+import 'package:guidini/Screens/SignUp/signupScreen.dart';
 import 'package:guidini/Screens/HomePage/main.dart';
-import 'package:guidini/Screens/Welcome/main.dart';
+import 'package:guidini/Screens/Welcome/welcomeScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/Screens/navigation.dart';
-import 'package:guidini/Screens/recette/main.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:intro_slider/intro_slider.dart';
 
@@ -95,7 +94,7 @@ class Inventory_init_show extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Inventory_add(title: 'd'),
+                                builder: (context) => Inventory_add(),
                               ))
                         },
                     bgColor: Colors.white,

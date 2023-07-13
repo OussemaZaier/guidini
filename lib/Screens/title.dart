@@ -42,20 +42,21 @@ class title extends StatelessWidget {
         ),
         width: MediaQuery.of(context).size.width,
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(text,
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: txtColor,
-                      fontFamily: 'Lato',
-                      fontWeight: FontWeight.bold,
-                    )),
-              ),
-            ]),
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(text,
+                  style: TextStyle(
+                    fontSize: 40,
+                    color: txtColor,
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.bold,
+                  )),
+            ),
+          ],
+        ),
       ),
     );
   }

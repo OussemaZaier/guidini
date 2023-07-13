@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:guidini/Screens/EditProfile/EditProfile.dart';
+import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
-import 'package:guidini/Screens/SignIn/main.dart';
-import 'package:guidini/Screens/SignUp/main.dart';
-import 'package:guidini/Screens/Welcome/main.dart';
+import 'package:guidini/Screens/Inventory_show/main.dart';
+import 'package:guidini/Screens/SignIn/signinScreen.dart';
+import 'package:guidini/Screens/SignUp/signupScreen.dart';
+import 'package:guidini/Screens/Welcome/welcomeScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
-import 'package:guidini/Screens/recette/main.dart';
+import 'package:guidini/Screens/cartCard.dart';
 import 'package:guidini/Screens/title.dart';
 
 import 'package:guidini/utils/constants.dart';
@@ -28,68 +31,111 @@ class Profile extends StatelessWidget {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: Column(children: [
-          Column(
+        child: SingleChildScrollView(
+          child: Column(
             children: [
-              // Container(
-              //   height: 150,
-              //   color: Colors.green,
-              //   width: MediaQuery.of(context).size.width,
-              //   child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.end,
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         Text('hi',
-              //             style: TextStyle(
-              //               fontSize: 30,
-              //               color: Colors.black,
-              //               fontFamily: 'Lato',
-              //               fontWeight: FontWeight.bold,
-              //             )),
-              //       ]),
-              // ),
-              title(
-                bgColor1: const Color.fromARGB(255, 201, 16, 16),
-                bgColor2: Color.fromARGB(255, 100, 100, 100),
-                text: 'hiiii',
-                txtColor: Colors.white,
-              ),
-              Text('PROFILEE',
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.black,
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.bold,
-                  )),
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  'We recommend a cart based on your budget, and encourage you to make economical and sustainable purchases.',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black,
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.normal,
+              Column(
+                children: [
+                  title(
+                    bgColor2: kMainGreen,
+                    bgColor1: Color.fromARGB(255, 16, 161, 31),
+                    text: 'Profile',
+                    txtColor: Colors.white,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              welcomeButton(
-                  text: "Next",
-                  fct: () => {
+                  kSizedBox1,
+                  kSizedBox1,
+                  Text('User Weld User',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                      )),
+                  Padding(
+                    padding: EdgeInsets.all(12),
+                    child: Text(
+                      '5890 Points',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.normal,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: welcomeButton(
+                      text: "Edit profile",
+                      fct: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditProfile(),
+                          ),
+                        ),
+                      },
+                      bgColor: kMainGreen,
+                      txtColor: Colors.white,
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: welcomeButton(
+                      text: "View inventory",
+                      fct: () => {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => recette(),
-                            ))
+                                builder: (context) => Inventory_show()))
                       },
-                  bgColor: Colors.white,
-                  txtColor: Colors.black,
-                  icon: Icons.arrow_forward_ios_rounded)
+                      bgColor: kMainGreen,
+                      txtColor: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              kSizedBox1,
+              kSizedBox1,
+              // v _______ Previous carts + savings _______ v
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15.0),
+                      child: Text("Previous carts",
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.black,
+                            fontFamily: 'Lato',
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                    kSizedBox1,
+                    cartCard(
+                        title: "13 Jul. 2023 \n You saved 61.00 DT",
+                        topText: '',
+                        bgColor1: Color(0XFF123456),
+                        bgColor2: Colors.blue,
+                        buttonFct: () => {},
+                        buttonText: 'View details'),
+                    cartCard(
+                        title: "7 Jun. 2023 \n You saved 79.00 DT",
+                        topText: '',
+                        bgColor1: Color.fromARGB(255, 18, 140, 69),
+                        bgColor2: const Color.fromARGB(255, 93, 243, 33),
+                        buttonFct: () => {},
+                        buttonText: 'View details'),
+                  ],
+                ),
+              )
             ],
           ),
-          kSizedBox1,
-        ]),
+        ),
       ),
     );
   }

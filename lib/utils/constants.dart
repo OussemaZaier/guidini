@@ -4,4 +4,5 @@ import 'package:flutter/material.dart';
 const kMainGreen = Color(0xFF057857);
 const kSizedBox1 = SizedBox(
   height: 15.0,
+  width: 15.0,
 );
