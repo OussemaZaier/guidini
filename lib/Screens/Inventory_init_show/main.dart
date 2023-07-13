@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guidini/Screens/Inventory_add/main.dart';
 import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
@@ -7,7 +8,6 @@ import 'package:guidini/Screens/SignUp/signupScreen.dart';
 import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
-
 import 'package:guidini/Screens/navigation.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:intro_slider/intro_slider.dart';
@@ -56,6 +56,7 @@ class Inventory_init_show extends StatelessWidget {
                   txtColor: Colors.white,
                   shadow: false,
                   add_remove: false,),
+                  
               Divider(
                 thickness: 4,
                 height: 5,
@@ -64,28 +65,30 @@ class Inventory_init_show extends StatelessWidget {
                 endIndent: 30,
               ),
               productCard(
-                  icon: Icons.abc,
-                  text1: 'Produit1',
-                  text2: '12/12/12',
-                  text3: '3',
-                  text4: '',
-                  fct: () => {},
-                  bgColor: Colors.white,
-                  txtColor: Colors.black,
-                  add_remove: true,
-                  shadow:true),
+                icon: Icons.abc,
+                text1: 'Produit1',
+                text2: '12/12/12',
+                text3: '3',
+                text4: '',
+                fct: () => {},
+                bgColor: Colors.white,
+                txtColor: Colors.black,
+                shadow: true,
+                add_remove: false,
+              ),
               productCard(
-                  icon: Icons.abc,
-                  text1: 'Produitxyzzz',
-                  text2: '9/1/23',
-                  text3: '7',
-                  text4: '',
-                  fct: () => {},
-                  bgColor: Colors.white,
-                  txtColor: Colors.black,
-                  add_remove: true,
-                  shadow:true),
-              
+                icon: Icons.abc,
+                text1: 'Produitxyzzz',
+                text2: '9/1/23',
+                text3: '7',
+                text4: '',
+                fct: () => {},
+                bgColor: Colors.white,
+                txtColor: Colors.black,
+                shadow: true,
+                add_remove: false,
+              ),
+              kSizedBox1,
               kSizedBox1,
               Container(
                 width: MediaQuery.of(context).size.width / 2,
@@ -95,7 +98,7 @@ class Inventory_init_show extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Inventory_init(),
+                                builder: (context) => Inventory_add(),
                               ))
                         },
                     bgColor: Colors.white,

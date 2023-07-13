@@ -4,6 +4,7 @@ import 'package:guidini/Components/signupCard.dart';
 import 'package:guidini/Components/keepMe.dart';
 import 'package:guidini/Screens/SignUp/signupScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
+import 'package:guidini/Screens/navigation.dart';
 import 'package:guidini/utils/constants.dart';
 
 class SignIn extends StatefulWidget {
@@ -52,7 +53,10 @@ class _SignInState extends State<SignIn> {
                 kSizedBox1,
                 welcomeButton(
                   text: 'Login',
-                  fct: () {},
+                  fct: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Navigation()));
+                  },
                   bgColor: kMainGreen,
                   txtColor: Colors.white,
                 ),

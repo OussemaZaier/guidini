@@ -16,51 +16,47 @@ class title extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Column(
-        children: [
-          Container(
-            height: 200,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-                  bgColor1,
-                  bgColor2,
-                ],
-              ),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 0), // changes position of shadow
-                ),
-              ],
-            ),
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Text(text,
-                        style: TextStyle(
-                          fontSize: 40,
-                          color: txtColor,
-                          fontFamily: 'Lato',
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ),
-                ]),
+      child: Container(
+        height: 150,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              bgColor1,
+              bgColor2,
+            ],
           ),
-         
-        ],
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 0), // changes position of shadow
+            ),
+          ],
+        ),
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(text,
+                  style: TextStyle(
+                    fontSize: 40,
+                    color: txtColor,
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.bold,
+                  )),
+            ),
+          ],
+        ),
       ),
     );
   }
