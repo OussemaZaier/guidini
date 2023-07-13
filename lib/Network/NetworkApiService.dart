@@ -1,4 +1,5 @@
-import 'package:dio/dio.dart';
+
+import 'package:get/get.dart';
 import 'package:guidini/Network/BaseApiService.dart';
 
 class NetworkApiService extends BaseApiService {
@@ -14,4 +15,8 @@ class NetworkApiService extends BaseApiService {
       return {"error": e.toString()};
     }
   }
+}
+
+class Dio {
+  get(String s) {}
 }
