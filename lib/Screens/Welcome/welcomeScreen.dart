@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guidini/Screens/SignIn/main.dart';
-import 'package:guidini/Screens/SignUp/main.dart';
 import 'package:guidini/utils/constants.dart';
 
 class Welcome extends StatelessWidget {
@@ -15,7 +13,7 @@ class Welcome extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
               kMainGreen,
@@ -28,24 +26,15 @@ class Welcome extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Stack(
-              children: <Widget>[
-                Image.asset(
-                  'assets/images/whiteLogo.png',
-                  height: MediaQuery.of(context).size.width / 2,
-                  width: MediaQuery.of(context).size.width / 2,
-                ),
-                // Image.asset(
-                //   'assets/images/whiteLogo.png',
-                //   height: MediaQuery.of(context).size.width / 2,
-                //   width: MediaQuery.of(context).size.width / 2,
-                // ),
-              ],
+            Image.asset(
+              'assets/images/whiteLogo.png',
+              height: MediaQuery.of(context).size.width / 2,
+              width: MediaQuery.of(context).size.width / 2,
             ),
             Text(
               title,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 30,
                 color: Colors.white,
                 fontFamily: 'Lato',

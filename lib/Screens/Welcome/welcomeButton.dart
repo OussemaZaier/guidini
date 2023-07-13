@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guidini/utils/constants.dart';
 
 class welcomeButton extends StatelessWidget {
   welcomeButton({
@@ -21,7 +20,7 @@ class welcomeButton extends StatelessWidget {
       onTap: fct,
       child: Container(
         height: 50,
-        margin: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+        margin: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
         decoration: BoxDecoration(
             color: bgColor, borderRadius: BorderRadius.circular(10)),
         child: Row(

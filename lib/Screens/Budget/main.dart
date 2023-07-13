@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guidini/Components/field.dart';
 import 'package:guidini/Screens/Newcart/main.dart';
-import 'package:guidini/Screens/SignIn/keepMeWidget.dart';
+
 import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/Screens/title.dart';
@@ -114,7 +114,7 @@ class _SignUpState extends State<Budget> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Inventory_init(title: ''),//on va ouvrir camera
+                        builder: (context) => Inventory_init(),//on va ouvrir camera
                       ),
                     );
                   },

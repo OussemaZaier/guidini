@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
-import 'package:guidini/Screens/SignIn/main.dart';
-import 'package:guidini/Screens/SignUp/main.dart';
-import 'package:guidini/Screens/HomePage/main.dart';
-import 'package:guidini/Screens/Welcome/main.dart';
+
 import 'package:guidini/Screens/Inventory_init_show/welcomeButton.dart';
 import 'package:guidini/Screens/budget/main.dart';
-import 'package:guidini/Screens/recette/main.dart';
 import 'package:guidini/Screens/navigation.dart';
 import 'package:guidini/Screens/title.dart';
 import 'package:guidini/utils/constants.dart';
-import 'package:intro_slider/intro_slider.dart';
 
 class Consommation extends StatelessWidget {
   Consommation({Key? key}) : super(key: key);
