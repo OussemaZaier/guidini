@@ -38,8 +38,12 @@ dependencies:
   intl: any
   intro_slider: ^4.2.0
   flutter_snake_navigationbar: ^0.6.1
+<<<<<<< HEAD
   get: ^4.6.5
   flutter_document_scanner: ^0.1.0
+=======
+  dio: ^5.2.1+1
+>>>>>>> 19ffe55f6a129e924c7ce7d882002c9b20d6c9c0
 
 dev_dependencies:
   flutter_test:
