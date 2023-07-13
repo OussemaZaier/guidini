@@ -6,6 +6,8 @@ import 'package:guidini/Screens/Welcome/welcomeScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/utils/constants.dart';
 
+
+
 class Inventory_init_choice extends StatelessWidget {
   Inventory_init_choice({Key? key}) : super(key: key);
   @override

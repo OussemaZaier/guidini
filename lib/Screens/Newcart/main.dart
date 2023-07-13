@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:guidini/Screens/Inventory_add/main.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
@@ -29,17 +30,19 @@ class Newcart extends StatelessWidget {
               Column(
                 children: [
                   kSizedBox1,
-                  productCard(
-                    text1: '  Product',
-                    text2: 'Price ',
-                    text3: 'Qty',
-                    text4: '',
-                    fct: () => {},
-                    bgColor: Color.fromARGB(1, 1, 1, 1),
-                    txtColor: Colors.black,
-                    add_remove: false,
-                    shadow: false,
-                  ),
+               productCard(
+  text1: 'Product1',
+  text2: '3DT ',
+  quantity: 3,
+  text4: '',
+  fct: () {},
+  bgColor: Colors.white,
+  txtColor: Colors.black,
+  shadow: true,
+  add_remove: true, text3: '',
+  icon: Icons.shop
+),
+
                   Divider(
                     thickness: 4,
                     height: 5,
@@ -47,45 +50,71 @@ class Newcart extends StatelessWidget {
                     indent: 30,
                     endIndent: 30,
                   ),
+                 productCard(
+  text1: 'Product2',
+  text2: '6Dt ',
+  quantity: 3,
+  text4: '',
+  fct: () {},
+  bgColor: Colors.white,
+  txtColor: Colors.black,
+  shadow: true,
+  add_remove: true, text3: '',
+  icon: Icons.shop
+),
+
                   productCard(
-                    icon: Icons.abc,
-                    text1: 'Produit1',
-                    text2: '2.500 ',
-                    text3: '3',
-                    text4: '',
-                    fct: () => {},
-                    bgColor: Colors.white,
-                    txtColor: Colors.black,
-                    add_remove: true,
-                    shadow: true,
-                  ),
-                  productCard(
-                    icon: Icons.abc,
-                    text1: 'Produitxyzzz',
-                    text2: '7.500 ',
-                    text3: '7',
-                    text4: '2.500',
-                    fct: () => {},
-                    bgColor: Colors.white,
-                    txtColor: Colors.black,
-                    add_remove: true,
-                    shadow: true,
-                  ),
+  text1: 'Product3',
+  text2: '4Dt ',
+  quantity: 3,
+  text4: '',
+  fct: () {},
+  bgColor: Colors.white,
+  txtColor: Colors.black,
+  shadow: true,
+  add_remove: true, text3: '',
+  icon: Icons.shop
+),
+
+                 
+                productCard(
+  text1: 'Product4',
+  text2: '5Dt ',
+  quantity: 3,
+  text4: '',
+  fct: () {},
+  bgColor: Colors.white,
+  txtColor: Colors.black,
+  shadow: true,
+  add_remove: true, text3: '',
+  icon: Icons.shop
+),
+
                   kSizedBox1,
                   kSizedBox1,
-                  productCard(
-                    text1: '  Total',
-                    text2: '       ',
-                    text3: '11 DT',
-                    text4: '',
-                    fct: () => {},
-                    bgColor: Color.fromARGB(1, 1, 1, 1),
-                    txtColor: Colors.black,
-                    add_remove: false,
-                    shadow: false,
-                  ),
-                  kSizedBox1,
-                  kSizedBox1,
+                   Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      'Total',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      '18Dt',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black,
+                        fontFamily: 'Lato',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
                   Container(
                     width: MediaQuery.of(context).size.width / 2,
                     child: welcomeButton(
