@@ -20,112 +20,94 @@ class _SignUpState extends State<Budget> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
-          
-          child: Padding(
-            
-            padding: const EdgeInsets.all(5.5),
-            child: Column(
-              
-              
-              
-              
-              children: [
-                title(text: 'Budget', txtColor:Colors.black, bgColor1: Colors.white, bgColor2: Colors.green),
-                
-               
-                kSizedBox1,
-                kSizedBox1,
-              
-                SizedBox(height: 5.0), // Utilise SizedBox ici au lieu de kSizedBox1
-                Row(
+          child: Column(
+            children: [
+              title(
+                  text: 'Budget',
+                  txtColor: Colors.white,
+                  bgColor1: kMainGreen,
+                  bgColor2: Colors.green),
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Column(
                   children: [
-
-                    Expanded(
-                      child: Field(
-                        text: 'Enter Your Budget',
-                        pwd: false,
-                        placeholder: '100.00                                                  TND '
-                      ),
-                    ),
+                    kSizedBox1,
+                    kSizedBox1,
 
                     SizedBox(
-                      width: 10.0,
+                        height:
+                            5.0), // Utilise SizedBox ici au lieu de kSizedBox1
+
+                    Field(
+                        text: 'Enter Your Budget',
+                        pwd: false,
+                        placeholder: '170 TND '),
+
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      welcomeButton(
+                          text: "25DT",
+                          fct: () => {},
+                          bgColor: Colors.white,
+                          txtColor: Colors.black),
+                      welcomeButton(
+                          text: "50DT",
+                          fct: () => {},
+                          bgColor: Colors.white,
+                          txtColor: Colors.black),
+                      welcomeButton(
+                        text: "100DT",
+                        fct: () => {},
+                        bgColor: Colors.white,
+                        txtColor: Colors.black,
+                      )
+                    ]),
+
+                    welcomeButton(
+                      text: 'Get Your Cart',
+                      fct: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Newcart(),
+                          ),
+                        );
+                      },
+                      bgColor: kMainGreen,
+                      txtColor: Colors.white,
+                      icon: Icons.arrow_forward_ios,
                     ),
-                    SizedBox(height: 15.0), // Utilise SizedBox ici au lieu de kSizedBox1
+                    SizedBox(height: 40.0),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Already Shopped?',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontFamily: 'Lato',
+                          ),
+                        )),
+                    welcomeButton(
+                      text: 'Scan your Receipt',
+                      fct: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                Inventory_init(), //on va ouvrir camera
+                          ),
+                        );
+                      },
+                      bgColor: Colors.grey,
+                      txtColor: Colors.white,
+                      icon: Icons.arrow_forward_ios,
+                    ),
+
+                    // Utilise SizedBox ici au lieu de kSizedBox1
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                  welcomeButton(
-                  text: "25DT",
-                  fct: () => {},
-                  
-
-                       
-                  bgColor: Colors.white,
-                  txtColor: Colors.black),
-                  welcomeButton(
-                  text: "50DT",
-                  fct: () => {},
-                       
-                  bgColor: Colors.white,
-                  txtColor: Colors.black),
-                  welcomeButton(
-                  text: "100DT",
-                  fct: () => {},
-                       
-                  bgColor: Colors.white,
-                  txtColor: Colors.black,
-                  )
-
-                  ]
-            
-          ),
-
-                
-                welcomeButton(
-                  text: 'Get Your Cart',
-                  fct: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Newcart(),
-                      ),
-                    );
-                  },
-                  bgColor: kMainGreen,
-                  txtColor: Colors.white,
-                  icon: Icons.arrow_forward_ios,
-                ),
-                SizedBox(height: 40.0),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Already Shopped?',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontFamily: 'Lato',
-                    ),)),
-                    welcomeButton(
-                  text: 'Scan your Receipt',
-                  fct: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Inventory_init(),//on va ouvrir camera
-                      ),
-                    );
-                  },
-                  bgColor: Colors.grey,
-                  txtColor: Colors.white,
-                  icon: Icons.arrow_forward_ios,
-                ),
-
-                // Utilise SizedBox ici au lieu de kSizedBox1
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -175,4 +157,3 @@ class signUpWithCard extends StatelessWidget {
     );
   }
 }
-

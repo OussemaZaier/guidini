@@ -73,7 +73,7 @@ class _NavigationState extends State<Navigation> {
               _currentIndex = index;
             });
           },
-          children:  [
+          children: [
             Consommation(),
             SignUp(),
             HomePage(),
