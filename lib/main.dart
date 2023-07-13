@@ -3,10 +3,13 @@ import 'package:guidini/Screens/SignIn/signinScreen.dart';
 import 'package:guidini/Screens/SignUp/signupScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
+import 'package:guidini/dbHelper/mongodb.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MongoDatabase.connect();
   runApp(const MyApp());
 }
 

@@ -38,6 +38,8 @@ dependencies:
   intl: any
   intro_slider: ^4.2.0
   flutter_snake_navigationbar: ^0.6.1
+  http: ^0.13.0
+  mongo_dart: ^0.7.0
 
 dev_dependencies:
   flutter_test:
