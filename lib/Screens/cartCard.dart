@@ -79,18 +79,21 @@ class cartCard extends StatelessWidget {
                     ),
                   ),
                   kSizedBox1,
-                  Container(
-                    width: 100,
-                    decoration: BoxDecoration(
-                        color: Colors.black87,
-                        borderRadius: BorderRadius.circular(10.0)),
-                    padding: EdgeInsets.all(12.0),
-                    child: Text(
-                      buttonText,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Lato',
+                  InkWell(
+                    onTap: () => buttonFct(),
+                    child: Container(
+                      width: 100,
+                      decoration: BoxDecoration(
+                          color: Colors.black87,
+                          borderRadius: BorderRadius.circular(10.0)),
+                      padding: EdgeInsets.all(12.0),
+                      child: Text(
+                        buttonText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Lato',
+                        ),
                       ),
                     ),
                   )

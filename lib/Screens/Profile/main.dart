@@ -3,6 +3,7 @@ import 'package:guidini/Screens/EditProfile/EditProfile.dart';
 import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Inventory_show/main.dart';
+import 'package:guidini/Screens/Old_Cart_Detail/main.dart';
 import 'package:guidini/Screens/SignIn/signinScreen.dart';
 import 'package:guidini/Screens/SignUp/signupScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeScreen.dart';
@@ -121,14 +122,24 @@ class Profile extends StatelessWidget {
                         topText: '',
                         bgColor1: Color(0XFF123456),
                         bgColor2: Colors.blue,
-                        buttonFct: () => {},
+                        buttonFct: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Old_Cart_Detail()))
+                            },
                         buttonText: 'View details'),
                     cartCard(
                         title: "7 Jun. 2023 \n You saved 79.00 DT",
                         topText: '',
                         bgColor1: Color.fromARGB(255, 18, 140, 69),
                         bgColor2: const Color.fromARGB(255, 93, 243, 33),
-                        buttonFct: () => {},
+                        buttonFct: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Old_Cart_Detail()))
+                            },
                         buttonText: 'View details'),
                   ],
                 ),
