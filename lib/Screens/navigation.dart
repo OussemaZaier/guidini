@@ -3,6 +3,7 @@ import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:guidini/Screens/Consommation/main.dart';
 import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/Profile/main.dart';
+import 'package:guidini/Screens/Redeem/main.dart';
 import 'package:guidini/Screens/SignIn/signinScreen.dart';
 import 'package:guidini/Screens/SignUp/signupScreen.dart';
 import 'package:guidini/utils/constants.dart';
@@ -75,7 +76,7 @@ class _NavigationState extends State<Navigation> {
           },
           children: [
             Consommation(),
-            SignUp(),
+            Redeem(),
             HomePage(),
             SignUp(),
             Profile(),

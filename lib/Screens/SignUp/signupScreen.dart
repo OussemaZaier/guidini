@@ -6,8 +6,6 @@ import 'package:guidini/Components/keepMe.dart';
 import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/utils/constants.dart';
-import 'package:http/http.dart' as http;
-import 'package:guidini/Screens/SignUp/config.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -27,9 +25,6 @@ class _SignUpState extends State<SignUp> {
         "email": emailController.text,
         "password": passwordController.text
       };
-      var response = await http.post(Uri.parse(registration),
-          headers: {"Content-Type": "application/json"},
-          body: jsonEncode(regBody));
 
       // @TODO: DISPLAY RESPONSE MESSAGE
     } else {

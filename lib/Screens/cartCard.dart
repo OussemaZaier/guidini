@@ -48,7 +48,7 @@ class cartCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 gradient: LinearGradient(
-                  colors: [Colors.transparent, Colors.black.withOpacity(0.5)],
+                  colors: [Colors.transparent, Colors.black.withOpacity(0.1)],
                   begin: Alignment.topRight,
                   end: Alignment.center,
                 ),
