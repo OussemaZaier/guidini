@@ -4,8 +4,11 @@ import 'package:guidini/Screens/Newcart/main.dart';
 
 import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
+import 'package:guidini/Screens/counter/ProductItemState.dart';
 import 'package:guidini/Screens/title.dart';
 import 'package:guidini/utils/constants.dart';
+
+
 
 class Budget extends StatefulWidget {
   const Budget({Key? key}) : super(key: key);
@@ -94,7 +97,7 @@ class _SignUpState extends State<Budget> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                Inventory_init(), //on va ouvrir camera
+                                ProductItem(title: 'Product',price: 20,), //on va ouvrir camera
                           ),
                         );
                       },

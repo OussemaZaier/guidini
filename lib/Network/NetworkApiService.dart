@@ -15,3 +15,7 @@ class NetworkApiService extends BaseApiService {
     }
   }
 }
+
+class Dio {
+  get(String s) {}
+}
