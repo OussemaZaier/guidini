@@ -158,14 +158,14 @@ class _SignUpState extends State<SignUp> {
                   text: 'Continue',
                   fct: () {
                     registerUser();
-                    if (_isNotValidate == false) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Inventory_init(),
-                          ));
-                    }
+                    // if (_isNotValidate == false) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Inventory_init(),
+                        ));
                   },
+                  // },
                   bgColor: kMainGreen,
                   txtColor: Colors.white,
                   icon: Icons.arrow_forward_ios,
