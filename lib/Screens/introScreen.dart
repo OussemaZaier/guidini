@@ -29,11 +29,16 @@ class intro extends StatelessWidget {
                   height: MediaQuery.of(context).size.height / 4,
                   width: MediaQuery.of(context).size.width / 4,
                   'assets/images/blackLogo.png'),
-              Image.asset(
+              Container(
+                width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 2.5,
-                width: MediaQuery.of(context).size.width / 2.5,
-                'assets/images/$img',
-              ), // <-- SEE HERE
+                child: Image.asset(
+                  height: MediaQuery.of(context).size.height / 2.5,
+                  width: MediaQuery.of(context).size.width / 2.5,
+                  'assets/images/$img',
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
               Text(
                 type,
                 style: const TextStyle(

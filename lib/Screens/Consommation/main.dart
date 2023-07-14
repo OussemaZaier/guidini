@@ -10,9 +10,11 @@ import 'package:guidini/utils/constants.dart';
 
 class Consommation extends StatefulWidget {
   Consommation({Key? key}) : super(key: key);
-   @override
-  _ConsommationState createState() => _ConsommationState();}
-  class _ConsommationState extends State<Consommation> {
+  @override
+  _ConsommationState createState() => _ConsommationState();
+}
+
+class _ConsommationState extends State<Consommation> {
   int qty = 0;
 
   void incrementQty() {
@@ -28,6 +30,7 @@ class Consommation extends StatefulWidget {
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,8 +41,8 @@ class Consommation extends StatefulWidget {
           title(
               text: 'New cart',
               txtColor: Colors.white,
-              bgColor1: Colors.green,
-              bgColor2: kMainGreen),
+              bgColor1: kMainGreen,
+              bgColor2: Colors.green),
           kSizedBox1,
           kSizedBox1,
           kSizedBox1,
@@ -52,20 +55,19 @@ class Consommation extends StatefulWidget {
               )),
           Column(
             children: [
-             productCard(
-  text1: 'Product1',
-  text2: ' ',
-  quantity: 3,
-  text4: '',
-  fct: () {},
-  bgColor: Colors.white,
-  txtColor: Colors.black,
-  shadow: true,
-  add_remove: true, text3: '',
-  icon: Icons.shop,
-),
-
-
+              productCard(
+                text1: 'Product1',
+                text2: ' ',
+                quantity: 3,
+                text4: '',
+                fct: () {},
+                bgColor: Colors.white,
+                txtColor: Colors.black,
+                shadow: true,
+                add_remove: true,
+                text3: '',
+                icon: Icons.shop,
+              ),
               Divider(
                 thickness: 4,
                 height: 5,
@@ -74,31 +76,29 @@ class Consommation extends StatefulWidget {
                 endIndent: 30,
               ),
               productCard(
-  text1: 'Product2',
-  text2: ' ',
-  quantity: 3,
-  text4: '',
-  fct: () {},
-  bgColor: Colors.white,
-  txtColor: Colors.black,
-  shadow: true,
-  add_remove: true, text3: '',
-  icon: Icons.shop
-),
-
-             productCard(
-  text1: 'Product3',
-  text2: ' ',
-  quantity: 3,
-  text4: '',
-  fct: () {},
-  bgColor: Colors.white,
-  txtColor: Colors.black,
-  shadow: true,
-  add_remove: true, text3: '',
-  icon: Icons.shop
-),
-
+                  text1: 'Product2',
+                  text2: ' ',
+                  quantity: 3,
+                  text4: '',
+                  fct: () {},
+                  bgColor: Colors.white,
+                  txtColor: Colors.black,
+                  shadow: true,
+                  add_remove: true,
+                  text3: '',
+                  icon: Icons.shop),
+              productCard(
+                  text1: 'Product3',
+                  text2: ' ',
+                  quantity: 3,
+                  text4: '',
+                  fct: () {},
+                  bgColor: Colors.white,
+                  txtColor: Colors.black,
+                  shadow: true,
+                  add_remove: true,
+                  text3: '',
+                  icon: Icons.shop),
               kSizedBox1,
               kSizedBox1,
               kSizedBox1,

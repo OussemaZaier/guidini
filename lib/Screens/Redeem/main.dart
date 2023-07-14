@@ -37,8 +37,8 @@ class Redeem extends StatelessWidget {
             children: [
               Column(children: [
                 title(
-                  bgColor2: kMainGreen,
-                  bgColor1: Color.fromARGB(255, 16, 161, 31),
+                  bgColor2: Color(0XFF47b649),
+                  bgColor1: Color.fromRGBO(24, 143, 74, 100),
                   text: 'Redeem',
                   txtColor: Colors.white,
                 ),

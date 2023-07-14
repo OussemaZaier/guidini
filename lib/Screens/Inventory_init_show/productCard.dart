@@ -12,7 +12,8 @@ class productCard extends StatefulWidget {
     required this.bgColor,
     required this.txtColor,
     required this.shadow,
-    required this.add_remove, required int quantity,
+    required this.add_remove,
+    required int quantity,
   }) : super(key: key);
 
   final String text1;
