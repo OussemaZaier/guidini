@@ -52,17 +52,34 @@ class HomePage extends StatelessWidget {
             )
           ];
         },
-        body: ListView.builder(
-          itemCount: 30,
-          itemBuilder: (BuildContext context, int index) {
-            return HomeCard(
-              title: 'Get 25% off your next cart by referring!',
-              topText: 'Work better together!',
-              buttonText: 'Refer a friend (+400)',
-              buttonFct: () {},
-              bg: 'assets/images/bg1.png',
-            );
-          },
+        body: Container(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                HomeCard(
+                  title: 'You saved 61.00DT\n this month!',
+                  topText: 'Great job!',
+                  buttonText: 'View profile',
+                  buttonFct: () {},
+                  bg: 'assets/images/bg1.png',
+                ),
+                HomeCard(
+                  title: 'Fresh soft drink is \non sale in Super_XTRA!',
+                  topText: 'A product you might like',
+                  buttonText: 'View product',
+                  buttonFct: () {},
+                  bg: 'assets/images/pub.png',
+                ),
+                HomeCard(
+                  title: 'Get 25% off your next \ncart by referring!',
+                  topText: 'Work better together!',
+                  buttonText: 'Refer (+3000 Points)',
+                  buttonFct: () {},
+                  bg: 'assets/images/refer.jpg',
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -93,7 +110,7 @@ class HomeCard extends StatelessWidget {
         right: 10.0,
       ),
       child: Container(
-        height: 200,
+        height: 250,
         child: Stack(
           children: [
             Container(
@@ -102,6 +119,14 @@ class HomeCard extends StatelessWidget {
                   image: AssetImage(bg),
                   fit: BoxFit.cover,
                 ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 0,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
@@ -109,9 +134,9 @@ class HomeCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 gradient: LinearGradient(
-                  colors: [Colors.transparent, Colors.black.withOpacity(0.5)],
-                  begin: Alignment.topRight,
-                  end: Alignment.center,
+                  colors: [Colors.transparent, Colors.black.withOpacity(0.3)],
+                  begin: Alignment.bottomRight,
+                  end: Alignment.topLeft,
                 ),
               ),
             ),
@@ -124,7 +149,7 @@ class HomeCard extends StatelessWidget {
                   Text(
                     topText,
                     style: TextStyle(
-                      color: Color.fromARGB(144, 255, 255, 255),
+                      color: Color.fromARGB(246, 255, 255, 255),
                       fontFamily: 'Lato',
                     ),
                   ),
@@ -134,18 +159,30 @@ class HomeCard extends StatelessWidget {
                   Text(
                     title,
                     style: TextStyle(
+                      shadows: <Shadow>[
+                        Shadow(
+                          offset: Offset(3, 3),
+                          blurRadius: 15.0,
+                          color: Color.fromARGB(40, 0, 0, 0),
+                        ),
+                        Shadow(
+                          offset: Offset(3, 3),
+                          blurRadius: 8.0,
+                          color: Color.fromARGB(40, 0, 0, 0),
+                        ),
+                      ],
                       color: Colors.white,
                       fontFamily: 'Lato',
                       fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   kSizedBox1,
                   Container(
-                    width: 100,
                     decoration: BoxDecoration(
                         color: Colors.black87,
                         borderRadius: BorderRadius.circular(10.0)),
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Text(
                       buttonText,
                       textAlign: TextAlign.center,

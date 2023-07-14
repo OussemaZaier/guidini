@@ -44,7 +44,7 @@ class Profile extends StatelessWidget {
                   ),
                   kSizedBox1,
                   kSizedBox1,
-                  Text('User Weld User',
+                  Text('Flen el Fouleni',
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.black,

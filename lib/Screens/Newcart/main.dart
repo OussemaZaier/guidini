@@ -30,19 +30,18 @@ class Newcart extends StatelessWidget {
               Column(
                 children: [
                   kSizedBox1,
-               productCard(
-  text1: 'Product1',
-  text2: '3DT ',
-  quantity: 3,
-  text4: '',
-  fct: () {},
-  bgColor: Colors.white,
-  txtColor: Colors.black,
-  shadow: true,
-  add_remove: true, text3: '',
-  icon: Icons.shop
-),
-
+                  productCard(
+                      text1: 'Product1',
+                      text2: '3DT ',
+                      quantity: 3,
+                      text4: '',
+                      fct: () {},
+                      bgColor: Colors.white,
+                      txtColor: Colors.black,
+                      shadow: true,
+                      add_remove: true,
+                      text3: '',
+                      icon: Icons.shop),
                   Divider(
                     thickness: 4,
                     height: 5,
@@ -50,71 +49,68 @@ class Newcart extends StatelessWidget {
                     indent: 30,
                     endIndent: 30,
                   ),
-                 productCard(
-  text1: 'Product2',
-  text2: '6Dt ',
-  quantity: 3,
-  text4: '',
-  fct: () {},
-  bgColor: Colors.white,
-  txtColor: Colors.black,
-  shadow: true,
-  add_remove: true, text3: '',
-  icon: Icons.shop
-),
-
                   productCard(
-  text1: 'Product3',
-  text2: '4Dt ',
-  quantity: 3,
-  text4: '',
-  fct: () {},
-  bgColor: Colors.white,
-  txtColor: Colors.black,
-  shadow: true,
-  add_remove: true, text3: '',
-  icon: Icons.shop
-),
-
-                 
-                productCard(
-  text1: 'Product4',
-  text2: '5Dt ',
-  quantity: 3,
-  text4: '',
-  fct: () {},
-  bgColor: Colors.white,
-  txtColor: Colors.black,
-  shadow: true,
-  add_remove: true, text3: '',
-  icon: Icons.shop
-),
-
+                      text1: 'Product2',
+                      text2: '6Dt ',
+                      quantity: 3,
+                      text4: '',
+                      fct: () {},
+                      bgColor: Colors.white,
+                      txtColor: Colors.black,
+                      shadow: true,
+                      add_remove: true,
+                      text3: '',
+                      icon: Icons.shop),
+                  productCard(
+                      text1: 'Product3',
+                      text2: '4Dt ',
+                      quantity: 3,
+                      text4: '',
+                      fct: () {},
+                      bgColor: Colors.white,
+                      txtColor: Colors.black,
+                      shadow: true,
+                      add_remove: true,
+                      text3: '',
+                      icon: Icons.shop),
+                  productCard(
+                      text1: 'Product4',
+                      text2: '5Dt ',
+                      quantity: 3,
+                      text4: '',
+                      fct: () {},
+                      bgColor: Colors.white,
+                      txtColor: Colors.black,
+                      shadow: true,
+                      add_remove: true,
+                      text3: '',
+                      icon: Icons.shop),
                   kSizedBox1,
                   kSizedBox1,
-                   Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      'Total',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.black,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.bold,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        'Total',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.black,
+                          fontFamily: 'Lato',
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Text(
-                      '18Dt',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.black,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.w400,
+                      Text(
+                        '18Dt',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.black,
+                          fontFamily: 'Lato',
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                  kSizedBox1,
                   Container(
                     width: MediaQuery.of(context).size.width / 2,
                     child: welcomeButton(
@@ -131,7 +127,6 @@ class Newcart extends StatelessWidget {
                       icon: Icons.add,
                     ),
                   ),
-                  kSizedBox1,
                   Container(
                     width: MediaQuery.of(context).size.width / 2,
                     child: welcomeButton(
