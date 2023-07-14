@@ -43,53 +43,47 @@ class Inventory_show extends StatelessWidget {
             Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               Column(
                 children: [
-                  
                   kSizedBox1,
-                  
-                 productCard(
-  text1: 'Product1',
-  text2: ' ',
-  quantity: 3,
-  text4: '',
-  fct: () {},
-  bgColor: Colors.white,
-  txtColor: Colors.black,
-  shadow: true,
-  add_remove: true, text3: '',
-  
-),
-
-                  Divider(
-                    thickness: 1.2,
-                    height: 5,
-                    color: Colors.black,
-                    indent: 30,
-                    endIndent: 30,
+                  kSizedBox1,
+                  productCard(
+                    text1: 'Product1',
+                    text2: ' ',
+                    quantity: 3,
+                    text4: '',
+                    icon: Icons.abc,
+                    fct: () {},
+                    bgColor: Colors.white,
+                    txtColor: Colors.black,
+                    shadow: true,
+                    add_remove: true,
+                    text3: '',
                   ),
-          productCard(
-  text1: 'Product1',
-  text2: ' ',
-  quantity: 3,
-  text4: '',
-  fct: () {},
-  bgColor: Colors.white,
-  txtColor: Colors.black,
-  shadow: true,
-  add_remove: true, text3: '',
-),
-
-                productCard(
-  text1: 'Product1',
-  text2: ' ',
-  quantity: 3,
-  text4: '',
-  fct: () {},
-  bgColor: Colors.white,
-  txtColor: Colors.black,
-  shadow: true,
-  add_remove: true, text3: '',
-),
-
+                  productCard(
+                    text1: 'Product1',
+                    text2: ' ',
+                    quantity: 3,
+                    text4: '',
+                    icon: Icons.abc,
+                    fct: () {},
+                    bgColor: Colors.white,
+                    txtColor: Colors.black,
+                    shadow: true,
+                    add_remove: true,
+                    text3: '',
+                  ),
+                  productCard(
+                    text1: 'Product1',
+                    text2: ' ',
+                    quantity: 3,
+                    text4: '',
+                    icon: Icons.abc,
+                    fct: () {},
+                    bgColor: Colors.white,
+                    txtColor: Colors.black,
+                    shadow: true,
+                    add_remove: true,
+                    text3: '',
+                  ),
                   kSizedBox1,
                   kSizedBox1,
                   Container(
