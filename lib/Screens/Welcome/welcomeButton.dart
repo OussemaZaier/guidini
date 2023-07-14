@@ -23,9 +23,7 @@ class _welcomeButtonState extends State<welcomeButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        widget.fct.call();
-      },
+      onTap: () => widget.fct(),
       child: Container(
         height: 50,
         margin: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
