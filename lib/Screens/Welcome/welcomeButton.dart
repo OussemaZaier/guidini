@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class welcomeButton extends StatelessWidget {
+class welcomeButton extends StatefulWidget {
   welcomeButton({
     Key? key,
     required this.text,
@@ -14,15 +14,21 @@ class welcomeButton extends StatelessWidget {
   VoidCallback fct;
   Color bgColor;
   Color txtColor;
+
+  @override
+  State<welcomeButton> createState() => _welcomeButtonState();
+}
+
+class _welcomeButtonState extends State<welcomeButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: fct,
+      onTap: () => widget.fct(),
       child: Container(
         height: 50,
         margin: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
         decoration: BoxDecoration(
-          color: bgColor,
+          color: widget.bgColor,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -37,19 +43,19 @@ class welcomeButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              text,
+              widget.text,
               style: TextStyle(
                 fontSize: 20,
-                color: txtColor,
+                color: widget.txtColor,
                 fontFamily: 'Lato',
               ),
             ),
-            (icon != null)
+            (widget.icon != null)
                 ? Padding(
                     padding: const EdgeInsets.only(left: 10.0),
                     child: Icon(
-                      icon,
-                      color: txtColor,
+                      widget.icon,
+                      color: widget.txtColor,
                       size: 20.0,
                     ),
                   )

@@ -16,6 +16,10 @@ class EditProfile extends StatefulWidget {
   State<EditProfile> createState() => _EditState();
 }
 
+TextEditingController myController1 = TextEditingController();
+TextEditingController myController2 = TextEditingController();
+TextEditingController myController3 = TextEditingController();
+
 class _EditState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
@@ -41,18 +45,21 @@ class _EditState extends State<EditProfile> {
                       text: 'New name',
                       pwd: false,
                       placeholder: 'Flen el fouleni',
+                      myController: myController1,
                     ),
                     kSizedBox1,
                     Field(
                       text: 'New email address',
                       pwd: false,
                       placeholder: 'abc@xyz.com',
+                      myController: myController2,
                     ),
                     kSizedBox1,
                     Field(
                       text: 'New password',
                       pwd: true,
                       placeholder: '********',
+                      myController: myController3,
                     ),
                     kSizedBox1,
                     welcomeButton(

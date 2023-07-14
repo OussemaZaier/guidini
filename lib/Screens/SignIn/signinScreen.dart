@@ -14,6 +14,9 @@ class SignIn extends StatefulWidget {
   State<SignIn> createState() => _SignInState();
 }
 
+TextEditingController myController1 = TextEditingController();
+TextEditingController myController2 = TextEditingController();
+
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
@@ -43,11 +46,13 @@ class _SignInState extends State<SignIn> {
                   text: 'Email address',
                   pwd: false,
                   placeholder: 'abc@xyz.com',
+                  myController: myController1,
                 ),
                 Field(
                   text: 'Password',
                   pwd: true,
                   placeholder: '********',
+                  myController: myController2,
                 ),
                 KeepMe(text: "Remember me."),
                 kSizedBox1,

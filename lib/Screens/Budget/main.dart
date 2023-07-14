@@ -15,6 +15,8 @@ class Budget extends StatefulWidget {
   State<Budget> createState() => _SignUpState();
 }
 
+TextEditingController myController = TextEditingController();
+
 class _SignUpState extends State<Budget> {
   @override
   Widget build(BuildContext context) {
@@ -40,24 +42,38 @@ class _SignUpState extends State<Budget> {
                             5.0), // Utilise SizedBox ici au lieu de kSizedBox1
 
                     Field(
-                        text: 'Enter Your Budget',
-                        pwd: false,
-                        placeholder: '170 TND '),
+                      text: 'Enter Your Budget',
+                      pwd: false,
+                      placeholder: '170 TND ',
+                      myController: myController,
+                    ),
 
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       welcomeButton(
                           text: "   25DT   ",
-                          fct: () => {},
+                          fct: () => {
+                                setState(() {
+                                  myController.text = '20 TND';
+                                })
+                              },
                           bgColor: Colors.white,
                           txtColor: Colors.black),
                       welcomeButton(
                           text: "   50DT   ",
-                          fct: () => {},
+                          fct: () => {
+                                setState(() {
+                                  myController.text = '50 TND';
+                                })
+                              },
                           bgColor: Colors.white,
                           txtColor: Colors.black),
                       welcomeButton(
                         text: "   100DT   ",
-                        fct: () => {},
+                        fct: () => {
+                          setState(() {
+                            myController.text = '100 TND';
+                          })
+                        },
                         bgColor: Colors.white,
                         txtColor: Colors.black,
                       )

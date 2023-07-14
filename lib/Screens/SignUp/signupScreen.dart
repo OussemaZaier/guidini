@@ -14,6 +14,9 @@ class SignUp extends StatefulWidget {
   State<SignUp> createState() => _SignUpState();
 }
 
+TextEditingController myController1 = TextEditingController();
+TextEditingController myController2 = TextEditingController();
+
 class _SignUpState extends State<SignUp> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -66,6 +69,7 @@ class _SignUpState extends State<SignUp> {
                         text: 'First name',
                         pwd: false,
                         placeholder: 'Foulen',
+                        myController: myController1,
                       ),
                     ),
                     kSizedBox1,
@@ -74,6 +78,7 @@ class _SignUpState extends State<SignUp> {
                         text: 'Last name',
                         pwd: false,
                         placeholder: 'Ben foulen',
+                        myController: myController2,
                       ),
                     ),
                   ],
