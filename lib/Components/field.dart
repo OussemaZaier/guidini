@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class Field extends StatefulWidget {
-  Field(
-      {Key? key,
-      required this.text,
-      required this.pwd,
-      required this.placeholder})
-      : super(key: key);
+  Field({
+    Key? key,
+    required this.text,
+    required this.pwd,
+    required this.placeholder,
+    required this.myController,
+  }) : super(key: key);
   String text;
   bool pwd;
   String placeholder;
+  TextEditingController myController;
   @override
   State<Field> createState() => _FieldState();
 }
@@ -35,6 +37,7 @@ class _FieldState extends State<Field> {
             height: 5.0,
           ),
           TextFormField(
+            controller: widget.myController,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
