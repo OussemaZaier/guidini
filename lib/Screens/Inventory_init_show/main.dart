@@ -59,16 +59,9 @@ class Inventory_init_show extends StatelessWidget {
                 text3: '',
                 icon: Icons.shop,
               ),
-              Divider(
-                thickness: 4,
-                height: 5,
-                color: Colors.white60,
-                indent: 30,
-                endIndent: 30,
-              ),
               productCard(
                   text1: 'Product2',
-                  text2: ' ',
+                  text2: '',
                   quantity: 3,
                   text4: '',
                   fct: () {},

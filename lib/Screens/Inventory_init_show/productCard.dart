@@ -123,12 +123,15 @@ class _productCardState extends State<productCard> {
                     )
                   else
                     SizedBox(width: 20),
-                  Text(
-                    quantity.toString(),
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: widget.txtColor,
-                      fontFamily: 'Lato',
+                  Padding(
+                    padding: const EdgeInsets.all(7.0),
+                    child: Text(
+                      quantity.toString(),
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: widget.txtColor,
+                        fontFamily: 'Lato',
+                      ),
                     ),
                   ),
                   if (widget.add_remove == true)
