@@ -8,8 +8,6 @@ import 'package:guidini/Screens/counter/ProductItemState.dart';
 import 'package:guidini/Screens/title.dart';
 import 'package:guidini/utils/constants.dart';
 
-
-
 class Budget extends StatefulWidget {
   const Budget({Key? key}) : super(key: key);
 
@@ -48,17 +46,17 @@ class _SignUpState extends State<Budget> {
 
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       welcomeButton(
-                          text: "25DT",
+                          text: "   25DT   ",
                           fct: () => {},
                           bgColor: Colors.white,
                           txtColor: Colors.black),
                       welcomeButton(
-                          text: "50DT",
+                          text: "   50DT   ",
                           fct: () => {},
                           bgColor: Colors.white,
                           txtColor: Colors.black),
                       welcomeButton(
-                        text: "100DT",
+                        text: "   100DT   ",
                         fct: () => {},
                         bgColor: Colors.white,
                         txtColor: Colors.black,
@@ -92,15 +90,7 @@ class _SignUpState extends State<Budget> {
                         )),
                     welcomeButton(
                       text: 'Scan your Receipt',
-                      fct: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                ProductItem(title: 'Product',price: 20,), //on va ouvrir camera
-                          ),
-                        );
-                      },
+                      fct: () {},
                       bgColor: Colors.grey,
                       txtColor: Colors.white,
                       icon: Icons.arrow_forward_ios,

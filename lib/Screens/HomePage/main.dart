@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return HomeCard(
               title: 'Get 25% off your next cart by referring!',
-              topText: 'work better together !',
+              topText: 'Work better together!',
               buttonText: 'Refer a friend (+400)',
               buttonFct: () {},
               bg: 'assets/images/bg1.png',
