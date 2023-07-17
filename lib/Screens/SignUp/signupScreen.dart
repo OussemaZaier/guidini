@@ -85,23 +85,15 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 kSizedBox1,
+                kSizedBox1,
                 Row(
                   children: [
                     Expanded(
                       child: Field(
-                        text: 'First name',
+                        text: 'First and last name',
                         pwd: false,
-                        placeholder: 'Foulen',
+                        placeholder: 'Foulen ben Foulen',
                         myController: myController1,
-                      ),
-                    ),
-                    kSizedBox1,
-                    Expanded(
-                      child: Field(
-                        text: 'Last name',
-                        pwd: false,
-                        placeholder: 'Ben foulen',
-                        myController: myController2,
                       ),
                     ),
                   ],

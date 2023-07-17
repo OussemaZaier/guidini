@@ -71,6 +71,8 @@ class Recipes extends StatelessWidget {
                 buttonFct: () {},
                 bg: 'assets/images/spag.jpg',
               ),
+              kSizedBox1,
+              kSizedBox1
             ],
           ),
         ),
