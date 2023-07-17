@@ -6,6 +6,8 @@ import 'package:guidini/Components/keepMe.dart';
 import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/utils/constants.dart';
+import 'package:http/http.dart' as http;
+import 'config.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -23,14 +25,35 @@ class _SignUpState extends State<SignUp> {
   bool _isNotValidate = false;
 
   void registerUser() async {
+    print("*******REGISTER USER IN*********");
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+      print("NOT EMPTY");
       var regBody = {
         "email": emailController.text,
         "password": passwordController.text
       };
 
+      var response = await http.post(Uri.parse(registration),
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: jsonEncode(regBody));
+
       // @TODO: DISPLAY RESPONSE MESSAGE
+      var jsonResponse = jsonDecode(response.body);
+
+      print("*******STATUS= " + jsonResponse['status'].toString());
+
+      if (jsonResponse['status'] == true) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Inventory_init(),
+            ));
+      }
     } else {
+      print("THIS B EMPTY");
       setState(() {
         _isNotValidate = true;
       });
@@ -62,23 +85,15 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 kSizedBox1,
+                kSizedBox1,
                 Row(
                   children: [
                     Expanded(
                       child: Field(
-                        text: 'First name',
+                        text: 'First and last name',
                         pwd: false,
-                        placeholder: 'Foulen',
+                        placeholder: 'Foulen ben Foulen',
                         myController: myController1,
-                      ),
-                    ),
-                    kSizedBox1,
-                    Expanded(
-                      child: Field(
-                        text: 'Last name',
-                        pwd: false,
-                        placeholder: 'Ben foulen',
-                        myController: myController2,
                       ),
                     ),
                   ],
@@ -164,11 +179,11 @@ class _SignUpState extends State<SignUp> {
                   fct: () {
                     registerUser();
                     // if (_isNotValidate == false) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Inventory_init(),
-                        ));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => Inventory_init(),
+                    //     ));
                   },
                   // },
                   bgColor: kMainGreen,

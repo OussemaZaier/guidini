@@ -44,6 +44,8 @@ dependencies:
   flutter_snake_navigationbar: ^0.6.1
   dio: ^5.2.1+1
   get: ^4.6.5
+  blur: ^3.1.0
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
