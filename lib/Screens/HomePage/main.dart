@@ -18,26 +18,33 @@ class HomePage extends StatelessWidget {
               flexibleSpace: Container(
                 child: Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: TextField(
-                      cursorColor: Colors.black,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
-                        suffixIcon: Icon(Icons.voicemail),
-                        filled: true,
-                        fillColor: Color.fromARGB(30, 0, 0, 0),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 3, color: Color.fromARGB(30, 0, 0, 0)),
-                          borderRadius: BorderRadius.circular(50.0),
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      children: [
+                        kSizedBox1,
+                        kSizedBox1,
+                        kSizedBox1,
+                        TextField(
+                          cursorColor: Colors.black,
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search),
+                            suffixIcon: Icon(Icons.voicemail),
+                            filled: true,
+                            fillColor: Color.fromARGB(30, 0, 0, 0),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  width: 3, color: Color.fromARGB(30, 0, 0, 0)),
+                              borderRadius: BorderRadius.circular(50.0),
+                            ),
+                            hintText: 'Search',
+                          ),
                         ),
-                        hintText: 'Search',
-                      ),
+                      ],
                     ),
                   ),
                 ),
               ),
-              expandedHeight: MediaQuery.of(context).size.height / 5,
+              expandedHeight: MediaQuery.of(context).size.height / 5.5,
               actions: <Widget>[
                 IconButton(
                   icon: const Icon(
