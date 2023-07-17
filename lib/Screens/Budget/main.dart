@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:guidini/Components/field.dart';
 import 'package:guidini/Screens/Newcart/main.dart';
@@ -5,11 +8,19 @@ import 'package:guidini/Screens/Newcart/main.dart';
 import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/Screens/counter/ProductItemState.dart';
+import 'package:guidini/Screens/CameraActivity.dart';
 import 'package:guidini/Screens/title.dart';
 import 'package:guidini/utils/constants.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Budget extends StatefulWidget {
-  const Budget({Key? key}) : super(key: key);
+   Budget({Key? key}) : super(key: key);
+   final ImagePicker _imagePicker = ImagePicker();
+
+  static const int REQUEST_CAMERA = 1;
+   File? capturedImage;
 
   @override
   State<Budget> createState() => _SignUpState();
@@ -106,11 +117,14 @@ class _SignUpState extends State<Budget> {
                         )),
                     welcomeButton(
                       text: 'Scan your Receipt',
-                      fct: () {},
+                     fct: () => openCamera(),
                       bgColor: Colors.grey,
                       txtColor: Colors.white,
                       icon: Icons.arrow_forward_ios,
                     ),
+                     if (capturedImage != null) // Afficher l'image si elle est disponible
+              Image.file(capturedImage!),  SizedBox(height: 20),
+          
 
                     // Utilise SizedBox ici au lieu de kSizedBox1
                   ],
@@ -122,8 +136,50 @@ class _SignUpState extends State<Budget> {
       ),
     );
   }
+  final ImagePicker _imagePicker = ImagePicker();
+  File? capturedImage;
+ 
+void openCamera() async {
+    if (await _requestCameraPermission()) {
+      final XFile? image = await _imagePicker.pickImage(
+        source: ImageSource.camera,
+      );
+
+      if (image != null) {
+        // Get the directory to store the captured images
+        final Directory appDir = await getApplicationDocumentsDirectory();
+        print(appDir.path);
+        // Create a new directory "captured_images" under the app's writable directory
+        final Directory imagesDir = Directory('${appDir.path}/captured_images');
+        if (!await imagesDir.exists()) {
+          await imagesDir.create(recursive: true);
+        }
+
+        // Get the name of the file from the captured image path
+        String fileName = image.path.split('/').last;
+        // Copy the captured image to the "captured_images" directory
+        File newImage = await File(image.path).copy('${imagesDir.path}/$fileName');
+     
+        setState(() {
+          capturedImage = newImage; // Mettre à jour la variable avec le nouveau fichier
+        });
+      }
+    }
+   else {
+      // Gérez le cas où l'utilisateur a refusé l'autorisation de la caméra.
+      // Vous pouvez demander l'autorisation à nouveau ou afficher un message.
+    }
+  }
+ 
+
+  Future<bool> _requestCameraPermission() async {
+    final PermissionStatus cameraPermissionStatus = await Permission.camera.request();
+    return cameraPermissionStatus.isGranted;
+  }
+
 }
 
+ 
 class signUpWithCard extends StatelessWidget {
   signUpWithCard({
     Key? key, // Ajoutez Key? ici pour corriger l'erreur
@@ -166,3 +222,4 @@ class signUpWithCard extends StatelessWidget {
     );
   }
 }
+
