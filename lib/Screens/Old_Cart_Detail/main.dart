@@ -15,7 +15,17 @@ import 'package:guidini/utils/constants.dart';
 import 'package:intro_slider/intro_slider.dart';
 
 class Old_Cart_Detail extends StatelessWidget {
-  Old_Cart_Detail({Key? key}) : super(key: key);
+  Old_Cart_Detail({
+    Key? key,
+    required this.date,
+    required this.bgColor1,
+    required this.bgColor2,
+  }) : super(key: key);
+
+  String date;
+  Color bgColor1;
+  Color bgColor2;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +45,9 @@ class Old_Cart_Detail extends StatelessWidget {
         child: Column(
           children: [
             title(
-              bgColor1: Color(0XFF123456),
-              bgColor2: Colors.blue,
-              text: '13 Jul. 2023',
+              bgColor1: bgColor1,
+              bgColor2: bgColor2,
+              text: date,
               txtColor: Colors.white,
             ),
             Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [

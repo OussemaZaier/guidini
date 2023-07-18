@@ -126,7 +126,11 @@ class Profile extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Old_Cart_Detail()))
+                                      builder: (context) => Old_Cart_Detail(
+                                            date: "13 Jul. 2023",
+                                            bgColor1: Color(0XFF123456),
+                                            bgColor2: Colors.blue,
+                                          )))
                             },
                         buttonText: 'View details'),
                     cartCard(
@@ -138,7 +142,13 @@ class Profile extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Old_Cart_Detail()))
+                                      builder: (context) => Old_Cart_Detail(
+                                            date: "7 Jun. 2023",
+                                            bgColor1: Color.fromARGB(
+                                                255, 18, 140, 69),
+                                            bgColor2: const Color.fromARGB(
+                                                255, 93, 243, 33),
+                                          )))
                             },
                         buttonText: 'View details'),
                   ],

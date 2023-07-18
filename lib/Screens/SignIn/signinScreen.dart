@@ -48,7 +48,7 @@ class _SignInState extends State<SignIn> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => HomePage(),
+              builder: (context) => Navigation(),
             ));
       }
 
