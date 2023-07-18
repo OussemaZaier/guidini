@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:guidini/Screens/Profile/main.dart';
+import 'package:guidini/Screens/navigation.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:blur/blur.dart';
 
@@ -68,7 +70,14 @@ class HomePage extends StatelessWidget {
                   title: 'You saved 61.00DT\n this month!',
                   topText: 'Great job!',
                   buttonText: 'View profile',
-                  buttonFct: () {},
+                  buttonFct: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Navigation(
+                                  pageNumber: 4,
+                                )));
+                  },
                   bg: 'assets/images/bg1.png',
                 ),
                 HomeCard(
@@ -186,17 +195,20 @@ class HomeCard extends StatelessWidget {
                     ),
                   ),
                   kSizedBox1,
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.black87,
-                        borderRadius: BorderRadius.circular(10.0)),
-                    padding: EdgeInsets.all(10.0),
-                    child: Text(
-                      buttonText,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Lato',
+                  InkWell(
+                    onTap: buttonFct,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.black87,
+                          borderRadius: BorderRadius.circular(10.0)),
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        buttonText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Lato',
+                        ),
                       ),
                     ),
                   )

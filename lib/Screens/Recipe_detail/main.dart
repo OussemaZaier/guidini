@@ -73,7 +73,7 @@ class Recipe_detail extends StatelessWidget {
                   bgColor: Colors.white,
                   add_remove: false,
                   shadow: true,
-                  quantity: 3,
+                  quantity: 2,
                 ),
                 productCard(
                   text1: 'Cheese',
@@ -99,7 +99,7 @@ class Recipe_detail extends StatelessWidget {
                   bgColor: Colors.white,
                   add_remove: false,
                   shadow: true,
-                  quantity: 3,
+                  quantity: 1,
                 ),
                 kSizedBox1,
                 kSizedBox1,

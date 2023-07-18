@@ -13,7 +13,7 @@ class productCard extends StatefulWidget {
     required this.txtColor,
     required this.shadow,
     required this.add_remove,
-    required int quantity,
+    required this.quantity,
   }) : super(key: key);
 
   final String text1;
@@ -26,26 +26,25 @@ class productCard extends StatefulWidget {
   final Color txtColor;
   final bool shadow;
   final bool add_remove;
+  int quantity;
 
   @override
   _productCardState createState() => _productCardState();
 }
 
 class _productCardState extends State<productCard> {
-  int quantity = 0;
-
   void incrementQuantity() {
     setState(() {
-      quantity++;
+      widget.quantity++;
     });
   }
 
   void decrementQuantity() {
-    if (quantity > 0) {
-      setState(() {
-        quantity--;
-      });
-    }
+    // if (quantity > 0) {
+    //   setState(() {
+    //     quantity--;
+    //   });
+    // }
   }
 
   @override
@@ -126,7 +125,7 @@ class _productCardState extends State<productCard> {
                   Padding(
                     padding: const EdgeInsets.all(7.0),
                     child: Text(
-                      quantity.toString(),
+                      widget.quantity.toString(),
                       style: TextStyle(
                         fontSize: 17,
                         color: widget.txtColor,
