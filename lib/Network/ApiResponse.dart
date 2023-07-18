@@ -3,7 +3,7 @@ import 'package:guidini/Network/Status.dart';
 class ApiResponse<T> {
   Status? status;
   T? data;
-  String? message;
+  Map<String, dynamic>? message;
 
   ApiResponse(this.status, this.data, this.message);
 
@@ -16,5 +16,9 @@ class ApiResponse<T> {
   @override
   String toString() {
     return "Status : $status \n Message : $message \n Data : $data";
+  }
+
+  Map<String, dynamic> toJson() {
+    return {"status": status, "data": data ?? message};
   }
 }
