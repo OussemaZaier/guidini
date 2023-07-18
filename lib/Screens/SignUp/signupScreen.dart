@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:guidini/Components/field.dart';
 import 'package:guidini/Components/keepMe.dart';
@@ -200,13 +199,13 @@ class _SignUpState extends State<SignUp> {
                 welcomeButton(
                   text: 'Continue',
                   fct: () {
-                    // registerUser();
+                    registerUser();
                     // if (_isNotValidate == false) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Inventory_init(),
-                        ));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => Inventory_init(),
+                    //     ));
                   },
                   // },
                   bgColor: kMainGreen,

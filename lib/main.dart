@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guidini/Network/NetworkApiService.dart';
 import 'package:guidini/Screens/SignIn/signinScreen.dart';
 import 'package:guidini/Screens/SignUp/signupScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeScreen.dart';
@@ -35,6 +36,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.white,
+        // body: ElevatedButton(
+        //   onPressed: () {
+        //     final networkApiService = NetworkApiService();
+        //     final res = networkApiService.getResponse(
+        //         'https://dog.ceo/api/breeds/image/random', {'x': '1'});
+        //     print('res from main $res');
+        //   },
+        //   child: Text('Make request'),
+        // ),
         body: Builder(
           builder: (BuildContext context) {
             return Welcome(

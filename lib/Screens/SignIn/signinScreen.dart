@@ -40,6 +40,7 @@ class _SignInState extends State<SignIn> {
           },
           body: jsonEncode(regBody));
 
+      print(response);
       var jsonResponse = jsonDecode(response.body);
 
       print("*******STATUS= " + jsonResponse.toString());
