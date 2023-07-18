@@ -14,8 +14,18 @@ import 'package:guidini/Screens/title.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:intro_slider/intro_slider.dart';
 
-class Inventory_show extends StatelessWidget {
-  Inventory_show({Key? key}) : super(key: key);
+class Old_Cart_Detail extends StatelessWidget {
+  Old_Cart_Detail({
+    Key? key,
+    required this.date,
+    required this.bgColor1,
+    required this.bgColor2,
+  }) : super(key: key);
+
+  String date;
+  Color bgColor1;
+  Color bgColor2;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +45,9 @@ class Inventory_show extends StatelessWidget {
         child: Column(
           children: [
             title(
-              bgColor2: kMainGreen,
-              bgColor1: Color.fromARGB(255, 16, 161, 31),
-              text: 'Inventory',
+              bgColor1: bgColor1,
+              bgColor2: bgColor2,
+              text: date,
               txtColor: Colors.white,
             ),
             Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [

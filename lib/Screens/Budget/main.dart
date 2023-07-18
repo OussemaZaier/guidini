@@ -1,13 +1,27 @@
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:guidini/Components/field.dart';
 import 'package:guidini/Screens/Newcart/main.dart';
 
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
+import 'package:guidini/Screens/counter/ProductItemState.dart';
+import 'package:guidini/Screens/CameraActivity.dart';
 import 'package:guidini/Screens/title.dart';
 import 'package:guidini/utils/constants.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path;
+import 'package:http/http.dart' as http;
 
 class Budget extends StatefulWidget {
-  const Budget({Key? key}) : super(key: key);
+  Budget({Key? key}) : super(key: key);
+  final ImagePicker _imagePicker = ImagePicker();
+
+  static const int REQUEST_CAMERA = 1;
+  File? capturedImage;
 
   @override
   State<Budget> createState() => _SignUpState();
@@ -104,11 +118,23 @@ class _SignUpState extends State<Budget> {
                         )),
                     welcomeButton(
                       text: 'Scan your Receipt',
-                      fct: () {},
+                      fct: () => openCamera(),
                       bgColor: Colors.grey,
                       txtColor: Colors.white,
                       icon: Icons.arrow_forward_ios,
                     ),
+                    if (capturedImage !=
+                        null) // Afficher l'image si elle est disponible
+                      Image.file(capturedImage!),
+                    const SizedBox(height: 20),
+                    if (isImageCaptured) // Affiche le bouton d'envoi uniquement si une image est capturée
+                      ElevatedButton(
+                        onPressed: () {
+                          // Appeler la fonction pour envoyer l'image en tant que requête HTTP
+                          sendImageToServer();
+                        },
+                        child: const Text('Envoyer l\'image'),
+                      ),
 
                     // Utilise SizedBox ici au lieu de kSizedBox1
                   ],
@@ -119,6 +145,72 @@ class _SignUpState extends State<Budget> {
         ),
       ),
     );
+  }
+
+  void sendImageToServer() async {
+    Uri url = Uri.parse(
+        'http://<adresse_du_serveur>/endpoint'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
+
+    var request = http.MultipartRequest('POST', url);
+    request.files
+        .add(await http.MultipartFile.fromPath('image', capturedImage!.path));
+
+    var response = await request.send();
+
+    if (response.statusCode == 200) {
+      // Traitement de la réponse du serveur
+    } else {
+      // Gestion de l'erreur
+    }
+  }
+
+  Future<String> getImagesDirectoryPath() async {
+    final Directory appDir = await getApplicationDocumentsDirectory();
+    final String imagesDirPath = path.join(appDir.path, 'my_images');
+
+    return imagesDirPath;
+  }
+
+  final ImagePicker _imagePicker = ImagePicker();
+  File? capturedImage;
+  Future<Directory> createDirectory() async {
+    final String imagesDirPath = await getImagesDirectoryPath();
+    final Directory appDir = Directory(imagesDirPath);
+
+    if (!await appDir.exists()) {
+      return await appDir.create(recursive: true);
+    } else {
+      return appDir;
+    }
+  }
+
+  bool isImageCaptured = false;
+  void openCamera() async {
+    if (await _requestCameraPermission()) {
+      final XFile? image =
+          await _imagePicker.pickImage(source: ImageSource.camera);
+
+      if (image != null) {
+        final Directory appDir = await createDirectory();
+        String fileName = path.basename(image.path);
+        File newImage =
+            await File(image.path).copy(path.join(appDir.path, fileName));
+
+        setState(() {
+          capturedImage = newImage;
+          isImageCaptured = true;
+        });
+      }
+    } else {
+      // Gérez le cas où l'utilisateur a refusé l'autorisation de la caméra.
+      // Vous pouvez demander l'autorisation à nouveau ou afficher un message.
+    }
+  }
+
+  Future<bool> _requestCameraPermission() async {
+    final PermissionStatus cameraPermissionStatus =
+        await Permission.camera.request();
+    return cameraPermissionStatus.isGranted;
   }
 }
 

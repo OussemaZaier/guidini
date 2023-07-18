@@ -5,7 +5,7 @@ class productCard extends StatefulWidget {
     Key? key,
     required this.text1,
     required this.text2,
-    required this.text3,
+    required this.quantity,
     required this.text4,
     required this.fct,
     this.icon,
@@ -13,12 +13,11 @@ class productCard extends StatefulWidget {
     required this.txtColor,
     required this.shadow,
     required this.add_remove,
-    required this.quantity,
   }) : super(key: key);
 
   final String text1;
   final String text2;
-  final String text3;
+  final int quantity;
   final String text4;
   final IconData? icon;
   final VoidCallback fct;
@@ -26,25 +25,32 @@ class productCard extends StatefulWidget {
   final Color txtColor;
   final bool shadow;
   final bool add_remove;
-  int quantity;
 
   @override
   _productCardState createState() => _productCardState();
 }
 
 class _productCardState extends State<productCard> {
+  late int quantity;
+
+  @override
+  void initState() {
+    super.initState();
+    quantity = widget.quantity;
+  }
+
   void incrementQuantity() {
     setState(() {
-      widget.quantity++;
+      quantity++;
     });
   }
 
   void decrementQuantity() {
-    // if (quantity > 0) {
-    //   setState(() {
-    //     quantity--;
-    //   });
-    // }
+    if (quantity > 0) {
+      setState(() {
+        quantity--;
+      });
+    }
   }
 
   @override
@@ -122,15 +128,12 @@ class _productCardState extends State<productCard> {
                     )
                   else
                     SizedBox(width: 20),
-                  Padding(
-                    padding: const EdgeInsets.all(7.0),
-                    child: Text(
-                      widget.quantity.toString(),
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: widget.txtColor,
-                        fontFamily: 'Lato',
-                      ),
+                  Text(
+                    quantity.toString(),
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: widget.txtColor,
+                      fontFamily: 'Lato',
                     ),
                   ),
                   if (widget.add_remove == true)

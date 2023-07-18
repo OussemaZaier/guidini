@@ -79,7 +79,7 @@ class Redeem extends StatelessWidget {
                     ),
                     redeemCard(
                       imageurl: 'assets/images/monoprix.png',
-                      title: "20% on a choosed product",
+                      title: "20% off on a chosen product",
                       textcolor: Colors.black,
                       subtext: '* on selected items',
                       bgColor: const Color.fromRGBO(255, 255, 255, 1),
@@ -99,7 +99,7 @@ class Redeem extends StatelessWidget {
                                   ],
                                 ))
                       },
-                      buttonText: ' 5000 Points',
+                      buttonText: ' 2000 Points',
                     ),
                   ],
                 ),

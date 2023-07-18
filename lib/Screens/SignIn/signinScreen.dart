@@ -1,11 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:guidini/Components/field.dart';
 import 'package:guidini/Components/signupCard.dart';
 import 'package:guidini/Components/keepMe.dart';
+import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/SignUp/signupScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/Screens/navigation.dart';
 import 'package:guidini/utils/constants.dart';
+import 'package:guidini/Screens/SignUp/config.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -14,10 +20,49 @@ class SignIn extends StatefulWidget {
   State<SignIn> createState() => _SignInState();
 }
 
-TextEditingController myController1 = TextEditingController();
-TextEditingController myController2 = TextEditingController();
+TextEditingController emailController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 
 class _SignInState extends State<SignIn> {
+  void loginUser() async {
+    print("*******REGISTER USER IN*********");
+    if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+      print("NOT EMPTY");
+      var regBody = {
+        "email": emailController.text,
+        "password": passwordController.text
+      };
+
+      var response = await http.post(Uri.parse(login),
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: jsonEncode(regBody));
+
+      var jsonResponse = jsonDecode(response.body);
+
+      print("*******STATUS= " + jsonResponse.toString());
+
+      if (jsonResponse['statusCode'] != 401) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Navigation(),
+            ));
+      }
+
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => Inventory_init(),
+      //     ));
+    } else {
+      print("THIS B EMPTY");
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,21 +91,22 @@ class _SignInState extends State<SignIn> {
                   text: 'Email address',
                   pwd: false,
                   placeholder: 'abc@xyz.com',
-                  myController: myController1,
+                  myController: emailController,
                 ),
                 Field(
                   text: 'Password',
                   pwd: true,
                   placeholder: '********',
-                  myController: myController2,
+                  myController: passwordController,
                 ),
                 KeepMe(text: "Remember me."),
                 kSizedBox1,
                 welcomeButton(
                   text: 'Login',
                   fct: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Navigation()));
+                    loginUser();
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (context) => Navigation()));
                   },
                   bgColor: kMainGreen,
                   txtColor: Colors.white,

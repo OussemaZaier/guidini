@@ -56,10 +56,9 @@ class Inventory_add extends StatelessWidget {
                   ),
                 ),
               ),
-              kSizedBox1,
               Divider(
-                thickness: 1.2,
-                height: 5,
+                thickness: 1,
+                height: 3,
                 color: Colors.black,
                 indent: 30,
                 endIndent: 30,

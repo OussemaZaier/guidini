@@ -6,6 +6,8 @@ import 'package:guidini/Components/keepMe.dart';
 import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/utils/constants.dart';
+import 'package:http/http.dart' as http;
+import 'package:guidini/Screens/SignUp/config.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -20,17 +22,45 @@ TextEditingController myController2 = TextEditingController();
 class _SignUpState extends State<SignUp> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   bool _isNotValidate = false;
 
   void registerUser() async {
+    print("*******REGISTER USER IN*********");
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+      print("NOT EMPTY");
       var regBody = {
+        "name": nameController.text,
         "email": emailController.text,
         "password": passwordController.text
       };
 
-      // @TODO: DISPLAY RESPONSE MESSAGE
+      var response = await http.post(Uri.parse(registration),
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          body: jsonEncode(regBody));
+
+      var jsonResponse = jsonDecode(response.body);
+
+      print("*******STATUS= " + jsonResponse.toString());
+
+      if (jsonResponse['statusCode'] != 500) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Inventory_init(),
+            ));
+      }
+
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => Inventory_init(),
+      //     ));
     } else {
+      print("THIS B EMPTY");
       setState(() {
         _isNotValidate = true;
       });
@@ -62,32 +92,39 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 kSizedBox1,
-                Row(
-                  children: [
-                    Expanded(
-                      child: Field(
-                        text: 'First name',
-                        pwd: false,
-                        placeholder: 'Foulen',
-                        myController: myController1,
-                      ),
-                    ),
-                    kSizedBox1,
-                    Expanded(
-                      child: Field(
-                        text: 'Last name',
-                        pwd: false,
-                        placeholder: 'Ben foulen',
-                        myController: myController2,
-                      ),
-                    ),
-                  ],
-                ),
+                kSizedBox1,
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(
+                        "Name",
+                        style: const TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.black,
+                          fontFamily: 'Lato',
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5.0,
+                      ),
+                      TextFormField(
+                        controller: nameController,
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          hintText: "Flen l fouleni",
+                          errorText:
+                              _isNotValidate ? "Please enter your name" : null,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          filled: true,
+                          hintStyle: TextStyle(color: Colors.grey[800]),
+                          fillColor: Colors.white70,
+                        ),
+                      ),
+                      kSizedBox1,
                       Text(
                         "Email",
                         style: const TextStyle(
@@ -122,6 +159,7 @@ class _SignUpState extends State<SignUp> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      kSizedBox1,
                       Text(
                         "Password",
                         style: const TextStyle(
@@ -162,7 +200,7 @@ class _SignUpState extends State<SignUp> {
                 welcomeButton(
                   text: 'Continue',
                   fct: () {
-                    registerUser();
+                    // registerUser();
                     // if (_isNotValidate == false) {
                     Navigator.push(
                         context,
