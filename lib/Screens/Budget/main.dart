@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guidini/Components/field.dart';
 import 'package:guidini/Screens/Newcart/main.dart';
 
-import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
-import 'package:guidini/Screens/counter/ProductItemState.dart';
 import 'package:guidini/Screens/title.dart';
 import 'package:guidini/utils/constants.dart';
 
@@ -31,13 +29,13 @@ class _SignUpState extends State<Budget> {
                   bgColor1: kMainGreen,
                   bgColor2: Colors.green),
               Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
                     kSizedBox1,
                     kSizedBox1,
 
-                    SizedBox(
+                    const SizedBox(
                         height:
                             5.0), // Utilise SizedBox ici au lieu de kSizedBox1
 
@@ -93,8 +91,8 @@ class _SignUpState extends State<Budget> {
                       txtColor: Colors.white,
                       icon: Icons.arrow_forward_ios,
                     ),
-                    SizedBox(height: 40.0),
-                    Align(
+                    const SizedBox(height: 40.0),
+                    const Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'Already Shopped?',
@@ -154,7 +152,7 @@ class signUpWithCard extends StatelessWidget {
             ),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black54,
                 fontFamily: 'Lato',
                 fontSize: 18,
