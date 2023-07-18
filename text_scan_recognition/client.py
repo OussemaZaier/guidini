@@ -5,6 +5,10 @@ file_path = "./recu.jpg"  # Replace with the path to your image file
 
 files = {"image": open(file_path, "rb")}
 
-response = requests.post(url, files=files)
+try:
+    response = requests.post(url, files=files)
+    print(response.text)
 
-print(response.text)
+except Exception as e:
+    print(e)
+    print("Problem with sending the request")

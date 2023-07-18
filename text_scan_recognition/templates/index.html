@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Upload and JSON Response</title>
+</head>
+<body>
+  <h1>Image Upload and JSON Response</h1>
+
+  <h2>Image Upload</h2>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" id="imageInput" accept="image/*">
+    <input type="submit" value="Upload">
+  </form>
+
+  <h2>Uploaded Image</h2>
+  <div id="imageContainer"></div>
+
+  <h2>JSON Response</h2>
+  <pre id="responseContainer"></pre>
+
+  <script>
+    // Function to display the JSON response
+    function displayResponse(response) {
+      var container = document.getElementById("responseContainer");
+      container.textContent = JSON.stringify(response, null, 2);
+    }
+
+    // Function to display the uploaded image
+    function displayImage(file) {
+      var reader = new FileReader();
+      reader.onload = function(event) {
+        var imageContainer = document.getElementById("imageContainer");
+        imageContainer.innerHTML = '<img src="' + event.target.result + '" alt="Uploaded Image">';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Handle form submission
+    document.getElementById("uploadForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var fileInput = document.getElementById("imageInput");
+      var file = fileInput.files[0];
+
+      // Display the uploaded image
+      displayImage(file);
+
+      // Additional logic to handle image upload can be added here
+
+      // Send a POST request to the root URL ("/") with the image file
+      var xhr = new XMLHttpRequest();
+      var formData = new FormData();
+      formData.append("image", file);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          displayResponse(response);
+        }
+      };
+      xhr.open("POST", "/", true);
+      xhr.send(formData);
+
+      // Display a message indicating image upload success
+      var messageContainer = document.createElement("p");
+      messageContainer.textContent = "Image uploaded successfully!";
+      document.body.appendChild(messageContainer);
+    });
+  </script>
+</body>
+</html>

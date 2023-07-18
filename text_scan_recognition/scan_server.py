@@ -5,10 +5,12 @@ import json
 
 app = Flask(__name__)
 
+# this server
+
 
 @app.route("/")
 def hello_world():
-    return "Hello, World!"
+    return render_template("index.html")
 
 
 @app.route("/", methods=["POST"])

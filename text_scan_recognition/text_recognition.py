@@ -8,8 +8,9 @@ import os
 def clean_data(raw_data):
     lines = raw_data.split("\n")
     pattern = r"\s+"
-
+    price_pattern = r"\b[\w\s]+\s*\d+\.\d+\b"
     res = []
+    lines = list(filter(lambda a: a != "", lines))
     for l in lines:
         l.replace("\n", " ")
         l = re.sub(pattern, " ", l)
@@ -17,12 +18,23 @@ def clean_data(raw_data):
         l = l.lower()
         # if "tel" in l or "fax" in l or ":" in l or (not has_number(l)):
         #    continue
-        res.append(l)
+        # l = l.split(" ")
+        if re.search(price_pattern, l) and not re.search(r"\btotal\b", l):
+            res.append(l)
 
-    res = list(filter(lambda a: a != "", lines))
+    return split_product_price(res)
 
-    print("lines", res)
-    return res
+
+def split_product_price(list):
+    pattern = r"(.+)\s+(\d+\.\d+)"
+    detected_products = []
+    for element in list:
+        match = re.match(pattern, element)
+        if match:
+            product_name = match.group(1)
+            price = match.group(2)
+            detected_products.append([product_name, price])
+    return detected_products
 
 
 def extract_data_from_image(image_path):
@@ -30,7 +42,7 @@ def extract_data_from_image(image_path):
     # Defining paths to tesseract.exe
 
     path_to_tesseract = r"lib/tesseract.exe"
-    image_path = r"./recu.jpg"
+    # image_path = r"./recu.jpg"
 
     # Opening the image & storing it in an image object
     img = Image.open(image_path)
@@ -67,7 +79,4 @@ def has_number(s):
 
 # new comment
 # we can test the functions here bellow
-if has_number("a"):
-    print("YES")
-else:
-    print("no")
+print(extract_data_from_image("recu.jpg"))
