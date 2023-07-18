@@ -10,7 +10,7 @@ class NetworkApiService extends BaseApiService {
     try {
       Response response = await dio.get(
         url,
-        queryParameters: data,
+        //queryParameters: data,
       );
 
       // Handle the response

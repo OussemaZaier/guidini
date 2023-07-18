@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:guidini/Screens/EditProfile/EditProfile.dart';
 import 'package:guidini/Screens/HomePage/main.dart';
@@ -17,7 +19,14 @@ import 'package:intro_slider/intro_slider.dart';
 class Profile extends StatelessWidget {
   Profile({Key? key}) : super(key: key);
   @override
+
+  String getData(){
+    return "WA L7WEM"
+;  }
+
+
   Widget build(BuildContext context) {
+      
     return Scaffold(
       body: Container(
         width: double.infinity,
