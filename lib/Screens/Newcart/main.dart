@@ -46,7 +46,7 @@ class Newcart extends StatelessWidget {
                           productCard(
                               icon: Icons.shop,
                               text1: i[0],
-                              text2: i[1],
+                              text2: i[1] + " DT",
                               text3: 'text3',
                               text4: 'text4',
                               fct: () => {},

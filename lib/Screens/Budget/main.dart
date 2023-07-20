@@ -148,11 +148,13 @@ class _SignUpState extends State<Budget> {
                       ElevatedButton(
                         onPressed: () async {
                           // Appeler la fonction pour envoyer l'image en tant que requête HTTP
-                          // sendImageToServer().then((value) {
-                          //   ITEMS.items = value;
-                          // });
-                          ITEMS.items =
-                              await sendImageToServer();
+                          ITEMS.items = await sendImageToServer();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Newcart(items: ITEMS.items),
+                            ),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           primary: kMainGreen,
