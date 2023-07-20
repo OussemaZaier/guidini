@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'package:flutter/material.dart';
@@ -98,7 +99,7 @@ class _SignUpState extends State<Budget> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Newcart(),
+                            builder: (context) => Newcart(items: ITEMS.items),
                           ),
                         );
                       },
@@ -147,7 +148,9 @@ class _SignUpState extends State<Budget> {
                       ElevatedButton(
                         onPressed: () {
                           // Appeler la fonction pour envoyer l'image en tant que requête HTTP
-                          sendImageToServer();
+                          sendImageToServer().then((value) {
+                            ITEMS.items = value;
+                          });
                         },
                         style: ElevatedButton.styleFrom(
                           primary: kMainGreen,
@@ -180,7 +183,7 @@ class _SignUpState extends State<Budget> {
     );
   }
 
-  void sendImageToServer() async {
+  Future<String> sendImageToServer() async {
     Uri url = Uri.parse(
         'http://192.168.1.194:8000/'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
 
@@ -196,10 +199,30 @@ class _SignUpState extends State<Budget> {
     if (response.statusCode == 200) {
       // Traitement de la réponse du serveur
       print("Image envoyée avec succès*******************************");
+      print(respStr);
+      return respStr;
+      for (var item in jsonDecode(respStr)) {
+        print(item);
+        print(item[0]);
+        productCard(
+          text1: item[0],
+          text2: "A",
+          text3: "B",
+          text4: "C",
+          fct: () => {},
+          bgColor: Colors.white,
+          txtColor: Colors.black,
+          shadow: false,
+          icon: Icons.arrow_forward_ios,
+          add_remove: false,
+          quantity: 0,
+        );
+      }
     } else {
       // Gestion de l'erreur
       print("Erreur lors de l'envoi de l'image*******************************");
       print(respStr);
+      return "ERR";
     }
   }
 
@@ -251,6 +274,10 @@ class _SignUpState extends State<Budget> {
         await Permission.camera.request();
     return cameraPermissionStatus.isGranted;
   }
+}
+
+class ITEMS {
+  static String items = "[]";
 }
 
 class signUpWithCard extends StatelessWidget {

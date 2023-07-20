@@ -40,11 +40,11 @@ class _productCardState extends State<productCard> {
   }
 
   void decrementQuantity() {
-    // if (quantity > 0) {
-    //   setState(() {
-    //     quantity--;
-    //   });
-    // }
+    if (widget.quantity > 0) {
+      setState(() {
+        widget.quantity--;
+      });
+    }
   }
 
   @override
@@ -52,7 +52,6 @@ class _productCardState extends State<productCard> {
     return InkWell(
       onTap: widget.fct,
       child: Container(
-        height: 50,
         margin: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
         decoration: BoxDecoration(
           color: widget.bgColor,
@@ -85,12 +84,18 @@ class _productCardState extends State<productCard> {
                     )
                   else
                     SizedBox(),
-                  Text(
-                    widget.text1,
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: widget.txtColor,
-                      fontFamily: 'Lato',
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+                    child: Container(
+                      width: 100,
+                      child: Text(
+                        widget.text1,
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: widget.txtColor,
+                          fontFamily: 'Lato',
+                        ),
+                      ),
                     ),
                   ),
                 ],
