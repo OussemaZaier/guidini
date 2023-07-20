@@ -30,7 +30,6 @@ class HomePage extends StatelessWidget {
                           cursorColor: Colors.black,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.search),
-                            suffixIcon: Icon(Icons.voicemail),
                             filled: true,
                             fillColor: Color.fromARGB(30, 0, 0, 0),
                             border: OutlineInputBorder(
@@ -51,7 +50,7 @@ class HomePage extends StatelessWidget {
                 IconButton(
                   icon: const Icon(
                     Icons.settings_outlined,
-                    color: Colors.black87,
+                    color: Colors.white,
                     size: 30.0,
                   ),
                   onPressed: () {},

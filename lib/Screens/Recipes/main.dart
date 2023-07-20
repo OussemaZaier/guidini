@@ -182,7 +182,7 @@ class HomeCard extends StatelessWidget {
                       ],
                       color: Colors.white,
                       fontFamily: 'Lato',
-                      fontSize: 25.0,
+                      fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -193,7 +193,7 @@ class HomeCard extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.black,
+                          color: Colors.black.withOpacity(.7),
                           borderRadius: BorderRadius.circular(10.0)),
                       padding: EdgeInsets.all(10.0),
                       child: Text(
@@ -202,6 +202,7 @@ class HomeCard extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'Lato',
+                          fontSize: 18.0,
                         ),
                       ),
                     ),
