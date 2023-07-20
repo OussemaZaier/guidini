@@ -140,6 +140,49 @@ if (isImageCaptured) // Affiche le bouton d'envoi uniquement si une image est ca
   ),
 
           
+                    kSizedBox1,
+                    kSizedBox1,
+                    if (capturedImage !=
+                        null) // Afficher l'image si elle est disponible
+                      Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(
+                                    0, 3), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: Image.file(capturedImage!)),
+                    const SizedBox(height: 20),
+                    if (isImageCaptured) // Affiche le bouton d'envoi uniquement si une image est capturée
+                      ElevatedButton(
+                        onPressed: () {
+                          // Appeler la fonction pour envoyer l'image en tant que requête HTTP
+                          sendImageToServer();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: kMainGreen,
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: 40, right: 40, top: 12, bottom: 12),
+                          child: const Text('Envoyer l\'image',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontFamily: 'Lato',
+                              )),
+                        ),
+                      ),
 
                     // Utilise SizedBox ici au lieu de kSizedBox1
                     const SizedBox(height: 40),
