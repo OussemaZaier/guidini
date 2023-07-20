@@ -142,6 +142,7 @@ if (isImageCaptured) // Affiche le bouton d'envoi uniquement si une image est ca
           
 
                     // Utilise SizedBox ici au lieu de kSizedBox1
+                    const SizedBox(height: 40),
                   ],
                 ),
               ),

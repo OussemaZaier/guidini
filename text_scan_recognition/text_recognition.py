@@ -59,9 +59,10 @@ def extract_data_from_image(image_path):
     raw_text = text[:-1]
     # print("raw text", raw_text)
 
-    print("after processing")
+    print("after processing= ")
 
     result = clean_data(raw_data=raw_text)
+
     # os.unlink(image_path)
     return result
 
