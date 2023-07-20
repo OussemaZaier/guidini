@@ -151,7 +151,15 @@ class _SignUpState extends State<Budget> {
                           sendImageToServer().then((value) {
                             ITEMS.items = value;
                           });
-                        },
+                           Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Newcart(items: ITEMS.items),
+                          ),
+                        );
+                          
+                        }
+                        ,
                         style: ElevatedButton.styleFrom(
                           primary: kMainGreen,
                           onPrimary: Colors.white,
@@ -163,11 +171,17 @@ class _SignUpState extends State<Budget> {
                           padding: EdgeInsets.only(
                               left: 40, right: 40, top: 12, bottom: 12),
                           child: const Text('Envoyer l\'image',
+                          
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.white,
                                 fontFamily: 'Lato',
                               )),
+                              
+                              
+                             
+
+                              
                         ),
                       ),
 
