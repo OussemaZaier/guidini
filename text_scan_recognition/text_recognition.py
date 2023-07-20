@@ -79,4 +79,4 @@ def has_number(s):
 
 # new comment
 # we can test the functions here bellow
-print(extract_data_from_image("recu.jpg"))
+# print(extract_data_from_image("./recu.jpg"))

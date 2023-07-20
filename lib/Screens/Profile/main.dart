@@ -17,6 +17,7 @@ import 'package:http/http.dart' as http;
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:intro_slider/intro_slider.dart';
+import 'package:guidini/Screens/globals.dart' as globals;
 
 class Profile extends StatefulWidget {
   Profile({Key? key}) : super(key: key);
@@ -30,45 +31,47 @@ class _ProfileState extends State<Profile> {
   Future<Map> getData() async {
     print("*****************GETTING DATA*****************");
 
-    if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-      print(
-          "NOT EMPTY:" + emailController.text + " " + passwordController.text);
-      var regBody = {
-        "email": emailController.text,
-        "password": passwordController.text
-      };
+    // if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+    // print("NOT EMPTY:" + emailController.text + " " + passwordController.text);
+    // var regBody = {
+    //   "email": emailController.text,
+    //   "password": passwordController.text
+    // };
 
-      var response = await http.post(Uri.parse(login),
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-          },
-          body: jsonEncode(regBody));
+    // var response = await http.post(Uri.parse(login),
+    //     headers: {
+    //       "Accept": "application/json",
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: jsonEncode(regBody));
 
-      var jsonResponse = jsonDecode(response.body);
+    // var jsonResponse = jsonDecode(response.body);
 
-      final token = jsonResponse['token'];
+    // final token = jsonResponse['token'];
+    var token = globals.token;
 
-      Map<String, dynamic> payload = Jwt.parseJwt(token);
+    print(globals.token);
 
-      var userResponse = await http.get(
-        Uri.parse(getUser(payload['id'])),
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-      );
+    Map<String, dynamic> payload = Jwt.parseJwt(token);
 
-      var jsonUserResponse = jsonDecode(userResponse.body);
+    var userResponse = await http.get(
+      Uri.parse(getUser(payload['id'])),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+    );
 
-      return {
-        'name': jsonUserResponse['name'],
-        'points': jsonUserResponse['points']
-      };
-    }
-    ;
-    print("NO EMAIL/PW DATA!!!!!");
-    return {"ERROR": "ERROR", "name": "ERROR", "points": "ERROR"};
+    var jsonUserResponse = jsonDecode(userResponse.body);
+
+    return {
+      'name': jsonUserResponse['name'],
+      'points': jsonUserResponse['points']
+    };
+    // }
+    // ;
+    // print("NO EMAIL/PW DATA!!!!!");
+    // return {"ERROR": "ERROR", "name": "ERROR", "points": "ERROR"};
   }
 
   void initState() {
