@@ -134,10 +134,27 @@ class _SignUpState extends State<Budget> {
                           // Appeler la fonction pour envoyer l'image en tant que requête HTTP
                           sendImageToServer();
                         },
-                        child: const Text('Envoyer l\'image'),
+                        style: ElevatedButton.styleFrom(
+                          primary: kMainGreen,
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: 40, right: 40, top: 12, bottom: 12),
+                          child: const Text('Envoyer l\'image',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontFamily: 'Lato',
+                              )),
+                        ),
                       ),
 
                     // Utilise SizedBox ici au lieu de kSizedBox1
+                    const SizedBox(height: 40),
                   ],
                 ),
               ),

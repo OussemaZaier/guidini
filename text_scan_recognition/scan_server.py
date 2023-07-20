@@ -31,7 +31,7 @@ def save_image():
         extracted_list = text_recognition.extract_data_from_image(
             image_path=image_pathname
         )
-        print("extracted list in the server")
+        print("extracted list in the server: ", extracted_list)
         return list_to_json(extracted_list)
     except Exception as e:
         return str(e), 500
