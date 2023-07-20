@@ -50,7 +50,9 @@ class Recipes extends StatelessWidget {
                 buttonText: 'View recipe',
                 buttonFct: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Recipe_detail();
+                    return Recipe_detail(
+                        title: "Pizza napolitana",
+                        image: 'assets/images/pizza.jpg');
                   }));
                 },
                 bg: 'assets/images/pizza.jpg',
@@ -60,7 +62,13 @@ class Recipes extends StatelessWidget {
                 title: 'Couscous Agneau',
                 topText: '',
                 buttonText: 'View recipe',
-                buttonFct: () {},
+                buttonFct: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return Recipe_detail(
+                        title: "Couscous Agneau",
+                        image: 'assets/images/couscous.jpg');
+                  }));
+                },
                 bg: 'assets/images/couscous.jpg',
               ),
               kSizedBox1,
@@ -68,7 +76,13 @@ class Recipes extends StatelessWidget {
                 title: 'Spaghetti Bolognese',
                 topText: '',
                 buttonText: 'View recipe',
-                buttonFct: () {},
+                buttonFct: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return Recipe_detail(
+                        title: "Spaghetti Bolognese",
+                        image: 'assets/images/spag.jpg');
+                  }));
+                },
                 bg: 'assets/images/spag.jpg',
               ),
               kSizedBox1,

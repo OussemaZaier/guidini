@@ -7,8 +7,10 @@ import 'package:guidini/utils/constants.dart';
 import 'package:blur/blur.dart';
 
 class Recipe_detail extends StatelessWidget {
-  const Recipe_detail({Key? key}) : super(key: key);
-
+  Recipe_detail({Key? key, required this.title, required this.image})
+      : super(key: key);
+  String image;
+  String title;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,11 +32,11 @@ class Recipe_detail extends StatelessWidget {
                       kSizedBox1,
                       kSizedBox1,
                       RecipeCard(
-                        bg: 'assets/images/pizza.jpg',
+                        bg: image,
                       ),
                       kSizedBox1,
                       Text(
-                        'Pizza napolitana',
+                        title,
                         style: TextStyle(
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
