@@ -70,7 +70,7 @@ class _productCardState extends State<productCard> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 190,
+              width: widget.quantity == -1 ? 300 : 220,
               child: Row(
                 children: [
                   if (widget.icon != null)
@@ -87,7 +87,7 @@ class _productCardState extends State<productCard> {
                   Padding(
                     padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
                     child: Container(
-                      width: 100,
+                      width: widget.quantity == -1 ? 150 : 130,
                       child: Text(
                         widget.text1,
                         style: TextStyle(
@@ -102,17 +102,23 @@ class _productCardState extends State<productCard> {
               ),
             ),
             Container(width: 8),
-            Container(
-              width: 80,
-              child: Text(
-                widget.text2,
-                style: TextStyle(
-                  fontSize: 17,
-                  color: widget.txtColor,
-                  fontFamily: 'Lato',
+            if (widget.quantity == -1)
+              Container(
+                height: 5,
+                width: 1,
+              )
+            else
+              Container(
+                width: 70,
+                child: Text(
+                  widget.text2,
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: widget.txtColor,
+                    fontFamily: 'Lato',
+                  ),
                 ),
               ),
-            ),
             Container(
               child: Row(
                 children: [
@@ -127,17 +133,27 @@ class _productCardState extends State<productCard> {
                     )
                   else
                     SizedBox(width: 20),
-                  Padding(
-                    padding: const EdgeInsets.all(7.0),
-                    child: Text(
-                      widget.quantity.toString(),
+                  if (widget.quantity == -1)
+                    Text(
+                      widget.text2,
                       style: TextStyle(
                         fontSize: 17,
                         color: widget.txtColor,
                         fontFamily: 'Lato',
                       ),
+                    )
+                  else
+                    Padding(
+                      padding: const EdgeInsets.all(7.0),
+                      child: Text(
+                        widget.quantity.toString(),
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: widget.txtColor,
+                          fontFamily: 'Lato',
+                        ),
+                      ),
                     ),
-                  ),
                   if (widget.add_remove == true)
                     InkWell(
                       onTap: incrementQuantity,

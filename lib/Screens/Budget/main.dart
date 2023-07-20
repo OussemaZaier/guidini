@@ -146,11 +146,13 @@ class _SignUpState extends State<Budget> {
                     const SizedBox(height: 20),
                     if (isImageCaptured) // Affiche le bouton d'envoi uniquement si une image est capturée
                       ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           // Appeler la fonction pour envoyer l'image en tant que requête HTTP
-                          sendImageToServer().then((value) {
-                            ITEMS.items = value;
-                          });
+                          // sendImageToServer().then((value) {
+                          //   ITEMS.items = value;
+                          // });
+                          ITEMS.items =
+                              await sendImageToServer();
                         },
                         style: ElevatedButton.styleFrom(
                           primary: kMainGreen,
@@ -183,7 +185,7 @@ class _SignUpState extends State<Budget> {
     );
   }
 
-  Future<String> sendImageToServer() async {
+  Future<List> sendImageToServer() async {
     Uri url = Uri.parse(
         'http://10.0.2.2:8000/'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
 
@@ -199,29 +201,19 @@ class _SignUpState extends State<Budget> {
       // Traitement de la réponse du serveur
       print("Image envoyée avec succès*******************************");
       print(respStr);
-      return respStr;
+      num sum = 0;
       for (var item in jsonDecode(respStr)) {
-        print(item);
-        print(item[0]);
-        productCard(
-          text1: item[0],
-          text2: "A",
-          text3: "B",
-          text4: "C",
-          fct: () => {},
-          bgColor: Colors.white,
-          txtColor: Colors.black,
-          shadow: false,
-          icon: Icons.arrow_forward_ios,
-          add_remove: false,
-          quantity: 0,
-        );
+        print(item[1]);
+        sum = sum + double.parse(item[1]);
       }
+      print("SUM == ");
+      print(respStr + ", [\"Total\", \"$sum\"]");
+      return [respStr, sum];
     } else {
       // Gestion de l'erreur
       print("Erreur lors de l'envoi de l'image*******************************");
       print(respStr);
-      return "ERR";
+      return ["ERR", "ERR"];
     }
   }
 
@@ -276,7 +268,7 @@ class _SignUpState extends State<Budget> {
 }
 
 class ITEMS {
-  static String items = "[]";
+  static List<dynamic> items = ["", ""];
 }
 
 class signUpWithCard extends StatelessWidget {
