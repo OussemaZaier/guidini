@@ -32,8 +32,10 @@ def save_image():
             image_path=image_pathname
         )
         print("extracted list in the server")
+        print(extracted_list)
         return list_to_json(extracted_list)
     except Exception as e:
+        print(e)
         return str(e), 500
 
 
@@ -44,4 +46,4 @@ def list_to_json(my_list):
 
 
 if __name__ == "__main__":
-    app.run(port=8000)
+    app.run(host='0.0.0.0',port=8000)
