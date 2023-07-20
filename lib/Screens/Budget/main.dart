@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
@@ -149,13 +150,15 @@ class _SignUpState extends State<Budget> {
 
   void sendImageToServer() async {
     Uri url = Uri.parse(
-        'http://10.0.0.2:8000/'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
+        'http://10.0.2.2:8000/'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
 
     var request = http.MultipartRequest('POST', url);
+    print("URL = $url");
     request.files
         .add(await http.MultipartFile.fromPath('image', capturedImage!.path));
     print("Sending request:-----");
-    var response = await request.send();
+    final response = await request.send();
+    final respStr = await response.stream.bytesToString();
 
     if (response.statusCode == 200) {
       // Traitement de la réponse du serveur
@@ -163,6 +166,7 @@ class _SignUpState extends State<Budget> {
     } else {
       // Gestion de l'erreur
       print("Erreur lors de l'envoi de l'image*******************************");
+      print(respStr);
     }
   }
 

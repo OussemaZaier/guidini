@@ -41,7 +41,8 @@ def extract_data_from_image(image_path):
     # return a list of lines read from an image
     # Defining paths to tesseract.exe
 
-    path_to_tesseract = r"lib/tesseract.exe"
+    path_to_tesseract = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
     # image_path = r"./recu.jpg"
 
     # Opening the image & storing it in an image object
