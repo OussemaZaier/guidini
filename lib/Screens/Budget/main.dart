@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
@@ -123,9 +124,24 @@ class _SignUpState extends State<Budget> {
                       txtColor: Colors.white,
                       icon: Icons.arrow_forward_ios,
                     ),
+                    kSizedBox1,
+                    kSizedBox1,
                     if (capturedImage !=
                         null) // Afficher l'image si elle est disponible
-                      Image.file(capturedImage!),
+                      Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(
+                                    0, 3), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: Image.file(capturedImage!)),
                     const SizedBox(height: 20),
                     if (isImageCaptured) // Affiche le bouton d'envoi uniquement si une image est capturée
                       ElevatedButton(
@@ -133,10 +149,27 @@ class _SignUpState extends State<Budget> {
                           // Appeler la fonction pour envoyer l'image en tant que requête HTTP
                           sendImageToServer();
                         },
-                        child: const Text('Envoyer l\'image'),
+                        style: ElevatedButton.styleFrom(
+                          primary: kMainGreen,
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: 40, right: 40, top: 12, bottom: 12),
+                          child: const Text('Envoyer l\'image',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontFamily: 'Lato',
+                              )),
+                        ),
                       ),
 
                     // Utilise SizedBox ici au lieu de kSizedBox1
+                    const SizedBox(height: 40),
                   ],
                 ),
               ),
@@ -149,13 +182,15 @@ class _SignUpState extends State<Budget> {
 
   void sendImageToServer() async {
     Uri url = Uri.parse(
-        'http://10.0.0.2:8000/'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
+        'http://10.0.2.2:8000/'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
 
     var request = http.MultipartRequest('POST', url);
+    print("URL = $url");
     request.files
         .add(await http.MultipartFile.fromPath('image', capturedImage!.path));
     print("Sending request:-----");
-    var response = await request.send();
+    final response = await request.send();
+    final respStr = await response.stream.bytesToString();
 
     if (response.statusCode == 200) {
       // Traitement de la réponse du serveur
@@ -163,6 +198,7 @@ class _SignUpState extends State<Budget> {
     } else {
       // Gestion de l'erreur
       print("Erreur lors de l'envoi de l'image*******************************");
+      print(respStr);
     }
   }
 
