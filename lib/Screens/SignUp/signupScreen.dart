@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:guidini/Components/field.dart';
 import 'package:guidini/Components/keepMe.dart';
@@ -8,6 +7,7 @@ import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:guidini/Screens/SignUp/config.dart';
+import 'package:guidini/Screens/globals.dart' as globals;
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -27,6 +27,7 @@ class _SignUpState extends State<SignUp> {
 
   void registerUser() async {
     print("*******REGISTER USER IN*********");
+    globals.token = "";
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       print("NOT EMPTY");
       var regBody = {
@@ -45,13 +46,27 @@ class _SignUpState extends State<SignUp> {
       var jsonResponse = jsonDecode(response.body);
 
       print("*******STATUS= " + jsonResponse.toString());
-
-      if (jsonResponse['statusCode'] != 500) {
+      if (jsonResponse['token'] != null) globals.token = jsonResponse['token'];
+      print(globals.token);
+      if (jsonResponse['token'] != null) {
         Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => Inventory_init(),
             ));
+      } else {
+        final snackBar = SnackBar(
+          content: Text(
+            'Error: ' + jsonResponse['message'].toString() + '!',
+            style: TextStyle(color: Colors.white, fontSize: 17.0),
+          ),
+          backgroundColor: (const Color.fromARGB(255, 65, 65, 65)),
+          action: SnackBarAction(
+            label: 'Dismiss',
+            onPressed: () {},
+          ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
 
       // Navigator.push(
@@ -61,6 +76,18 @@ class _SignUpState extends State<SignUp> {
       //     ));
     } else {
       print("THIS B EMPTY");
+      final snackBar = SnackBar(
+        content: Text(
+          'Please fill all the fields',
+          style: TextStyle(color: Colors.white, fontSize: 17.0),
+        ),
+        backgroundColor: (const Color.fromARGB(255, 65, 65, 65)),
+        action: SnackBarAction(
+          label: 'Dismiss',
+          onPressed: () {},
+        ),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
       setState(() {
         _isNotValidate = true;
       });
@@ -200,13 +227,13 @@ class _SignUpState extends State<SignUp> {
                 welcomeButton(
                   text: 'Continue',
                   fct: () {
-                    // registerUser();
+                    registerUser();
                     // if (_isNotValidate == false) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Inventory_init(),
-                        ));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => Inventory_init(),
+                    //     ));
                   },
                   // },
                   bgColor: kMainGreen,

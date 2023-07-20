@@ -46,6 +46,7 @@ dependencies:
   get: ^4.6.5
   blur: ^3.1.0
   http: ^1.1.0
+  jwt_decode: ^0.3.1
 
 dev_dependencies:
   flutter_test:

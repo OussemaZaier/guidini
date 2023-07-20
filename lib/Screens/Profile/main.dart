@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:guidini/Screens/EditProfile/EditProfile.dart';
 import 'package:guidini/Screens/HomePage/main.dart';
@@ -10,13 +12,78 @@ import 'package:guidini/Screens/Welcome/welcomeScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/Screens/cartCard.dart';
 import 'package:guidini/Screens/title.dart';
-
+import 'package:guidini/Screens/SignUp/config.dart';
+import 'package:http/http.dart' as http;
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:intro_slider/intro_slider.dart';
+import 'package:guidini/Screens/globals.dart' as globals;
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   Profile({Key? key}) : super(key: key);
+
   @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  Map<dynamic, dynamic>? USERDATA;
+  Future<Map> getData() async {
+    print("*****************GETTING DATA*****************");
+
+    // if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+    // print("NOT EMPTY:" + emailController.text + " " + passwordController.text);
+    // var regBody = {
+    //   "email": emailController.text,
+    //   "password": passwordController.text
+    // };
+
+    // var response = await http.post(Uri.parse(login),
+    //     headers: {
+    //       "Accept": "application/json",
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: jsonEncode(regBody));
+
+    // var jsonResponse = jsonDecode(response.body);
+
+    // final token = jsonResponse['token'];
+    var token = globals.token;
+
+    print(globals.token);
+
+    Map<String, dynamic> payload = Jwt.parseJwt(token);
+
+    var userResponse = await http.get(
+      Uri.parse(getUser(payload['id'])),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+    );
+
+    var jsonUserResponse = jsonDecode(userResponse.body);
+
+    return {
+      'name': jsonUserResponse['name'],
+      'points': jsonUserResponse['points']
+    };
+    // }
+    // ;
+    // print("NO EMAIL/PW DATA!!!!!");
+    // return {"ERROR": "ERROR", "name": "ERROR", "points": "ERROR"};
+  }
+
+  void initState() {
+    WidgetsBinding.instance?.addPostFrameCallback((_) async {
+      this.USERDATA = await getData();
+      setState(() {
+        this.USERDATA;
+      });
+    });
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -45,7 +112,7 @@ class Profile extends StatelessWidget {
                   ),
                   kSizedBox1,
                   kSizedBox1,
-                  Text('Flen el Fouleni',
+                  Text(USERDATA?["name"] ?? '',
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.black,
@@ -55,7 +122,7 @@ class Profile extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(12),
                     child: Text(
-                      '5890 Points',
+                      ("${USERDATA?["points"]} points") ?? "loading...",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,

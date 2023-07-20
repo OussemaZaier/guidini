@@ -12,6 +12,7 @@ import 'package:guidini/utils/constants.dart';
 import 'package:guidini/Screens/SignUp/config.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:guidini/Screens/globals.dart' as globals;
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -26,6 +27,7 @@ TextEditingController passwordController = TextEditingController();
 class _SignInState extends State<SignIn> {
   void loginUser() async {
     print("*******REGISTER USER IN*********");
+    globals.token = "";
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       print("NOT EMPTY");
       var regBody = {
@@ -40,16 +42,33 @@ class _SignInState extends State<SignIn> {
           },
           body: jsonEncode(regBody));
 
+      print(response);
       var jsonResponse = jsonDecode(response.body);
 
       print("*******STATUS= " + jsonResponse.toString());
 
-      if (jsonResponse['statusCode'] != 401) {
+      if (jsonResponse['token'] != null) globals.token = jsonResponse['token'];
+
+      if (jsonResponse['token'] != null) {
         Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => Navigation(),
             ));
+      } else {
+        print(jsonResponse);
+        final snackBar = SnackBar(
+          content: Text(
+            'Error: ' + jsonResponse['message'].toString() + '!',
+            style: TextStyle(color: Colors.white, fontSize: 17.0),
+          ),
+          backgroundColor: (const Color.fromARGB(255, 65, 65, 65)),
+          action: SnackBarAction(
+            label: 'Dismiss',
+            onPressed: () {},
+          ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
 
       // Navigator.push(
@@ -59,6 +78,19 @@ class _SignInState extends State<SignIn> {
       //     ));
     } else {
       print("THIS B EMPTY");
+      final snackBar = SnackBar(
+        content: Text(
+          'Please fill all the fields',
+          style: TextStyle(color: Colors.white, fontSize: 17.0),
+        ),
+        backgroundColor: (const Color.fromARGB(255, 65, 65, 65)),
+        action: SnackBarAction(
+          label: 'Dismiss',
+          onPressed: () {},
+        ),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
       setState(() {});
     }
   }

@@ -149,18 +149,20 @@ class _SignUpState extends State<Budget> {
 
   void sendImageToServer() async {
     Uri url = Uri.parse(
-        'http://<adresse_du_serveur>/endpoint'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
+        'http://10.0.0.2:8000/'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
 
     var request = http.MultipartRequest('POST', url);
     request.files
         .add(await http.MultipartFile.fromPath('image', capturedImage!.path));
-
+    print("Sending request:-----");
     var response = await request.send();
 
     if (response.statusCode == 200) {
       // Traitement de la réponse du serveur
+      print("Image envoyée avec succès*******************************");
     } else {
       // Gestion de l'erreur
+      print("Erreur lors de l'envoi de l'image*******************************");
     }
   }
 
