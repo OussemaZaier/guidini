@@ -70,7 +70,8 @@ class _productCardState extends State<productCard> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: widget.quantity == -1 ? 275 : 220,
+              color: Colors.purple,
+              width: widget.quantity == -1 ? 250 : 220,
               child: Row(
                 children: [
                   if (widget.icon != null)
@@ -112,7 +113,8 @@ class _productCardState extends State<productCard> {
               )
             else
               Container(
-                width: 60,
+                color: Colors.red,
+                width: 55,
                 height: 5,
                 child: Text(
                   widget.text2,
@@ -124,6 +126,7 @@ class _productCardState extends State<productCard> {
                 ),
               ),
             Container(
+              color: Colors.yellow,
               child: Row(
                 children: [
                   if (widget.add_remove == true)
