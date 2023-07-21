@@ -92,11 +92,12 @@ class _productCardState extends State<productCard> {
                       padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
                       child: Container(
                         color: Colors.red,
-                        width: widget.quantity == -1 ? 150 : null,
+                        // width: widget.quantity == -1 ? 150 : 100,
+
                         child: Text(
                           widget.text1,
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
                             color: widget.txtColor,
                             fontFamily: 'Lato',
                           ),
@@ -145,7 +146,7 @@ class _productCardState extends State<productCard> {
                         Text(
                           widget.text2,
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
                             color: widget.txtColor,
                             fontFamily: 'Lato',
                           ),
