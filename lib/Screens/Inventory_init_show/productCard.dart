@@ -112,7 +112,7 @@ class _productCardState extends State<productCard> {
               )
             else
               Container(
-                width: 70,
+                width: 60,
                 height: 5,
                 child: Text(
                   widget.text2,

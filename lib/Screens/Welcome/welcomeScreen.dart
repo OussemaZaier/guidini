@@ -31,14 +31,17 @@ class Welcome extends StatelessWidget {
               height: MediaQuery.of(context).size.width / 2,
               width: MediaQuery.of(context).size.width / 2,
             ),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-                fontFamily: 'Lato',
-                fontWeight: FontWeight.bold,
+            Container(
+              width: MediaQuery.of(context).size.width / 1.2,
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 30,
+                  color: Colors.white,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             child,
