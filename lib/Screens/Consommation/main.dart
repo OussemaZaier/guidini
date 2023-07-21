@@ -78,7 +78,7 @@ class _ConsommationState extends State<Consommation> {
               productCard(
                   text1: 'Product2',
                   text2: '',
-                  quantity:4 ,
+                  quantity: 3,
                   text4: '',
                   fct: () {},
                   bgColor: Colors.white,

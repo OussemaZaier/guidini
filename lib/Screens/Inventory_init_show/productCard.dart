@@ -68,51 +68,49 @@ class _productCardState extends State<productCard> {
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              width: widget.quantity == -1 ? 250 : 220,
-              child: Row(
-                children: [
-                  if (widget.icon != null)
+            Expanded(
+              flex: 2,
+              child: Container(
+                color: Colors.blue,
+                width: widget.quantity == -1 ? 250 : 220,
+                child: Row(
+                  children: [
+                    if (widget.icon != null)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20, right: 20),
+                        child: Image.asset(
+                          'assets/images/blackLogo.png',
+                          width: 50,
+                          height: 50,
+                        ),
+                      )
+                    else
+                      SizedBox(),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Image.asset(
-                        'assets/images/blackLogo.png',
-                        height: 42,
-                        width: 42,
-                      ),
-                    )
-                  else
-                    SizedBox(),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
-                    child: Container(
-                      width: widget.quantity == -1 ? 150 : 130,
-                      child: Text(
-                        widget.text1,
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: widget.txtColor,
-                          fontFamily: 'Lato',
+                      padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+                      child: Container(
+                        color: Colors.red,
+                        width: widget.quantity == -1 ? 150 : null,
+                        child: Text(
+                          widget.text1,
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: widget.txtColor,
+                            fontFamily: 'Lato',
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-            Container(
-              width: 8,
-              height: 5,
-            ),
-            if (widget.quantity == -1)
+            if (widget.quantity != -1)
               Container(
-                height: 5,
-                width: 1,
-              )
-            else
-              Container(
-                width: 55,
+                color: Colors.green,
+                width: 50,
                 height: 5,
                 child: Text(
                   widget.text2,
@@ -123,53 +121,61 @@ class _productCardState extends State<productCard> {
                   ),
                 ),
               ),
-            Container(
-              child: Row(
-                children: [
-                  if (widget.add_remove == true)
-                    InkWell(
-                      onTap: decrementQuantity,
-                      child: Icon(
-                        Icons.remove,
-                        color: widget.txtColor,
-                        size: 20,
-                      ),
-                    )
-                  else
-                    Container(width: 20, height: 20),
-                  if (widget.quantity == -1)
-                    Text(
-                      widget.text2,
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: widget.txtColor,
-                        fontFamily: 'Lato',
-                      ),
-                    )
-                  else
-                    Padding(
-                      padding: const EdgeInsets.all(7.0),
-                      child: Text(
-                        widget.quantity.toString(),
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: widget.txtColor,
-                          fontFamily: 'Lato',
+            Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.yellow,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      if (widget.add_remove == true)
+                        InkWell(
+                          onTap: decrementQuantity,
+                          child: Icon(
+                            Icons.remove,
+                            color: widget.txtColor,
+                            size: 20,
+                          ),
+                        )
+                      else
+                        Container(width: 20, height: 20),
+                      if (widget.quantity == -1)
+                        Text(
+                          widget.text2,
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: widget.txtColor,
+                            fontFamily: 'Lato',
+                          ),
+                        )
+                      else
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Text(
+                            widget.quantity.toString(),
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: widget.txtColor,
+                              fontFamily: 'Lato',
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  if (widget.add_remove == true)
-                    InkWell(
-                      onTap: incrementQuantity,
-                      child: Icon(
-                        Icons.add,
-                        color: widget.txtColor,
-                        size: 20,
-                      ),
-                    )
-                  else
-                    SizedBox(),
-                ],
+                      if (widget.add_remove == true)
+                        InkWell(
+                          onTap: incrementQuantity,
+                          child: Icon(
+                            Icons.add,
+                            color: widget.txtColor,
+                            size: 20,
+                          ),
+                        )
+                      else
+                        SizedBox(),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],
