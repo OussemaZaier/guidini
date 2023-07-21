@@ -43,7 +43,7 @@ def extract_data_from_image(image_path):
 
     path_to_tesseract = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
-    image_path = r"./recu.jpg"  # COMMENT THIS LINE FOR LIVE DEMO
+    # image_path = r"./recu.jpg"  # COMMENT THIS LINE FOR LIVE DEMO
 
     # Opening the image & storing it in an image object
     # img = Image.open(image_path) # UNCOMMENT THIS LINE FOR LIVE DEMO

@@ -15,7 +15,7 @@ import 'package:intro_slider/intro_slider.dart';
 
 class Newcart extends StatelessWidget {
   Newcart({Key? key, required this.items}) : super(key: key);
-  String items;
+  List<dynamic> items;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,11 +42,11 @@ class Newcart extends StatelessWidget {
                           endIndent: 30,
                         ),
                         kSizedBox1,
-                        for (var i in jsonDecode(this.items))
+                        for (var i in jsonDecode(items[0]))
                           productCard(
                               icon: Icons.shop,
                               text1: i[0],
-                              text2: i[1],
+                              text2: i[1] + " DT",
                               text3: 'text3',
                               text4: 'text4',
                               fct: () => {},
@@ -54,7 +54,7 @@ class Newcart extends StatelessWidget {
                               txtColor: Colors.black,
                               shadow: true,
                               add_remove: false,
-                              quantity: 0),
+                              quantity: -1),
                         kSizedBox1,
                         kSizedBox1,
                         Row(
@@ -70,7 +70,7 @@ class Newcart extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              '18Dt',
+                              items[1].toString(),
                               style: TextStyle(
                                 fontSize: 30,
                                 color: Colors.black,

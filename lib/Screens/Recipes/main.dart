@@ -50,7 +50,9 @@ class Recipes extends StatelessWidget {
                 buttonText: 'View recipe',
                 buttonFct: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Recipe_detail();
+                    return Recipe_detail(
+                        title: "Pizza napolitana",
+                        image: 'assets/images/pizza.jpg');
                   }));
                 },
                 bg: 'assets/images/pizza.jpg',
@@ -60,7 +62,13 @@ class Recipes extends StatelessWidget {
                 title: 'Couscous Agneau',
                 topText: '',
                 buttonText: 'View recipe',
-                buttonFct: () {},
+                buttonFct: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return Recipe_detail(
+                        title: "Couscous Agneau",
+                        image: 'assets/images/couscous.jpg');
+                  }));
+                },
                 bg: 'assets/images/couscous.jpg',
               ),
               kSizedBox1,
@@ -68,7 +76,13 @@ class Recipes extends StatelessWidget {
                 title: 'Spaghetti Bolognese',
                 topText: '',
                 buttonText: 'View recipe',
-                buttonFct: () {},
+                buttonFct: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return Recipe_detail(
+                        title: "Spaghetti Bolognese",
+                        image: 'assets/images/spag.jpg');
+                  }));
+                },
                 bg: 'assets/images/spag.jpg',
               ),
               kSizedBox1,
@@ -168,7 +182,7 @@ class HomeCard extends StatelessWidget {
                       ],
                       color: Colors.white,
                       fontFamily: 'Lato',
-                      fontSize: 25.0,
+                      fontSize: 30.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -179,7 +193,7 @@ class HomeCard extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.black,
+                          color: Colors.black.withOpacity(.7),
                           borderRadius: BorderRadius.circular(10.0)),
                       padding: EdgeInsets.all(10.0),
                       child: Text(
@@ -188,6 +202,7 @@ class HomeCard extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'Lato',
+                          fontSize: 18.0,
                         ),
                       ),
                     ),
