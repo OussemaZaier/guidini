@@ -105,6 +105,9 @@ class _SignInState extends State<SignIn> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
+                kSizedBox1,
+                kSizedBox1,
+                kSizedBox1,
                 Image.asset(
                   'assets/images/greenLogo.png',
                   height: MediaQuery.of(context).size.width / 2.5,

@@ -76,9 +76,9 @@ class _ConsommationState extends State<Consommation> {
                 endIndent: 30,
               ),
               productCard(
-                  text1: 'Product2',
-                  text2: '',
-                  quantity: 3,
+                  text1: 'Product2 ',
+                  text2: '11',
+                  quantity: -1,
                   text4: '',
                   fct: () {},
                   bgColor: Colors.white,
@@ -89,7 +89,7 @@ class _ConsommationState extends State<Consommation> {
                   icon: Icons.shop),
               productCard(
                   text1: 'Product3',
-                  text2: ' ',
+                  text2: '',
                   quantity: 3,
                   text4: '',
                   fct: () {},

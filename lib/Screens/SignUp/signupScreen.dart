@@ -104,6 +104,9 @@ class _SignUpState extends State<SignUp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                kSizedBox1,
+                kSizedBox1,
+                kSizedBox1,
                 Image.asset(
                   'assets/images/greenLogo.png',
                   height: MediaQuery.of(context).size.width / 2.5,
@@ -227,13 +230,13 @@ class _SignUpState extends State<SignUp> {
                 welcomeButton(
                   text: 'Continue',
                   fct: () {
-                    // registerUser();
+                    registerUser();
                     // if (_isNotValidate == false) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Inventory_init(),
-                        ));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => Inventory_init(),
+                    //     ));
                   },
                   // },
                   bgColor: kMainGreen,

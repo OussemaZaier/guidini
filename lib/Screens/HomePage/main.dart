@@ -1,13 +1,60 @@
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:guidini/Screens/Profile/main.dart';
+import 'package:guidini/Screens/SignUp/config.dart';
 import 'package:guidini/Screens/navigation.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:blur/blur.dart';
+import 'package:http/http.dart' as http;
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<dynamic> ADS = [];
+  Future<List> getAds() async {
+    print("** GETTING ADS **");
+    var response = await http.get(
+      Uri.parse(ads),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+    );
+
+    print(response);
+    var jsonResponse = jsonDecode(response.body);
+    print(jsonResponse);
+    return jsonResponse;
+    for (var i in jsonResponse) {
+      print("-----");
+      print(i['adname'] +
+          " on " +
+          i['productname'] +
+          "\nOffer ends at " +
+          i['end_date']);
+    }
+
+    return ["Err", "Err"];
+  }
+
+  void initState() {
+    WidgetsBinding.instance?.addPostFrameCallback((_) async {
+      this.ADS = await getAds();
+      print(this.ADS[0]['adname']);
+      setState(() {
+        this.ADS;
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +112,21 @@ class HomePage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                for (var i in ADS)
+                  HomeCard(
+                    title: i["adname"] +
+                        " on " +
+                        i["productname"] +
+                        " by " +
+                        i["brand"],
+                    topText:
+                        'Offer ends on ' + i["end_date"].substring(0, 15) + '!',
+                    buttonText: 'View product',
+                    buttonFct: () {
+                      getAds();
+                    },
+                    bg: 'assets/images/pub.png',
+                  ),
                 HomeCard(
                   title: 'You saved 61.00DT\n this month!',
                   topText: 'Great job!',
@@ -83,7 +145,9 @@ class HomePage extends StatelessWidget {
                   title: 'Fresh soft drink is \non sale in Super_XTRA!',
                   topText: 'A product you might like',
                   buttonText: 'View product',
-                  buttonFct: () {},
+                  buttonFct: () {
+                    getAds();
+                  },
                   bg: 'assets/images/pub.png',
                 ),
                 HomeCard(
@@ -157,6 +221,7 @@ class HomeCard extends StatelessWidget {
               ),
             ),
             Container(
+              width: 300,
               padding: EdgeInsets.all(20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

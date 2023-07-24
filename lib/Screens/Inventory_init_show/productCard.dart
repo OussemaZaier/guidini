@@ -73,8 +73,8 @@ class _productCardState extends State<productCard> {
             Expanded(
               flex: 2,
               child: Container(
-                color: Colors.blue,
-                width: widget.quantity == -1 ? 250 : 220,
+                // width: widget.quantity == -1 ? 250 : 220,
+                // width: MediaQuery.of(context).size.width * 0.8,
                 child: Row(
                   children: [
                     if (widget.icon != null)
@@ -91,12 +91,13 @@ class _productCardState extends State<productCard> {
                     Padding(
                       padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
                       child: Container(
-                        color: Colors.red,
-                        width: widget.quantity == -1 ? 150 : null,
+                        width: MediaQuery.of(context).size.width * 0.32,
+                        // width: widget.quantity == -1 ? 150 : 100,
+
                         child: Text(
                           widget.text1,
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
                             color: widget.txtColor,
                             fontFamily: 'Lato',
                           ),
@@ -109,8 +110,7 @@ class _productCardState extends State<productCard> {
             ),
             if (widget.quantity != -1)
               Container(
-                color: Colors.green,
-                width: 50,
+                // width: 50,
                 height: 5,
                 child: Text(
                   widget.text2,
@@ -124,7 +124,6 @@ class _productCardState extends State<productCard> {
             Expanded(
               flex: 1,
               child: Container(
-                color: Colors.yellow,
                 child: Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Row(
@@ -145,7 +144,7 @@ class _productCardState extends State<productCard> {
                         Text(
                           widget.text2,
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
                             color: widget.txtColor,
                             fontFamily: 'Lato',
                           ),
