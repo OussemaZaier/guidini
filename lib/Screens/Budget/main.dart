@@ -189,7 +189,7 @@ class _SignUpState extends State<Budget> {
 
   Future<List> sendImageToServer() async {
     Uri url = Uri.parse(
-        'http://10.0.2.2:8000/'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
+        'http://192.168.1.194:8000/'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
 
     var request = http.MultipartRequest('POST', url);
     print("URL = $url");
