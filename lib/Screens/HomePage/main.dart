@@ -112,6 +112,19 @@ class _HomePageState extends State<HomePage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                HomeCard(
+                    title: 'You saved 61.00DT\n this month!',
+                    topText: 'Great job!',
+                    buttonText: 'View profile',
+                    buttonFct: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Navigation(
+                                    pageNumber: 4,
+                                  )));
+                    },
+                    bg: 'https://media.istockphoto.com/id/1345912457/photo/financial-stock-market-graph-selective-focus.jpg?s=612x612&w=0&k=20&c=I-XKq4_2c3rOJPezkG5J6DNbl65OVgmGbX4yrp5T7qQ='),
                 for (var i in ADS)
                   HomeCard(
                     title: i["adname"] +
@@ -125,38 +138,25 @@ class _HomePageState extends State<HomePage> {
                     buttonFct: () {
                       getAds();
                     },
-                    bg: 'assets/images/pub.png',
+                    bg: i["image"],
                   ),
-                HomeCard(
-                  title: 'You saved 61.00DT\n this month!',
-                  topText: 'Great job!',
-                  buttonText: 'View profile',
-                  buttonFct: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Navigation(
-                                  pageNumber: 4,
-                                )));
-                  },
-                  bg: 'assets/images/bg1.png',
-                ),
-                HomeCard(
-                  title: 'Fresh soft drink is \non sale in Super_XTRA!',
-                  topText: 'A product you might like',
-                  buttonText: 'View product',
-                  buttonFct: () {
-                    getAds();
-                  },
-                  bg: 'assets/images/pub.png',
-                ),
+
+                // HomeCard(
+                //     title: 'Fresh soft drink is \non sale in Super_XTRA!',
+                //     topText: 'A product you might like',
+                //     buttonText: 'View product',
+                //     buttonFct: () {
+                //       getAds();
+                //     },
+                //     bg: 'assets/images/refer.png'),
                 HomeCard(
                   title: 'Get 25% off your next \ncart by referring!',
                   topText: 'Work better together!',
                   buttonText: 'Refer (+3000 Points)',
                   buttonFct: () {},
-                  bg: 'assets/images/refer.jpg',
+                  bg: 'https://iili.io/HQ1ltjt.jpg',
                 ),
+                kSizedBox1,
               ],
             ),
           ),
@@ -174,12 +174,14 @@ class HomeCard extends StatelessWidget {
     required this.bg,
     required this.buttonFct,
     required this.buttonText,
+    // required this.imageIsURL,
   }) : super(key: key);
   String title;
   String topText;
   String buttonText;
   VoidCallback buttonFct;
   String bg;
+  // bool imageIsURL;
 
   @override
   Widget build(BuildContext context) {
@@ -196,7 +198,7 @@ class HomeCard extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(bg),
+                  image: NetworkImage(bg),
                   fit: BoxFit.cover,
                 ),
                 boxShadow: [

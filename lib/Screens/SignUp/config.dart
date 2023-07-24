@@ -7,3 +7,7 @@ final ads = url + '/ad';
 String getUser(String id) {
   return url + '/user/' + id;
 }
+
+String getInv(String id) {
+  return url + '/inventory/' + id;
+}
