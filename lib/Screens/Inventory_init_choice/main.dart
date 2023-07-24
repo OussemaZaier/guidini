@@ -12,6 +12,7 @@ import 'package:guidini/utils/constants.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../CameraActivity.dart';
+import 'ImageScreen.dart';
 
 class Inventory_init_choice extends StatefulWidget {
   Inventory_init_choice({Key? key}) : super(key: key);
@@ -81,7 +82,16 @@ class _SignUpState extends State<Inventory_init_choice> {
       title: 'What do you \n have at home?',
     );
   }
-
+void _navigateToImageScreen(File? capturedImage) {
+  if (capturedImage != null) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ImageScreen(capturedImage: capturedImage),
+      ),
+    );
+  }
+}
   void openCamera() async {
     if (await _requestCameraPermission()) {
       final XFile? image = await widget._imagePicker.pickImage(
@@ -106,10 +116,14 @@ class _SignUpState extends State<Inventory_init_choice> {
         String fileName = image.path.split('/').last;
         // Copy the captured image to the "guidini/images" directory
         File newImage = await File(image.path).copy('${imagesDir.path}/$fileName');
+          
 
         setState(() {
           capturedImage = newImage; // Update the variable with the new file
         });
+        _navigateToImageScreen(capturedImage);
+       
+       
       }
     } else {
       // Handle the case where the user has denied camera permission.
