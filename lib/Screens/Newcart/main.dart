@@ -15,7 +15,12 @@ import 'package:intro_slider/intro_slider.dart';
 
 class Newcart extends StatelessWidget {
   Newcart({Key? key, required this.items}) : super(key: key);
-  List<dynamic> items;
+  List<dynamic> items = [];
+
+  void testing() {
+    print(items);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +39,11 @@ class Newcart extends StatelessWidget {
                     Column(
                       children: [
                         kSizedBox1,
+                        welcomeButton(
+                            text: "TEXT",
+                            fct: () => {testing()},
+                            bgColor: Colors.red,
+                            txtColor: Colors.white),
                         Divider(
                           thickness: 4,
                           height: 5,
@@ -42,19 +52,20 @@ class Newcart extends StatelessWidget {
                           endIndent: 30,
                         ),
                         kSizedBox1,
-                        for (var i in jsonDecode(items[0]))
-                          productCard(
-                              icon: Icons.shop,
-                              text1: i[0],
-                              text2: i[1] + " DT",
-                              text3: 'text3',
-                              text4: 'text4',
-                              fct: () => {},
-                              bgColor: Colors.white,
-                              txtColor: Colors.black,
-                              shadow: true,
-                              add_remove: false,
-                              quantity: -1),
+                        if (items.isEmpty)
+                          for (var i in jsonDecode(items[0]))
+                            productCard(
+                                icon: Icons.shop,
+                                text1: i[0],
+                                text2: i[1] + " DT",
+                                text3: 'text3',
+                                text4: 'text4',
+                                fct: () => {},
+                                bgColor: Colors.white,
+                                txtColor: Colors.black,
+                                shadow: true,
+                                add_remove: false,
+                                quantity: -1),
                         kSizedBox1,
                         kSizedBox1,
                         Row(

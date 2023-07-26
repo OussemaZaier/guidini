@@ -96,6 +96,8 @@ class _SignUpState extends State<Budget> {
                     welcomeButton(
                       text: 'Get Your Cart',
                       fct: () {
+                        print("ITEMS.items = ");
+                        print(ITEMS.items);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -149,6 +151,7 @@ class _SignUpState extends State<Budget> {
                         onPressed: () async {
                           // Appeler la fonction pour envoyer l'image en tant que requête HTTP
                           ITEMS.items = await sendImageToServer();
+
                           Navigator.push(
                             context,
                             MaterialPageRoute(
