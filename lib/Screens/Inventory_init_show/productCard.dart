@@ -71,8 +71,6 @@ class _productCardState extends State<productCard> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              color: Colors.blue,
-
               // width: widget.quantity == -1 ? 250 : 220,
               // width: MediaQuery.of(context).size.width * 0.8,
               child: Row(
@@ -91,7 +89,6 @@ class _productCardState extends State<productCard> {
                   Padding(
                     padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
                     child: Container(
-                      color: Colors.red,
                       constraints: BoxConstraints(maxWidth: 135),
 
                       // width: MediaQuery.of(context).size.width * 0.32,
@@ -112,8 +109,7 @@ class _productCardState extends State<productCard> {
             ),
             if (widget.quantity != -1)
               Container(
-                color: Colors.yellow,
-                // width: 50,
+                width: 50,
                 height: 5,
                 child: Text(
                   widget.text2,
