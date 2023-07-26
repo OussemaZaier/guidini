@@ -163,10 +163,10 @@ class _SignUpState extends State<Budget> {
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                         ),
-                        child: Padding(
+                        child: const Padding(
                           padding: EdgeInsets.only(
                               left: 40, right: 40, top: 12, bottom: 12),
-                          child: const Text('Envoyer l\'image',
+                          child: Text('Envoyer l\'image',
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.white,

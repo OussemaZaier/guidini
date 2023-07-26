@@ -45,7 +45,7 @@ class _SignUpState extends State<SignUp> {
 
       var jsonResponse = jsonDecode(response.body);
 
-      print("*******STATUS= " + jsonResponse.toString());
+      print("*******STATUS= $jsonResponse");
       if (jsonResponse['token'] != null) globals.token = jsonResponse['token'];
       print(globals.token);
       if (jsonResponse['token'] != null) {
@@ -57,8 +57,8 @@ class _SignUpState extends State<SignUp> {
       } else {
         final snackBar = SnackBar(
           content: Text(
-            'Error: ' + jsonResponse['message'].toString() + '!',
-            style: TextStyle(color: Colors.white, fontSize: 17.0),
+            'Error: ${jsonResponse['message']}!',
+            style: const TextStyle(color: Colors.white, fontSize: 17.0),
           ),
           backgroundColor: (const Color.fromARGB(255, 65, 65, 65)),
           action: SnackBarAction(
@@ -77,7 +77,7 @@ class _SignUpState extends State<SignUp> {
     } else {
       print("THIS B EMPTY");
       final snackBar = SnackBar(
-        content: Text(
+        content: const Text(
           'Please fill all the fields',
           style: TextStyle(color: Colors.white, fontSize: 17.0),
         ),
@@ -128,9 +128,9 @@ class _SignUpState extends State<SignUp> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Name",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.black,
                           fontFamily: 'Lato',
@@ -155,9 +155,9 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                       kSizedBox1,
-                      Text(
+                      const Text(
                         "Email",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.black,
                           fontFamily: 'Lato',
@@ -190,9 +190,9 @@ class _SignUpState extends State<SignUp> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       kSizedBox1,
-                      Text(
+                      const Text(
                         "Password",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.black,
                           fontFamily: 'Lato',
