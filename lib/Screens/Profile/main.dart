@@ -75,13 +75,13 @@ class _ProfileState extends State<Profile> {
   }
 
   void initState() {
+    super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((_) async {
       this.USERDATA = await getData();
       setState(() {
         this.USERDATA;
       });
     });
-    super.initState();
   }
 
   Widget build(BuildContext context) {

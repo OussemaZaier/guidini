@@ -70,47 +70,46 @@ class _productCardState extends State<productCard> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                // width: widget.quantity == -1 ? 250 : 220,
-                // width: MediaQuery.of(context).size.width * 0.8,
-                child: Row(
-                  children: [
-                    if (widget.icon != null)
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Image.asset(
-                          'assets/images/blackLogo.png',
-                          width: 50,
-                          height: 50,
-                        ),
-                      )
-                    else
-                      SizedBox(),
+            Container(
+              // width: widget.quantity == -1 ? 250 : 220,
+              // width: MediaQuery.of(context).size.width * 0.8,
+              child: Row(
+                children: [
+                  if (widget.icon != null)
                     Padding(
-                      padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.32,
-                        // width: widget.quantity == -1 ? 150 : 100,
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Image.asset(
+                        'assets/images/blackLogo.png',
+                        width: 50,
+                        height: 50,
+                      ),
+                    )
+                  else
+                    SizedBox(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+                    child: Container(
+                      constraints: BoxConstraints(maxWidth: 135),
 
-                        child: Text(
-                          widget.text1,
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.04,
-                            color: widget.txtColor,
-                            fontFamily: 'Lato',
-                          ),
+                      // width: MediaQuery.of(context).size.width * 0.32,
+                      // width: widget.quantity == -1 ? 150 : 100,
+
+                      child: Text(
+                        widget.text1,
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.width * 0.04,
+                          color: widget.txtColor,
+                          fontFamily: 'Lato',
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             if (widget.quantity != -1)
               Container(
-                // width: 50,
+                width: 50,
                 height: 5,
                 child: Text(
                   widget.text2,

@@ -19,7 +19,7 @@ def clean_data(raw_data):
         # if "tel" in l or "fax" in l or ":" in l or (not has_number(l)):
         #    continue
         # l = l.split(" ")
-        if re.search(price_pattern, l) and not re.search(r"\btotal\b", l):
+        if re.search(price_pattern, l) and not re.search(r"\btotal\b|\bprice\b|\btax\b", l):
             res.append(l)
 
     return split_product_price(res)

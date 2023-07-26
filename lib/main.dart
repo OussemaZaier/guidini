@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignUp(),
+                          builder: (context) => const SignUp(),
                         ),
                       );
                     },
@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignIn(),
+                          builder: (context) => const SignIn(),
                           //TODO:change  later
                         ),
                       );
