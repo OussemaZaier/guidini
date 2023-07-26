@@ -64,31 +64,29 @@ class _HomePageState extends State<HomePage> {
         headerSliverBuilder: (BuildContext context, bool isScrolled) {
           return [
             SliverAppBar(
-              flexibleSpace: Container(
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      children: [
-                        kSizedBox1,
-                        kSizedBox1,
-                        kSizedBox1,
-                        TextField(
-                          cursorColor: Colors.black,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.search),
-                            filled: true,
-                            fillColor: Color.fromARGB(30, 0, 0, 0),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 3, color: Color.fromARGB(30, 0, 0, 0)),
-                              borderRadius: BorderRadius.circular(50.0),
-                            ),
-                            hintText: 'Search',
+              flexibleSpace: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Column(
+                    children: [
+                      kSizedBox1,
+                      kSizedBox1,
+                      kSizedBox1,
+                      TextField(
+                        cursorColor: Colors.black,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.search),
+                          filled: true,
+                          fillColor: Color.fromARGB(30, 0, 0, 0),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 3, color: Color.fromARGB(30, 0, 0, 0)),
+                            borderRadius: BorderRadius.circular(50.0),
                           ),
+                          hintText: 'Search',
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -97,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                 IconButton(
                   icon: const Icon(
                     Icons.settings_outlined,
-                    color: Colors.white,
+                    color: Colors.black,
                     size: 30.0,
                   ),
                   onPressed: () {},

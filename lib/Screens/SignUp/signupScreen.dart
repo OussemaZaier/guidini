@@ -32,7 +32,7 @@ class _SignUpState extends State<SignUp> {
         "email": emailController.text,
         "password": passwordController.text
       };
-
+      print("SENDING BODY");
       var response = await http.post(Uri.parse(registration),
           headers: {
             "Accept": "application/json",
