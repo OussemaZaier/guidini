@@ -1,6 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
+import 'package:guidini/Screens/Inventory_show_recommendation/main.dart';
+import 'package:guidini/Screens/SignUp/config.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'package:flutter/material.dart';
@@ -17,6 +21,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
 import 'package:http/http.dart' as http;
+import 'package:guidini/Screens/globals.dart' as globals;
 
 class Budget extends StatefulWidget {
   Budget({Key? key}) : super(key: key);
@@ -31,6 +36,67 @@ class Budget extends StatefulWidget {
 
 TextEditingController myController = TextEditingController();
 
+Future<List> recommendItems() async {
+  var token = globals.token;
+  var userId = Jwt.parseJwt(token)['id'];
+  print(userId);
+  print('-----------------');
+  final response = await http.get(Uri.parse(findInv(userId)));
+  print(response);
+  final List<dynamic> responseData = json.decode(response.body);
+  print(responseData);
+  List<String> products = [];
+  for (var item in responseData) {
+    print("----");
+    print(item['productname']);
+    products.add(item['productname']);
+  }
+  print("PRODUCTS = ");
+  print(products);
+
+  var product_request = {"history ": products};
+
+  print("SENDING REQUEST:");
+
+  var responseServer = await http.post(Uri.parse('http://10.217.8.139:8000'),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: jsonEncode({"history": products}));
+
+  var jsonResponse = jsonDecode(responseServer.body);
+  print("*******STATUS= " + jsonResponse.toString());
+
+  var jsonResponseItems = jsonResponse['recommendations'];
+  print(jsonResponseItems);
+  // var responseQuantity;
+  // for (var item in jsonResponseItems) {
+  //   print(item);
+  //   responseQuantity = await http.post(
+  //       Uri.parse('http://10.217.8.139:8003/predict'),
+  //       headers: {
+  //         "Accept": "application/json",
+  //         "Content-Type": "application/json"
+  //       },
+  //       body: jsonEncode({
+  //         "month_cons": Random().nextInt(10) * 2.5,
+  //         "inventory": Random().nextInt(10),
+  //         "product": item
+  //       }));
+
+  //   jsonResponse = jsonDecode(responseQuantity.body);
+  //   print("*******QUANTITY= ");
+  //   print(jsonResponse['predicted_rec_qte'].round());
+  //   if (jsonResponse['predicted_rec_qte'].round() > 0)
+  //     ITEMS.items.add([item, jsonResponse['predicted_rec_qte'].round()]);
+  // }
+  // print("ITEMS:::::::::::::::::::::::::::::::");
+  // print(ITEMS.items);
+
+  return jsonResponseItems;
+}
+
 class _SignUpState extends State<Budget> {
   @override
   Widget build(BuildContext context) {
@@ -40,7 +106,7 @@ class _SignUpState extends State<Budget> {
           child: Column(
             children: [
               title(
-                  text: 'Budget',
+                  text: 'New cart',
                   txtColor: Colors.white,
                   bgColor1: kMainGreen,
                   bgColor2: Colors.green),
@@ -55,53 +121,57 @@ class _SignUpState extends State<Budget> {
                         height:
                             5.0), // Utilise SizedBox ici au lieu de kSizedBox1
 
-                    Field(
-                      text: 'Enter Your Budget',
-                      pwd: false,
-                      placeholder: '170 TND ',
-                      myController: myController,
-                    ),
+                    // Field(
+                    //   text: 'Enter Your Budget',
+                    //   pwd: false,
+                    //   placeholder: '170 TND ',
+                    //   myController: myController,
+                    // ),
 
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      welcomeButton(
-                          text: "   25DT   ",
-                          fct: () => {
-                                setState(() {
-                                  myController.text = '20 TND';
-                                })
-                              },
-                          bgColor: Colors.white,
-                          txtColor: Colors.black),
-                      welcomeButton(
-                          text: "   50DT   ",
-                          fct: () => {
-                                setState(() {
-                                  myController.text = '50 TND';
-                                })
-                              },
-                          bgColor: Colors.white,
-                          txtColor: Colors.black),
-                      welcomeButton(
-                        text: "   100DT   ",
-                        fct: () => {
-                          setState(() {
-                            myController.text = '100 TND';
-                          })
-                        },
-                        bgColor: Colors.white,
-                        txtColor: Colors.black,
-                      )
-                    ]),
+                    // Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    //   welcomeButton(
+                    //       text: "   25DT   ",
+                    //       fct: () => {
+                    //             setState(() {
+                    //               myController.text = '20 TND';
+                    //             })
+                    //           },
+                    //       bgColor: Colors.white,
+                    //       txtColor: Colors.black),
+                    //   welcomeButton(
+                    //       text: "   50DT   ",
+                    //       fct: () => {
+                    //             setState(() {
+                    //               myController.text = '50 TND';
+                    //             })
+                    //           },
+                    //       bgColor: Colors.white,
+                    //       txtColor: Colors.black),
+                    //   welcomeButton(
+                    //     text: "   100DT   ",
+                    //     fct: () => {
+                    //       setState(() {
+                    //         myController.text = '100 TND';
+                    //       })
+                    //     },
+                    //     bgColor: Colors.white,
+                    //     txtColor: Colors.black,
+                    //   )
+                    // ]),
 
                     welcomeButton(
-                      text: 'Get Your Cart',
-                      fct: () {
-                        print("ITEMS.items = ");
+                      text: 'Get Your Recommendations',
+                      fct: () async {
+                        ITEMS.items = await recommendItems();
+
+                        print("ITEMS.items BEFORE NAV PUSH = ");
                         print(ITEMS.items);
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Newcart(items: ITEMS.items),
+                            builder: (context) => Inventory_show_recommendation(
+                                items: ITEMS.items),
                           ),
                         );
                       },
@@ -192,7 +262,7 @@ class _SignUpState extends State<Budget> {
 
   Future<List> sendImageToServer() async {
     Uri url = Uri.parse(
-        'http://192.168.1.194:8000/'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
+        'http://10.217.8.139:8005/'); // Remplacez <adresse_du_serveur> par l'adresse réelle du serveur
 
     var request = http.MultipartRequest('POST', url);
     print("URL = $url");
@@ -273,7 +343,7 @@ class _SignUpState extends State<Budget> {
 }
 
 class ITEMS {
-  static List<dynamic> items = ["", ""];
+  static List<dynamic> items = [];
 }
 
 class signUpWithCard extends StatelessWidget {

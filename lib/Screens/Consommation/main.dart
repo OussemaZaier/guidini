@@ -5,6 +5,7 @@ import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
 
 import 'package:guidini/Screens/Inventory_init_show/welcomeButton.dart';
+import 'package:guidini/Screens/SignUp/config.dart';
 import 'package:guidini/Screens/budget/main.dart';
 import 'package:guidini/Screens/navigation.dart';
 import 'package:guidini/Screens/title.dart';
@@ -30,8 +31,7 @@ class _ConsommationState extends State<Consommation> {
 
     print(userId);
     var userIdInDB = userId['id'];
-    final response = await http.get(
-        Uri.parse('http://10.72.0.126:3000/inventory/findByUser/$userIdInDB'));
+    final response = await http.get(Uri.parse(findInv(userIdInDB)));
     if (response.statusCode == 200) {
       final List<dynamic> responseData = json.decode(response.body);
       print(responseData);

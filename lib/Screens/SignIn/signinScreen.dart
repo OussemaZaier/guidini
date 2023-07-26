@@ -30,10 +30,13 @@ class _SignInState extends State<SignIn> {
     globals.token = "";
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       print("NOT EMPTY");
+
       var regBody = {
         "email": emailController.text,
         "password": passwordController.text
       };
+
+      print("SENDING BODY");
 
       var response = await http.post(Uri.parse(login),
           headers: {

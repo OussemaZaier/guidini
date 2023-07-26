@@ -7,6 +7,7 @@ import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
 import 'package:guidini/Screens/Profile/main.dart';
 import 'package:guidini/Screens/SignIn/signinScreen.dart';
+import 'package:guidini/Screens/SignUp/config.dart';
 import 'package:guidini/Screens/SignUp/signupScreen.dart';
 import 'package:guidini/Screens/HomePage/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeScreen.dart';
@@ -35,8 +36,9 @@ class _Inventory_showState extends State<Inventory_show> {
 
     print(userId);
     var userIdInDB = userId['id'];
-    final response = await http.get(
-        Uri.parse('http://10.72.0.126:3000/inventory/findByUser/$userIdInDB'));
+    print("Sending request");
+    final response = await http.get(Uri.parse(findInv(userIdInDB)));
+    print("Request sent successfully");
     if (response.statusCode == 200) {
       final List<dynamic> responseData = json.decode(response.body);
       print(responseData);
@@ -53,7 +55,6 @@ class _Inventory_showState extends State<Inventory_show> {
     WidgetsBinding.instance?.addPostFrameCallback((_) async {
       this.ITEMS = await fetchInventoryByUserId();
       print("------------------------------------");
-      print(this.ITEMS[0]);
       setState(() {
         this.ITEMS;
       });

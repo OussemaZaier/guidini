@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # this server
 
-x
+
 @app.route("/")
 def hello_world():
     return render_template("index.html")
@@ -46,4 +46,4 @@ def list_to_json(my_list):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=8000)
+    app.run(host="0.0.0.0", port=8005)

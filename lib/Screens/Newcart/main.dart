@@ -39,11 +39,6 @@ class Newcart extends StatelessWidget {
                     Column(
                       children: [
                         kSizedBox1,
-                        welcomeButton(
-                            text: "TEXT",
-                            fct: () => {testing()},
-                            bgColor: Colors.red,
-                            txtColor: Colors.white),
                         Divider(
                           thickness: 4,
                           height: 5,
@@ -52,7 +47,7 @@ class Newcart extends StatelessWidget {
                           endIndent: 30,
                         ),
                         kSizedBox1,
-                        if (items.isEmpty)
+                        if (items.isNotEmpty)
                           for (var i in jsonDecode(items[0]))
                             productCard(
                                 icon: Icons.shop,
