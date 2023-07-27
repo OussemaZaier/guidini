@@ -91,6 +91,8 @@ class _ConsommationState extends State<Consommation> {
                   fontFamily: 'Lato',
                   fontWeight: FontWeight.bold,
                 )),
+            kSizedBox1,
+            kSizedBox1,
             Column(
               children: [
                 for (var i in ITEMS)

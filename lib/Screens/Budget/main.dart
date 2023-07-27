@@ -181,7 +181,7 @@ class _SignUpState extends State<Budget> {
                     ),
                     const SizedBox(height: 40.0),
                     const Align(
-                        alignment: Alignment.centerLeft,
+                        alignment: Alignment.center,
                         child: Text(
                           'Already Shopped?',
                           style: TextStyle(
@@ -239,7 +239,7 @@ class _SignUpState extends State<Budget> {
                         child: const Padding(
                           padding: EdgeInsets.only(
                               left: 40, right: 40, top: 12, bottom: 12),
-                          child: Text('Envoyer l\'image',
+                          child: Text('Send image',
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.white,

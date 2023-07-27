@@ -146,6 +146,10 @@ class _Inventory_show_recommendationState
                               showDialog(
                                   context: context,
                                   builder: (context) => AlertDialog(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
                                         title: Text(
                                             i + '\nPlease fill out these fields',
                                             style: TextStyle(
@@ -153,32 +157,52 @@ class _Inventory_show_recommendationState
                                             )),
                                         content: Form(
                                           child: Container(
-                                            height: 270,
+                                            height: 200,
                                             child: Column(
                                               children: [
                                                 kSizedBox1,
                                                 kSizedBox1,
-                                                Text(
-                                                  "Monthly consumption",
-                                                  style: TextStyle(
-                                                    fontSize: 21,
-                                                  ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      "Monthly consumption",
+                                                      style: TextStyle(
+                                                        fontSize: 21,
+                                                      ),
+                                                    ),
+                                                    kSizedBox1,
+                                                    SizedBox(
+                                                      width: 50,
+                                                      child: TextFormField(
+                                                          controller:
+                                                              _similarController),
+                                                    ),
+                                                  ],
                                                 ),
                                                 kSizedBox1,
-                                                TextFormField(
-                                                    controller:
-                                                        _similarController),
                                                 kSizedBox1,
-                                                kSizedBox1,
-                                                Text(
-                                                  "Quantity in inventory",
-                                                  style: TextStyle(
-                                                    fontSize: 21,
-                                                  ),
-                                                ),
-                                                TextFormField(
-                                                  controller:
-                                                      _quantityController,
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      "Quantity in inventory",
+                                                      style: TextStyle(
+                                                        fontSize: 21,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 50,
+                                                      child: TextFormField(
+                                                        controller:
+                                                            _quantityController,
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
@@ -197,6 +221,13 @@ class _Inventory_show_recommendationState
                                                       builder: (BuildContext
                                                           context) {
                                                         return AlertDialog(
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20),
+                                                          ),
                                                           title:
                                                               Text("Success"),
                                                           content: Text(
@@ -211,6 +242,13 @@ class _Inventory_show_recommendationState
                                                       builder: (BuildContext
                                                           context) {
                                                         return AlertDialog(
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20),
+                                                          ),
                                                           title: Text("Fail"),
                                                           content: Text(
                                                               "You don't need this product at this moment!"),
