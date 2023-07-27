@@ -1,10 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_sticky_widgets/flutter_sticky_widgets.dart';
 import 'package:guidini/Screens/Inventory_add/main.dart';
 import 'package:guidini/Screens/Inventory_init/main.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
+import 'package:guidini/Screens/Newcart/main.dart';
+import 'package:guidini/Screens/Newcart_rec/main.dart';
 import 'package:guidini/Screens/Profile/main.dart';
 import 'package:guidini/Screens/SignIn/signinScreen.dart';
 import 'package:guidini/Screens/SignUp/config.dart';
@@ -20,16 +23,43 @@ import 'package:guidini/Screens/globals.dart' as globals;
 import 'package:http/http.dart' as http;
 import 'package:jwt_decode/jwt_decode.dart';
 
-class Inventory_show_recommendation extends StatelessWidget {
+class Inventory_show_recommendation extends StatefulWidget {
   Inventory_show_recommendation({Key? key, required this.items})
       : super(key: key);
   List<dynamic> items = [];
 
+  getItems() {
+    return items;
+  }
+
+  @override
+  State<Inventory_show_recommendation> createState() =>
+      _Inventory_show_recommendationState();
+}
+
+List<dynamic> cart = [];
+
+class _Inventory_show_recommendationState
+    extends State<Inventory_show_recommendation> {
   TextEditingController _similarController = TextEditingController();
   TextEditingController _quantityController = TextEditingController();
 
+  late ScrollController _controller;
+
+  @override
+  void initState() {
+    _controller = ScrollController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   void testing() {
-    print(items);
+    print(widget.items);
   }
 
   Future<int> getQuantity(String i) async {
@@ -54,9 +84,13 @@ class Inventory_show_recommendation extends StatelessWidget {
 
     var jsonResponse = jsonDecode(responseQuantity.body);
     print("*******QUANTITY= ");
-    if (jsonResponse['predicted_rec_qte'].round() > 0)
+    if (jsonResponse['predicted_rec_qte'].round() > 0) {
       print("SUCCESSSSS");
-    else
+      cart.add([i, jsonResponse['predicted_rec_qte'].round()]);
+      print("CART=======");
+      print(cart);
+      return jsonResponse['predicted_rec_qte'].round();
+    } else
       print("FAILLLLL");
     print(jsonResponse['predicted_rec_qte']);
 
@@ -83,7 +117,7 @@ class Inventory_show_recommendation extends StatelessWidget {
               title(
                 bgColor2: kMainGreen,
                 bgColor1: Color.fromARGB(255, 16, 161, 31),
-                text: 'Inventory',
+                text: 'New cart',
                 txtColor: Colors.white,
               ),
               Column(
@@ -99,7 +133,7 @@ class Inventory_show_recommendation extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Lato')),
                         kSizedBox1,
-                        for (var i in items)
+                        for (var i in widget.items)
                           productCard(
                             text1: i,
                             text2: '',
@@ -107,6 +141,8 @@ class Inventory_show_recommendation extends StatelessWidget {
                             text4: '',
                             icon: Icons.abc,
                             fct: () {
+                              _quantityController.clear();
+                              _similarController.clear();
                               showDialog(
                                   context: context,
                                   builder: (context) => AlertDialog(
@@ -123,7 +159,7 @@ class Inventory_show_recommendation extends StatelessWidget {
                                                 kSizedBox1,
                                                 kSizedBox1,
                                                 Text(
-                                                  "Number of similar products",
+                                                  "Monthly consumption",
                                                   style: TextStyle(
                                                     fontSize: 21,
                                                   ),
@@ -196,28 +232,13 @@ class Inventory_show_recommendation extends StatelessWidget {
                         Container(
                           width: MediaQuery.of(context).size.width / 2,
                           child: welcomeButton(
-                              text: "Add",
-                              fct: () => {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => Inventory_add(),
-                                        ))
-                                  },
-                              bgColor: Colors.white,
-                              txtColor: Colors.black,
-                              icon: Icons.add),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 2,
-                          child: welcomeButton(
                               text: "Finish",
                               fct: () => {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => Navigation(
-                                            pageNumber: 4,
+                                          builder: (context) => Newcart_rec(
+                                            items: cart,
                                           ),
                                         ))
                                   },

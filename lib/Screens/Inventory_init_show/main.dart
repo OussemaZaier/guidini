@@ -5,6 +5,7 @@ import 'package:guidini/Screens/Inventory_add/main.dart';
 import 'package:guidini/Screens/Inventory_init_choice/welcomeButton.dart';
 import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
 import 'package:guidini/Screens/Inventory_show/main.dart';
+import 'package:guidini/Screens/SignUp/config.dart';
 import 'package:guidini/Screens/navigation.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:http/http.dart' as http;
@@ -28,8 +29,8 @@ class _Inventory_init_showState extends State<Inventory_init_show> {
 
     print(userId);
     var userIdInDB = userId['id'];
-    final response = await http.get(
-        Uri.parse('http://10.72.0.126:3000/inventory/findByUser/$userIdInDB'));
+
+    final response = await http.get(Uri.parse(findInv(userIdInDB)));
     if (response.statusCode == 200) {
       final List<dynamic> responseData = json.decode(response.body);
       print(responseData);
