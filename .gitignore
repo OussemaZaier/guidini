@@ -53,3 +53,5 @@ app.*.map.json
 
 text_scan_recognition/venv
 text_scan_recognition/venv/*
+recommendation_system/*
+recommendation_system/altair
