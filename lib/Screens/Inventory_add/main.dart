@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Inventory_init_show/main.dart';
+import 'package:guidini/Screens/Inventory_show/main.dart';
+import 'package:guidini/Screens/Profile/main.dart';
 import 'package:guidini/Screens/SignUp/config.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
 import 'package:guidini/utils/constants.dart';
@@ -12,8 +14,9 @@ import 'package:jwt_decode/jwt_decode.dart';
 import 'package:guidini/Screens/globals.dart' as globals;
 
 class Inventory_add extends StatefulWidget {
-  Inventory_add({Key? key}) : super(key: key);
+  Inventory_add({Key? key, required this.destination}) : super(key: key);
 
+  int destination = -1;
   @override
   State<Inventory_add> createState() => _Inventory_addState();
 }
@@ -57,7 +60,6 @@ class _Inventory_addState extends State<Inventory_add> {
       if (jsonResponse['_id'] != null) {
         print("ITEM CREATED SUCCESSFULLY");
         print(jsonResponse['_id']);
-        Navigator.pop(context);
       } else {
         final snackBar = SnackBar(
           content: Text(
@@ -224,6 +226,24 @@ class _Inventory_addState extends State<Inventory_add> {
                           text: "Add",
                           fct: () => {
                             addProduct(),
+                            if (widget.destination == 0)
+                              {
+                                print("DEST=0**************"),
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          Inventory_init_show(),
+                                    ))
+                              }
+                            else if (widget.destination == 1)
+                              {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Inventory_show(),
+                                    ))
+                              }
                           },
                           bgColor: Colors.white,
                           txtColor: Colors.black,

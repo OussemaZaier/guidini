@@ -109,8 +109,7 @@ class _ConsommationState extends State<Consommation> {
                     add_remove: true,
                     text3: '',
                   ),
-                kSizedBox1,
-                kSizedBox1,
+                // kSizedBox1,
                 kSizedBox1,
                 Container(
                   width: MediaQuery.of(context).size.width / 2,
@@ -130,6 +129,8 @@ class _ConsommationState extends State<Consommation> {
                 )
               ],
             ),
+            kSizedBox1,
+            kSizedBox1,
             kSizedBox1,
           ]),
         ),

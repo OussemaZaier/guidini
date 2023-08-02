@@ -116,7 +116,7 @@ class _Inventory_showState extends State<Inventory_show> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => Inventory_add(),
+                                          builder: (context) => Inventory_add(destination:1),
                                         ))
                                   },
                               bgColor: Colors.white,

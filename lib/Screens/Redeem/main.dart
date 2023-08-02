@@ -46,7 +46,6 @@ class Redeem extends StatelessWidget {
                 kSizedBox1,
               ]),
               kSizedBox1,
-              kSizedBox1,
               Container(
                 width: MediaQuery.of(context).size.width,
                 child: Column(
@@ -65,6 +64,9 @@ class Redeem extends StatelessWidget {
                             builder: (context) => AlertDialog(
                                   title: Text(
                                       'Are you sure you want to redeem this offer?'),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
                                   actions: [
                                     TextButton(
                                         onPressed: () => Navigator.pop(context),
@@ -101,6 +103,8 @@ class Redeem extends StatelessWidget {
                       },
                       buttonText: ' 2000 Points',
                     ),
+                    kSizedBox1,
+                    kSizedBox1,
                   ],
                 ),
               )

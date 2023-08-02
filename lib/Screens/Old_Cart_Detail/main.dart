@@ -104,7 +104,7 @@ class Old_Cart_Detail extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Inventory_add(),
+                                    builder: (context) => Inventory_add(destination:-1),
                                   ))
                             },
                         bgColor: Colors.white,

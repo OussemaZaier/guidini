@@ -75,6 +75,15 @@ class Newcart extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
+                            Text(
+                              items[1].toString(),
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.black,
+                                fontFamily: 'Lato',
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
                           ],
                         ),
                         kSizedBox1,
@@ -87,9 +96,8 @@ class Newcart extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Inventory_add(
-                                      destination: -1,
-                                    ),
+                                    builder: (context) =>
+                                        Inventory_add(destination: -1),
                                   ))
                             },
                             bgColor: Colors.white,

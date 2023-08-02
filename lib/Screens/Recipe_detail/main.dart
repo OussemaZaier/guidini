@@ -78,8 +78,8 @@ class Recipe_detail extends StatelessWidget {
                   quantity: 2,
                 ),
                 productCard(
-                  text1: 'Cheese',
-                  text2: '350g',
+                  text1: 'Cheese 350g',
+                  text2: '3',
                   text3: '',
                   text4: '',
                   icon: Icons.add,
@@ -91,8 +91,8 @@ class Recipe_detail extends StatelessWidget {
                   quantity: -1,
                 ),
                 productCard(
-                  text1: 'Flour',
-                  text2: '500g',
+                  text1: 'Flour 500g',
+                  text2: '1',
                   text3: '',
                   text4: '',
                   icon: Icons.add,
