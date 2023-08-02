@@ -1,99 +1,146 @@
-import 'package:flutter/material.dart';
-import 'package:guidini/Screens/Inventory_init_choice/main.dart';
-import 'package:guidini/Screens/SignIn/main.dart';
-import 'package:guidini/Screens/SignUp/main.dart';
-import 'package:guidini/Screens/Welcome/main.dart';
-import 'package:guidini/Screens/Welcome/welcomeButton.dart';
-import 'package:guidini/Screens/recette/main.dart';
-import 'package:guidini/utils/constants.dart';
-import 'package:intro_slider/intro_slider.dart';
+import 'dart:convert';
 
-class Inventory_init_show extends StatelessWidget {
-  Inventory_init_show({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:guidini/Screens/Inventory_add/main.dart';
+import 'package:guidini/Screens/Inventory_init_choice/welcomeButton.dart';
+import 'package:guidini/Screens/Inventory_init_show/productCard.dart';
+import 'package:guidini/Screens/Inventory_show/main.dart';
+import 'package:guidini/Screens/SignUp/config.dart';
+import 'package:guidini/Screens/navigation.dart';
+import 'package:guidini/utils/constants.dart';
+import 'package:http/http.dart' as http;
+import 'package:jwt_decode/jwt_decode.dart';
+import 'package:guidini/Screens/globals.dart' as globals;
+
+class Inventory_init_show extends StatefulWidget {
+  const Inventory_init_show({Key? key}) : super(key: key);
+
+  @override
+  State<Inventory_init_show> createState() => _Inventory_init_showState();
+}
+
+class _Inventory_init_showState extends State<Inventory_init_show> {
+  List<dynamic> ITEMS = [];
+
+  Future<List<Inventory>> fetchInventoryByUserId() async {
+    // void fetchInventoryByUserId() async {
+    var token = globals.token;
+    Map<String, dynamic> userId = Jwt.parseJwt(token);
+
+    print(userId);
+    var userIdInDB = userId['id'];
+
+    final response = await http.get(Uri.parse(findInv(userIdInDB)));
+    if (response.statusCode == 200) {
+      final List<dynamic> responseData = json.decode(response.body);
+      print(responseData);
+      List<Inventory> inventories =
+          responseData.map((data) => Inventory.fromJson(data)).toList();
+      return inventories;
+      // return inventories;
+    } else {
+      throw Exception('Failed to load inventory');
+    }
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      ITEMS = await fetchInventoryByUserId();
+      print("------------------------------------");
+      print(ITEMS);
+      setState(() {
+        ITEMS;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: RadialGradient(
-            colors: [
-              Color(0xFF0BA360),
-              Color(0xFF3cba92),
-            ],
-            center: Alignment(-1, -1),
-            radius: 3.0,
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: RadialGradient(
+              colors: [
+                Color(0xFF118b44),
+                kMainGreen,
+              ],
+              center: Alignment(-1, -1),
+              radius: 3.0,
+            ),
           ),
-        ),
-        child:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          Column(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Image.asset(
-                  height: MediaQuery.of(context).size.height / 4,
-                  width: MediaQuery.of(context).size.width / 4,
-                  'assets/images/whiteLogo.png'),
-              Text('Inventory',
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.white,
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.bold,
-                  )),
-              Row(
+              Column(
                 children: [
-                  Text('Product',
+                  Image.asset(
+                      height: MediaQuery.of(context).size.height / 4,
+                      width: MediaQuery.of(context).size.width / 4,
+                      'assets/images/whiteLogo.png'),
+                  const Text('Inventory',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 35,
                         color: Colors.white,
                         fontFamily: 'Lato',
-                        fontWeight: FontWeight.normal,
+                        fontWeight: FontWeight.bold,
                       )),
-                  Text('Expiry date',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.normal,
-                      )),
-                  Text('Qty.',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.normal,
-                      )),
+                  kSizedBox1,
+                  for (var i in ITEMS)
+                    productCard(
+                      text1: i.productName,
+                      text2: i.brand,
+                      quantity: int.parse(i.quantity),
+                      text4: '',
+                      icon: Icons.abc,
+                      fct: () {},
+                      bgColor: Colors.white,
+                      txtColor: Colors.black,
+                      shadow: true,
+                      add_remove: true,
+                      text3: '',
+                    ),
+                  kSizedBox1,
+                  kSizedBox1,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: welcomeButton(
+                        text: "Add",
+                        fct: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        Inventory_add(destination: 0),
+                                  ))
+                            },
+                        bgColor: Colors.white,
+                        txtColor: Colors.black,
+                        icon: Icons.add),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: welcomeButton(
+                        text: "Finish",
+                        fct: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Navigation(),
+                                  ))
+                            },
+                        bgColor: Colors.white,
+                        txtColor: Colors.black,
+                        icon: Icons.arrow_forward_ios_rounded),
+                  )
                 ],
               ),
-              welcomeButton(
-                  text: "Add",
-                  fct: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => recette(),
-                            ))
-                      },
-                  bgColor: Colors.white,
-                  txtColor: Colors.black,
-                  icon: Icons.add),
-              welcomeButton(
-                  text: "Finish",
-                  fct: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => recette(),
-                            ))
-                      },
-                  bgColor: Colors.white,
-                  txtColor: Colors.black,
-                  icon: Icons.arrow_forward_ios_rounded)
+              kSizedBox1,
             ],
           ),
-          kSizedBox1,
-        ]),
+        ),
       ),
     );
   }

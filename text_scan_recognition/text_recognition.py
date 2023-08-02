@@ -43,10 +43,12 @@ def extract_data_from_image(image_path):
     # return a list of lines read from an image
     # Defining paths to tesseract.exe
 
-    path_to_tesseract = r"lib/tesseract.exe"
-    # image_path = r"./recu.jpg"
+    path_to_tesseract = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+    # image_path = r"./recu.jpg"  # COMMENT THIS LINE FOR LIVE DEMO
 
     # Opening the image & storing it in an image object
+    # img = Image.open(image_path) # UNCOMMENT THIS LINE FOR LIVE DEMO
     img = Image.open(image_path)
 
     # Providing the tesseract executable
@@ -60,9 +62,10 @@ def extract_data_from_image(image_path):
     raw_text = text[:-1]
     # print("raw text", raw_text)
 
-    print("after processing")
+    print("after processing= ")
 
     result = clean_data(raw_data=raw_text)
+
     # os.unlink(image_path)
     return result
 
@@ -81,4 +84,4 @@ def has_number(s):
 
 # new comment
 # we can test the functions here bellow
-print(extract_data_from_image("recu.jpg"))
+# print(extract_data_from_image("./recu.jpg"))

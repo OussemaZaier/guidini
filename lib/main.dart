@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:guidini/Screens/HomePage/main.dart';
-import 'package:guidini/Screens/SignIn/main.dart';
-import 'package:guidini/Screens/SignUp/main.dart';
-import 'package:guidini/Screens/Welcome/main.dart';
+import 'package:guidini/Network/NetworkApiService.dart';
+import 'package:guidini/Screens/SignIn/signinScreen.dart';
+import 'package:guidini/Screens/SignUp/signupScreen.dart';
+import 'package:guidini/Screens/Welcome/welcomeScreen.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
-import 'package:guidini/Screens/descriptionapp/main.dart';
-import 'package:guidini/Screens/navigation.dart';
+import 'package:guidini/dbHelper/mongodb.dart';
 import 'package:guidini/utils/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -37,6 +36,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.white,
+        // body: ElevatedButton(
+        //   onPressed: () {
+        //     final networkApiService = NetworkApiService();
+        //     final res = networkApiService.getResponse(
+        //         'https://dog.ceo/api/breeds/image/random', {'x': '1'});
+        //     print('res from main $res');
+        //   },
+        //   child: Text('Make request'),
+        // ),
         body: Builder(
           builder: (BuildContext context) {
             return Welcome(
@@ -49,7 +57,7 @@ class _MyAppState extends State<MyApp> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignUp(),
+                          builder: (context) => const SignUp(),
                         ),
                       );
                     },
@@ -62,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignIn(),
+                          builder: (context) => const SignIn(),
                           //TODO:change  later
                         ),
                       );

@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:guidini/Screens/Inventory_init_choice/main.dart';
 import 'package:guidini/Screens/Welcome/welcomeButton.dart';
-import 'package:guidini/Screens/promo/main.dart';
 import 'package:guidini/utils/constants.dart';
 
-class recette extends StatelessWidget {
-  recette({Key? key}) : super(key: key);
+class intro extends StatelessWidget {
+  intro(
+      {Key? key,
+      required this.title,
+      required this.img,
+      required this.type,
+      required this.fct})
+      : super(key: key);
+  String title;
+  String type;
+  String img;
+  VoidCallback fct;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 244, 244, 244),
-              Color.fromARGB(255, 230, 235, 231),
-            ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.bottomCenter,
-          ),
-        ),
+        color: Colors.white,
         child:
             Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
           Column(
@@ -30,22 +29,30 @@ class recette extends StatelessWidget {
                   height: MediaQuery.of(context).size.height / 4,
                   width: MediaQuery.of(context).size.width / 4,
                   'assets/images/blackLogo.png'),
-              Image.asset(
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 2.5,
+                child: Image.asset(
                   height: MediaQuery.of(context).size.height / 2.5,
                   width: MediaQuery.of(context).size.width / 2.5,
-                  'assets/images/receipe.png'), // <-- SEE HERE
-              Text('Recipe',
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.black,
-                    fontFamily: 'Lato',
-                    fontWeight: FontWeight.bold,
-                  )),
+                  'assets/images/$img',
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
+              Text(
+                type,
+                style: const TextStyle(
+                  fontSize: 30,
+                  color: Colors.black,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Padding(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Text(
-                  'We recommend a recipe with available ingredients to prevent them from expiring.',
-                  style: TextStyle(
+                  title,
+                  style: const TextStyle(
                     fontSize: 15,
                     color: Colors.black,
                     fontFamily: 'Lato',
@@ -56,13 +63,7 @@ class recette extends StatelessWidget {
               ),
               welcomeButton(
                   text: "Next",
-                  fct: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => promo(),
-                            ))
-                      },
+                  fct: fct,
                   bgColor: Colors.white,
                   txtColor: Colors.black,
                   icon: Icons.arrow_forward_ios_rounded)
